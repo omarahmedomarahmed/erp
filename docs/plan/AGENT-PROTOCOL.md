@@ -1,5 +1,10 @@
 # G — Agent Operating Protocol for the TakafulTech build
 
+> **Auditor note on precedence.** `PLAN-V1.md` is authoritative wherever the two documents differ.
+> - **Decisions:** the binding decision list is PLAN-V1 §5 (D00-01…D00-24). The ADR-001…ADR-016 numbers below are this protocol's working labels. When the ADRs are written in `docs/adr/`, renumber them to match D00 (ADR-0NN = D00-NN).
+> - **Waves:** IDs written here as `P1W03` refer to PLAN-V1 §9's sequential `W3`.
+> - **Concurrency:** at most 4 agents run at once (builders, or the review agent, or fix agents). This protocol is otherwise binding.
+
 Status: DRAFT v1 for auditor approval. Spec source: `/home/user/erp/README.md` (1,160 lines; title still reads "Core Islamic Insurance", product name is TakafulTech).
 Inputs read in full: README.md L1–1160; validator findings A-finance-sharia.md, B-insurance-ops.md and D-regulatory-hr.md. C and E were not present when this was written.
 
