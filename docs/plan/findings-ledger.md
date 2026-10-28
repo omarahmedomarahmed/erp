@@ -13,7 +13,7 @@ ID format:
 
 | Scope | BLOCKER open | HIGH open | MEDIUM open/deferred | LOW open | Last updated |
 |---|---|---|---|---|---|
-| Spec validation (pre-build) | 11 | 14 (consolidated) | see validation reports | see validation reports | 2026-10-28 |
+| Spec validation (pre-build) | 11 | 18 (consolidated) | see validation reports | see validation reports | 2026-10-28 |
 
 ## Findings: spec validation (pre-build)
 
@@ -46,6 +46,10 @@ The consolidated items come from PLAN-V1 §4. Every other validator flag stays i
 | V-PH-12 | HIGH | OPEN | B-14, B-17 | Family / health / export credit until P4; offline PWA | D00-17 | Client | P0 |
 | V-PH-13 | HIGH | OPEN | D-16 | UAE 2026 takaful regulation changes the rule-pack model | P5 re-scope | PO | P5 |
 | V-PH-14 | HIGH | OPEN | C-11, C-13 | Network isolation cost; in-region RPO | Cost model; errata 15 | PO | Production |
+| V-PH-15 | HIGH | OPEN | R1-01 | Build environment: no Docker daemon, shared 4 vCPU / 15 GB, PG16 only | PLAN §7.5 | Orchestrator | W1 |
+| V-PH-16 | HIGH | OPEN | R1-07, R1-08 | Forgeable evidence; same-model reviewer; AI-made golden numbers | PLAN §7.4; WP-00-TEST sign-off | Auditor | W1 |
+| V-PH-17 | HIGH | OPEN | R1-16 | Unmasked data in migration trial loads | PLAN §7.6 | PO + client IT | W26 |
+| V-PH-18 | HIGH | OPEN | D-18, E | Client facts unverified (founding, ARIMA) | PLAN §14 A-11; errata 21 | PO | P0 |
 
 ## Findings: build waves
 
@@ -56,4 +60,4 @@ The consolidated items come from PLAN-V1 §4. Every other validator flag stays i
 
 | When (ISO) | ID | From → To | Actor | SHA | Note / evidence path |
 |---|---|---|---|---|---|
-| 2026-10-28 | V-PB-01…11, V-PH-01…14 | — → OPEN | auditor | — | Seeded from PLAN-V1 §4 and `validation/` |
+| 2026-10-28 | V-PB-01…11, V-PH-01…18 | — → OPEN | auditor | — | Seeded from PLAN-V1 §4 and `validation/` |
