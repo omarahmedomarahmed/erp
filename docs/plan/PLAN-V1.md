@@ -13,7 +13,7 @@ Companion documents:
 
 | Document | Contents |
 |---|---|
-| `WP-CATALOGUE.md` | Every work package: wave, scope, README line ranges, dependencies, acceptance tests closed, hours |
+| `BUILD-UNITS.md` | Every build unit: wave, scope, README line ranges, dependencies, acceptance tests closed, hours |
 | `AGENT-PROTOCOL.md` | Builder brief, reviewer brief, auditor checklist, gate catalogue G0–G27, adversarial test library |
 | `findings-ledger.md` | Single register of all findings |
 | `validation/A…E` | Spec validators |
@@ -50,7 +50,7 @@ All estimates are **modelled, not measured**. The auditor re-baselines them afte
 | 1 | C: Platform & tech | §2–4, §9–14, platform modules (package versions as of Oct 2026; local PG16 feasibility tests) | `validation/C-platform-tech.md` | 2 · 11 · 15 · 8 |
 | 1 | D: Libya regulatory, HR, AML | §1.1, §7, §17, M17–M19, data residency, rule packs | `validation/D-regulatory-hr.md` | 1 · about 10 · plus a verification table of about 50 rows |
 | 2 | E: Internal consistency | Inventory, table ownership, events, access, phases, open questions | `validation/E-consistency.md` | 6 · 36 · 32 · 12 · 40 decisions |
-| 2 | F: Timeline planner | WP DAG, waves, calendar, human gates | Merged into §8–§10 and `WP-CATALOGUE.md` | — |
+| 2 | F: Timeline planner | BU DAG, waves, calendar, human gates | Merged into §8–§10 and `BUILD-UNITS.md` | — |
 | 2 | G: Protocol designer | Briefs, auditor checklist, gates, ledger | `AGENT-PROTOCOL.md` | — |
 | 3 | R1: Red team, feasibility | Adversarial review of the V1 draft | `validation/R1-redteam-feasibility.md` | 4 · 15 · 14 · 6 |
 | 3 | R2: Red team, traceability | All 491 README rows mapped to the plan | `validation/R2-traceability.md` | 24 gaps; all 12 BLOCKERs addressed; 13 of 76 HIGH not fully addressed |
@@ -77,20 +77,20 @@ Key:
 | M00 | Tenant & Configuration | P1 | GO* | Hijri variant per tenant; Libyan holidays from local announcements (C-27, D-07); numbering owner (D00-16) | M |
 | M01 | Identity & Access | P1 | GO* | Better Auth policy layer is custom (C-16); `auth` schema; roles and the role × module matrix (D00-08, E-48/49) | L |
 | M02 | CRM | P1 | GO* | Fuzzy duplicates non-blocking for the 60-s flow (B-31); one `party` (D00-15); Law 6/2022 Arts. 73–79 / Art. 78 (C-14, D-01) | L |
-| M03 | Product Factory | P1, plus remaining lines in P2 | GO* | No tables in README (E); Art. 1 class (A-17); pass-through charges SSB-approved (D00-09); motor decisions 400/460/2026 (D-03); remaining product lines WP-232 | XL |
+| M03 | Product Factory | P1, plus remaining lines in P2 | GO* | No tables in README (E); Art. 1 class (A-17); pass-through charges SSB-approved (D00-09); motor decisions 400/460/2026 (D-03); remaining product lines BU-232 | XL |
 | M04 | Agents & Brokers | P1 / P2 | GO* | Decision 88/2026 commission caps (D-04); tier recompute (B-25); net remittance (D00-25) | L |
 | M05 | Underwriting | P1 | GO* | Rule DSL (D00-18); approval engine is M26 (D00-14) | L |
 | M06 | Policy issue / renew | P1 | GO* | Expiry scan `≤N days` + idempotency (B-05); PAdES CA (C-05); IFRS 17 capture (A-12); Wakala reversal (D00-03) | L |
 | M07 | Contributions & Billing | P1 / P2 | **HOLD → GO*** | **Stripe does not serve Libya; PayPal reportedly not (B-01, D-08).** Local rails are built regardless (R1-39); Stripe and PayPal stay behind flags until the deviation is signed. Pay-by-link (B-03) | L |
 | M08 | Takaful Fund Engine | P1 | **GO* (D00-B critical)** | A-01, A-04…A-07; system context (C-01, D00-05); family investment part (D00-03) | L |
-| M09 | Claims | P1 | GO* | Case reserves in P1 (D00-13); transition table (D00-19); recoverable owned by M10 (D00-12); P1 PTF disbursement WP-116b | L |
-| M10 | Retakaful | P2 | GO* | Recovery order and trigger (B-08); AT-2 limit (B-09); reinstatements (B-10); cession basis (D00-26); P1 cession backfill (WP-201) | XL |
+| M09 | Claims | P1 | GO* | Case reserves in P1 (D00-13); transition table (D00-19); recoverable owned by M10 (D00-12); P1 PTF disbursement BU-116b | L |
+| M10 | Retakaful | P2 | GO* | Recovery order and trigger (B-08); AT-2 limit (B-09); reinstatements (B-10); cession basis (D00-26); P1 cession backfill (BU-201) | XL |
 | M11 | Investments | P2 | GO* | FAS 28/32/33/30 (A-11); Mudaraba loss rules (A-20); `INVESTMENT_WAKALA_FEE` (A-21); Art. 16 (A-22, D-22) | L |
-| M12 | Accounting | P1 / P2 | **GO* (D00-B critical)** | Accrual model (D00-01); book of record (D00-10); eliminations (A-23); FX (A-07); payables / FA / budgets WP-209b | XL |
+| M12 | Accounting | P1 / P2 | **GO* (D00-B critical)** | Accrual model (D00-01); book of record (D00-10); eliminations (A-23); FX (A-07); payables / FA / budgets BU-209b | XL |
 | M13 | Reserving | P2 lite / P4 full | GO* | M13-lite: UCR + Art. 15 floor, actuary-entered IBNR (A-25, A-17) | M / XL |
 | M14 | IFRS 17 / FAS 43 | P1 data / P4 engine | GO* | P1 capture fields (A-12) | XL |
 | M15 | Surplus | P2 | **GO* (D00-B critical)** | Formula (D00-02); actuary SoD (D00-08); sample window (A-14); distribution details (A-15) | L |
-| M16 | Sharia | P1 / P2 | GO* | `sharia_status` model (D00-07); SSB approval register needed in P1 (WP-123a, E-27); Decision 60/2021 UNVERIFIED | L |
+| M16 | Sharia | P1 / P2 | GO* | `sharia_status` model (D00-07); SSB approval register needed in P1 (BU-123a, E-27); Decision 60/2021 UNVERIFIED | L |
 | M17 | AML/CFT | P2 | GO* | Law 2/2005, goAML XML, UN Libya list (D-15) | M |
 | M18 | Libya Regulatory | P2 | GO* | Levy is an SHF expense (D00-09); Art. 22 registers; forms pending (Q17) | M |
 | M19 | Solvency | P2 basic / P4 | GO* | Life component (A-18, D-12); Qard admissibility question to ISA | S / M |
@@ -100,14 +100,14 @@ Key:
 | M23 | Export Credit | P4 | **HOLD** | ICIEC deal live (B-14) | L |
 | M24 | Documents | P1 | GO* | PAdES library and CA (C-05) | L |
 | M25 | Portals | P2 agent / P4 customer | GO* | Agent dashboard belongs to M04 (E) | L |
-| M26 | Workflow & Tasks | P1 | GO* | Single approval engine (D00-14), WP F15 in W7 | L |
+| M26 | Workflow & Tasks | P1 | GO* | Single approval engine (D00-14), BU F15 in W7 | L |
 | M27 | Audit Trail | P1 | GO* | Async chainer + WORM anchor (C-03) | M–L |
 | M28 | Dashboards | P2 | GO* | KPI dictionary (B-39); Power BI Service vs D12 (B-40); reporting role (C-28) | L |
 | M29 | "i" + Learning Center | P1 | GO* | **Full-system i-text 10–15k keys (≤6k unique with shared keys); 400–600 reviewer-hours** (C-08, R1-12); custom `ar_norm()` (C-26) | L / XL content |
 | M30 | Integration Hub | P1 / P2 | GO* | Sandbox egress block only from the worker (C-19) | M / XL |
 | M31 | Migration & Sandbox | P1 | GO* | CLI binary, CSV / Oracle Thin (C-20); agents masked (E D-30) | XL |
-| M32 | Module Request | P1 | GO | Slotted in WP-123b | S |
-| M33 | HR | P1 master / P2 | GO* | End of service by nationality (D-06); `staff_advance`; WP-220 size watch | L |
+| M32 | Module Request | P1 | GO | Slotted in BU-123b | S |
+| M33 | HR | P1 master / P2 | GO* | End of service by nationality (D-06); `staff_advance`; BU-220 size watch | L |
 | M34 | Payroll | P2 | GO* | **Social security 20.5% (5.125 / 14.35 / 1.025), not 3.75 / 11.25**; 1% solidarity; 0.5% stamp; exemptions (D-05); confirm with Q27 | L |
 
 ---
@@ -117,12 +117,12 @@ Key:
 | # | Flags | Issue | Resolution | Owner | Target / P50 |
 |---|---|---|---|---|---|
 | B1 | A-01, E-02, R1-17, R1-24 | Income recognised twice; fund of receivable undefined; family savings via PTF | D00-01, D00-03; §5.5 rewritten | Takaful accountant + PO | Before W7 |
-| B2 | A-02, A-03, R1-23 | Surplus formula double-counts | D00-02; golden scenario signed (WP-00-TEST) | Takaful accountant + SSB | Before W20 |
-| B3 | C-01 | RLS blocks system postings | D00-05; WP F21 (W6) | Tech lead | D00-A, day 2 |
+| B2 | A-02, A-03, R1-23 | Surplus formula double-counts | D00-02; golden scenario signed (BU-00-TEST) | Takaful accountant + SSB | Before W20 |
+| B3 | C-01 | RLS blocks system postings | D00-05; BU F21 (W6) | Tech lead | D00-A, day 2 |
 | B4 | C-02, E-01, R1-02 | No parallel-build or branch conventions; table ownership | §7; D00-15 | Orchestrator + auditor | W1 |
-| B5 | E-06, A-13 | P1 claims vs reserves | D00-13; WP-116b | PO | Before W11 |
+| B5 | E-06, A-13 | P1 claims vs reserves | D00-13; BU-116b | PO | Before W11 |
 | B6 | E-12, E-60 | Approval engine ownership and timing | D00-14; F15 in W7 before all consumers (W8+) | PO | Before W7 |
-| B7 | E-59 | Sample / CLI timeline | WP-119 in W2 → CLI to client by day 8; sample target day 14, P50 6 Dec; synthetic fallback | Orchestrator + client IT | W2 |
+| B7 | E-59 | Sample / CLI timeline | BU-119 in W2 → CLI to client by day 8; sample target day 14, P50 6 Dec; synthetic fallback | Orchestrator + client IT | W2 |
 | B8 | E-66, A-14 | Exit 6 not achievable as written | Reconcile per-fund **movements** with interim CoA mapping and opening TB; request opening balances | PO + client finance | P1 exit |
 | B9 | D-02 | Legal opinion too narrow | Widened scope; due P2 day 60; Frankfurt sandbox acceptance target day 10 (P50 16 Nov) | Client counsel | Day 10 / day 60 |
 | B10 | B-01, D-08 | Stripe / PayPal unavailable | D00-17 signed deviation; local rails built regardless | PO + client | P0 |
@@ -133,7 +133,7 @@ Key:
 | H4 | C-05 | PAdES CA / Libyan licensing | H13, Q32; sandbox self-signed CA | Client + counsel | Go-live |
 | H5 | C-08, R1-12 | i-text workload (full system) | Shared keys; 2 FTE reviewers from week 3; H23 near-critical | Client + PO | Go-live |
 | H6 | D-03, D-04 | 2026 motor decisions missing | Errata 9; H10 | Client legal | Before W10 (106) |
-| H7 | D-05 | Payroll statutory model | WP-221; `to_verify` until Q27 | Payroll accountant | W20 |
+| H7 | D-05 | Payroll statutory model | BU-221; `to_verify` until Q27 | Payroll accountant | W20 |
 | H8 | B-33…B-35, B-34 | Event catalogue gaps | D00-11 (W4) | Orchestrator | W4 |
 | H9 | B-07…B-09 | Retakaful recovery | D00-12; AT-M10-2 restated | Reinsurance officer | W17 |
 | H10 | A-08 | `sharia_status` model | D00-07 (D00-A mechanics; SSB confirms semantics) | Tech lead + SSB adviser | W3 |
@@ -142,11 +142,11 @@ Key:
 | H13 | D-16 (regraded) | UAE 2026 regulation | P5 fund-model variants | PO | P5 |
 | H14 | C-11, C-13 | Network isolation cost; RPO scope | Cost model; errata 15 | PO | Production |
 | H15 | R1-01 | Build environment (no Docker daemon; 4 vCPU / 15 GB shared; PG16 only) | §7.5 | Orchestrator | W1 |
-| H16 | R1-07, R1-08 | Forgeable evidence; same-model reviewer; AI-made golden numbers | §7.4; WP-00-TEST signed by the takaful accountant | Auditor | W1 |
+| H16 | R1-07, R1-08 | Forgeable evidence; same-model reviewer; AI-made golden numbers | §7.4; BU-00-TEST signed by the takaful accountant | Auditor | W1 |
 | H17 | R1-16 | Unmasked data in migration trial loads | §7.6 | PO + client IT | Before W26 |
 | H18 | D-18, E | Client facts unverified (founding year, ARIMA) | P0 confirmation (A-11) | PO | P0 |
 
-All validator flags stay in their reports. `findings-ledger.md` tracks these consolidated items now. **At W1 the orchestrator imports every remaining BLOCKER, HIGH and MEDIUM validator flag as a `V-*` row**, each with its closing D00 decision, erratum or WP.
+All validator flags stay in their reports. `findings-ledger.md` tracks these consolidated items now. **At W1 the orchestrator imports every remaining BLOCKER, HIGH and MEDIUM validator flag as a `V-*` row**, each with its closing D00 decision, erratum or BU.
 
 ---
 
@@ -180,7 +180,7 @@ All validator flags stay in their reports. `findings-ledger.md` tracks these con
 | D00-09 | Pass-through charges and levy | Contribution = net (100% split) + pass-through charges mapped to funds. **Each charge type needs SSB approval before use.** Art. 4 levy = SHF expense (not passed on) | W8 |
 | D00-10 | Book of record P1–P3 | Local / regulatory basis with FAS 42-style presentation; FAS 43 parallel from P4 (Q18) | W8 |
 | D00-12 | Retakaful recovery | M10 books on `ClaimApproved`; order fac → QS / surplus (every claim) → per-risk XoL → per-event XoL → stop loss; reinstatements; AT-M10-2 restated with a layer limit | W16 |
-| D00-13 | P1 claims scope | Case reserves (PTF) in P1; retakaful share as `retakaful_pending`, backfilled in P2; P1 single PTF disbursement with maker-checker (WP-116b) | W11 |
+| D00-13 | P1 claims scope | Case reserves (PTF) in P1; retakaful share as `retakaful_pending`, backfilled in P2; P1 single PTF disbursement with maker-checker (BU-116b) | W11 |
 | D00-14 | Approval engine | M26 owns it (F15); M01 owns limits; module matrices are policy rows | W7 |
 | D00-17 | Scope deviations (client-signed) | Stripe / PayPal behind flags; family, health and export credit on ARIMA until P4; offline PWA → P4; Orange Card online with a simulator until the bureau spec arrives; regulated commission caps override tiers | P0 |
 | D00-18 | Underwriting DSL | Decision tables + JSONLogic over a typed questionnaire; versions pinned per quote | W9 |
@@ -193,11 +193,11 @@ All validator flags stay in their reports. `findings-ledger.md` tracks these con
 
 D00 becomes ADR-001…ADR-028 in `docs/adr/` (ADR-0NN = D00-NN). Builders **stop and raise a question** on any ambiguity not covered by an ADR.
 
-**If D00-B slips:** W7 runs F14, F15 and F16b without 101. Money WPs slip one wave each (about 11 h nominal) per approval stall. The P90 stall is about 8 days.
+**If D00-B slips:** W7 runs F14, F15 and F16b without 101. Money BUs slip one wave each (about 11 h nominal) per approval stall. The P90 stall is about 8 days.
 
 ---
 
-## 6. README errata (WP-00-DOC in W1; tracked in the ledger)
+## 6. README errata (BU-00-DOC in W1; tracked in the ledger)
 
 1. "Core Islamic Insurance" → **TakafulTech** (L1, L38, L129); repo root `takafultech/`.
 2. §5.3 / §5.4 / §5.5: transfer types and the `contribution_allocation` reference (D00-03); multi-event worked example (D00-01).
@@ -239,8 +239,8 @@ The full templates are in `AGENT-PROTOCOL.md`. This section is binding and takes
 
 | Role | Who | Responsibilities |
 |---|---|---|
-| **Build Orchestrator** | The build session (Claude Code) | Owns the integration branch, lockfile, `.github/`, contract freezes and migration ranges. Writes builder briefs from `WP-CATALOGUE.md` (README line ranges are mandatory). Launches up to 4 builder subagents per wave. Then spawns a **fresh review agent** and briefs it. Routes findings to fix passes. Merges. Posts the wave packet for the auditor. |
-| **Builder agents** (≤4 concurrent) | Subagents of the orchestrator, each in its own git worktree on a local `wp/<id>` branch | One WP each, in owned paths only. Work order per §2.1. Run `wp:verify`. Report with gate logs. Never touch another WP's files, the locked golden tests, or frozen contracts. |
+| **Build Orchestrator** | The build session (Claude Code) | Owns the integration branch, lockfile, `.github/`, contract freezes and migration ranges. Writes builder briefs from `BUILD-UNITS.md` (README line ranges are mandatory). Launches up to 4 builder subagents per wave. Then spawns a **fresh review agent** and briefs it. Routes findings to fix passes. Merges. Posts the wave packet for the auditor. |
+| **Builder agents** (≤4 concurrent) | Subagents of the orchestrator, each in its own git worktree on a local `bu/<id>` branch | One BU each, in owned paths only. Work order per §2.1. Run `bu:verify`. Report with gate logs. Never touch another BU's files, the locked golden tests, or frozen contracts. |
 | **Review agent** | Fresh subagent after builders finish; never concurrent with more than 3 other agents | Independent: no builder transcripts; reads builder reports only after forming its own findings. Re-runs gates on a clean checkout. Applies the 39-item checklist plus adversarial tests X1–X30. Returns findings ranked by severity with file:line and repro. **Uses a different model from the builders where the platform allows.** |
 | **Integration reviewer** | Fresh subagent every 3 waves | Reads whole modules end to end for cross-module defects such as double-booking, event gaps and duplicate tables |
 | **Auditor / planner** | This session, or a successor auditor session per phase with a handoff note | Approves wave briefs before launch. Verifies reviewer independence and that evidence is **CI-of-record**. Verifies fixes; re-runs the money, RLS and migration gates plus one random gate. Signs off waves and phases. Owns the plan, ADRs and ledger statuses. |
@@ -259,7 +259,7 @@ PLANNED → briefs (orchestrator) → BRIEFS APPROVED (auditor: brief-approval.m
 → AUDIT (auditor checks findings, fixes, CI run IDs) → audit-signoff.md → WAVE CLOSED
 ```
 
-**Merge policy:** 0 open BLOCKER or HIGH. MEDIUMs go into the ledger with an owning wave. A BLOCKER or HIGH found twice in one WP triggers an integration-reviewer pass and auditor escalation.
+**Merge policy:** 0 open BLOCKER or HIGH. MEDIUMs go into the ledger with an owning wave. A BLOCKER or HIGH found twice in one BU triggers an integration-reviewer pass and auditor escalation.
 
 **Synchronous audit** (blocking) for W2–W4 (foundations, RLS, events), W6–W7 (system context, fund schema) and every money wave W8–W12 and W16–W21. Elsewhere the auditor samples at least 20% of findings plus all CI runs.
 
@@ -268,7 +268,7 @@ PLANNED → briefs (orchestrator) → BRIEFS APPROVED (auditor: brief-approval.m
 | Item | Rule |
 |---|---|
 | Integration branch | The session's designated development branch (or a `build/integration` branch the user designates). Only the orchestrator pushes. |
-| Builder branches | Local `wp/<WP-ID>` branches in worktrees, merged locally by the orchestrator in dependency order. Pushing them is optional and only for backup. |
+| Builder branches | Local `bu/<BU-ID>` branches in worktrees, merged locally by the orchestrator in dependency order. Pushing them is optional and only for backup. |
 | PRs to `main` | One per phase gate (or per wave train if the client wants weekly drops). Human approval required. Never auto-merged by agents. |
 | Locked tests (replaces CODEOWNERS) | Golden and acceptance tests are listed in `tests/golden/MANIFEST.sha256`. Gate G0 fails if any locked file changes without an auditor-signed entry in `docs/plan/test-changes.md`. |
 | Generated files | `pnpm gen` output is never hand-edited or committed by builders. The orchestrator regenerates at merge; `gen --check` runs in CI. |
@@ -279,14 +279,14 @@ PLANNED → briefs (orchestrator) → BRIEFS APPROVED (auditor: brief-approval.m
 | Item | Rule |
 |---|---|
 | Evidence of record | The **GitHub Actions run on the integration branch** (run ID + commit SHA). Agent-written logs in `docs/plan/evidence/` are advisory only. The auditor cites CI run IDs in every sign-off. |
-| Golden numbers | Prepared by AI in WP-00-TEST, **signed by the takaful accountant** (fund lifecycle, surplus) and the payroll accountant (payroll control sheet) before the WPs that depend on them. |
+| Golden numbers | Prepared by AI in BU-00-TEST, **signed by the takaful accountant** (fund lifecycle, surplus) and the payroll accountant (payroll control sheet) before the BUs that depend on them. |
 | Reviewer model | Where the platform allows, a different model or configuration from the builders. In every case: different context and a fixed checklist. |
 
 ### 7.5 Build environment (R1-01)
 
 | Item | Rule |
 |---|---|
-| No Docker daemon in the session container | Builders use the **container's PostgreSQL cluster** (PG16 installed), with one database per worktree (`createdb wp_<id>`) and setup and teardown scripts from F01. PG17 and Docker image builds and boots (G19) run in **GitHub Actions**. |
+| No Docker daemon in the session container | Builders use the **container's PostgreSQL cluster** (PG16 installed), with one database per worktree (`createdb bu_<id>`) and setup and teardown scripts from F01. PG17 and Docker image builds and boots (G19) run in **GitHub Actions**. |
 | Resources (4 vCPU / 15 GB shared) | Heavy gates (Playwright e2e, k6, ZAP) are serialised by a lock file or run in CI. Builders run unit, property and migration gates locally plus affected e2e only. If wave wall-clock exceeds the plan by more than 30% in W2–W3, move the orchestrator to a larger environment or self-hosted runners. |
 | Neon / Vercel | One Neon branch `int/wNN` per wave integration run, after H27 (cloud accounts). Before H27, CI Postgres only. |
 
@@ -298,8 +298,8 @@ Agents **never** receive unmasked client data. They work on masked samples, synt
 
 | Situation | Rule |
 |---|---|
-| Builder exceeds 1.5× its estimate or stalls | The orchestrator checkpoints its work, then either splits the WP or reassigns it to a fresh builder with a handoff note. |
-| Wave completes partially | Completed WPs whose dependants are unaffected may merge after review. The failed WP carries into the next wave and the auditor re-plans. |
+| Builder exceeds 1.5× its estimate or stalls | The orchestrator checkpoints its work, then either splits the BU or reassigns it to a fresh builder with a handoff note. |
+| Wave completes partially | Completed BUs whose dependants are unaffected may merge after review. The failed BU carries into the next wave and the auditor re-plans. |
 | Repeated gate failure (3 times) | Escalates to the auditor. The auditor may change scope via an ADR amendment. |
 
 ### 7.8 Cost and operations (R1-10)
@@ -328,15 +328,15 @@ Gates become mandatory as their harness lands:
 
 ---
 
-## 8. Work packages
+## 8. Build units
 
-The complete catalogue, with scope, README line ranges, dependencies, acceptance tests and hours for every WP, is in **`WP-CATALOGUE.md`**.
+The complete catalogue, with scope, README line ranges, dependencies, acceptance tests and hours for every BU, is in **`BUILD-UNITS.md`**.
 
 Totals in builder agent-hours:
 
-| Group | WPs | Builder-hours |
+| Group | BUs | Builder-hours |
 |---|---|---|
-| Pre-build | WP-00-DOC, WP-00-TEST | 14 h |
+| Pre-build | BU-00-DOC, BU-00-TEST | 14 h |
 | Foundation | F01–F21, 119, 122 | 115 h |
 | P1 domain | 101–127, 116b, 123a/b, S1–S4 | 153 h |
 | P2 | 201–232, 209b, 309, S5–S8 | 195 h |
@@ -363,7 +363,7 @@ From W12 onward each wave gets +0.5 h for gate growth.
 
 | Wave | Builders | h (nominal) | Cum. | Notes |
 |---|---|---|---|---|
-| W1 | F01, WP-00-DOC, WP-00-TEST | 6 | 6 | D00-A approved days 1–2 |
+| W1 | F01, BU-00-DOC, BU-00-TEST | 6 | 6 | D00-A approved days 1–2 |
 | W2 | F02, F03, F05, 119 | 10 | 16 | Masking CLI to the client by day 8 |
 | W3 | F04, F08, F13, F17 | 10 | 26 | Sync audit |
 | W4 | F07, F09, F10, F19 | 10.5 | 36.5 | Event catalogue v1 frozen; sync audit |
@@ -424,16 +424,16 @@ From W12 onward each wave gets +0.5 h for gate growth.
 | # | Item | Owner | Target | P50 | P90 | Blocks |
 |---|---|---|---|---|---|---|
 | H0 | D00-A approved | Tech lead + auditor | Day 2 | Tue 3 Nov | Thu 5 Nov | W2–W6 |
-| H1 | D00-B approved + golden numbers signed | PO + takaful accountant + SSB adviser | Day 6 | Sun 8 Nov | Mon 16 Nov | W7+ money WPs |
+| H1 | D00-B approved + golden numbers signed | PO + takaful accountant + SSB adviser | Day 6 | Sun 8 Nov | Mon 16 Nov | W7+ money BUs |
 | H2 | Data-sharing agreement | Client legal | P0 | Thu 19 Nov | Thu 3 Dec | H4 |
 | H3 | Frankfurt OK for the masked sandbox (written) | Client + counsel | Day 10 | Mon 16 Nov | Mon 30 Nov | Sandbox load |
-| H4 | Masked 12-month sample + opening balances | Client IT | Day 14 | **Sun 6 Dec** | Thu 31 Dec (else synthetic) | WP-121, P1 exit |
+| H4 | Masked 12-month sample + opening balances | Client IT | Day 14 | **Sun 6 Dec** | Thu 31 Dec (else synthetic) | BU-121, P1 exit |
 | H5 | Sample reconciled per fund to the dirham | Client finance + us | Day 30 | Sun 20 Dec | Thu 21 Jan | P1 exit |
 | H6 | Fund parameter sheet signed | CFO | Before go-live | Thu 3 Dec | Thu 7 Jan | Go-live |
 | H7 | SSB round 1 (fund model, splits, motor/travel) | SSB | — | Thu 17 Dec | Thu 28 Jan | Go-live |
 | H8 | SSB round 2 (wording, surplus method, counterparties) | SSB | — | Thu 28 Jan | Thu 4 Mar | Go-live |
 | H9 | Legal hosting opinion (widened scope) | Client counsel | Day 60 | Mon 21 Dec | Sun 31 Jan; **if negative: in-country, +8–12 weeks** | Production |
-| H10 | 2026 motor decision texts | Client legal | Day 6 | Mon 16 Nov | Thu 10 Dec | WP-106 (W10) |
+| H10 | 2026 motor decision texts | Client legal | Day 6 | Mon 16 Nov | Thu 10 Dec | BU-106 (W10) |
 | H11 | ISA forms, Decision 4/2006, Art. 13 quota | Client compliance | P2 | about 10 Jan | Unknown | M18 (not a go-live blocker) |
 | H12 | Payroll rates + 30-employee control sheet | Payroll accountant | P2 | Thu 14 Jan | Thu 11 Feb | M34 go-live |
 | H13 | E-signature CA + stamp | Client + CA | Go-live | Sun 31 Jan | Wed 31 Mar | Signed production PDFs |
@@ -482,7 +482,7 @@ Calendar assumptions:
 1. Kickoff
 2. H18 ARIMA schema (30 Nov)
 3. H19 mapping (21 Dec)
-4. WP-306 / 307 ETL
+4. BU-306 / 307 ETL
 5. TL1 / TL2 / TL3 (7 Jan → 18 Feb; overlaps the FY close and Ramadan)
 6. H26 parallel run through the March month-end (8 Apr)
 7. Cutover 8–10 Apr
@@ -540,7 +540,7 @@ Calendar assumptions:
 
 ## 12. Acceptance-test traceability (corrected per R2)
 
-| AT | Closing WPs | | AT | Closing WPs |
+| AT | Closing BUs | | AT | Closing BUs |
 |---|---|---|---|---|
 | M02-1, 2, 5 | 107 (+F19) | | M07-1 | 206 |
 | M02-3, 4 | 108 | | M07-2 | 114 (API), 206 (webhook) |
@@ -560,7 +560,7 @@ Calendar assumptions:
 | M34-3 | 220 (termination → M01) + 222 | | M15-4 | 214 + 211 |
 | EX-P1-1…9 | 126 + G-P1 human items | | M15-5 | 215 + 111 (renewal hook) |
 
-Validator-proposed tests (A-1…41 and those in the B, C and D reports) are mapped into WP briefs by the orchestrator. The auditor checks each brief lists its validator tests.
+Validator-proposed tests (A-1…41 and those in the B, C and D reports) are mapped into BU briefs by the orchestrator. The auditor checks each brief lists its validator tests.
 
 ---
 
@@ -571,7 +571,7 @@ Validator-proposed tests (A-1…41 and those in the B, C and D reports) are mapp
 | Schema drift / duplicate tables | Migration ranges; ownership map; near-duplicate-name lint; contracts-only cross-module access |
 | Semantic double-booking | D00 ADRs; posting-rule ownership registry; signed golden lifecycle; integration reviewer every 3 waves |
 | Event contract drift | Versioned catalogue; contract tests; freeze at wave start |
-| Context loss | ≤15k-token briefs; WPs ≤6 h; CLAUDE.md; handoff notes; mandatory README line ranges |
+| Context loss | ≤15k-token briefs; BUs ≤6 h; CLAUDE.md; handoff notes; mandatory README line ranges |
 | Test gaming | Locked golden tests (checksum manifest); reviewer diffs all test changes; mutation ≥80% on money domains |
 | Forged or optimistic evidence | CI run of record; auditor re-runs critical gates |
 | Same-model blind spots | Different reviewer model where possible; fixed checklist; adversarial library; human-signed golden numbers |
@@ -589,7 +589,7 @@ Validator-proposed tests (A-1…41 and those in the B, C and D reports) are mapp
 | # | Action | Owner |
 |---|---|---|
 | A-0 | Provide the original Arabic brief; diff it against README §6(a) and §19 | PO |
-| A-1 | Approve **D00-A** (days 1–2) and **D00-B** (by day 6). Sign the WP-00-TEST golden numbers | Tech lead + auditor; PO + takaful accountant + SSB adviser |
+| A-1 | Approve **D00-A** (days 1–2) and **D00-B** (by day 6). Sign the BU-00-TEST golden numbers | Tech lead + auditor; PO + takaful accountant + SSB adviser |
 | A-2 | Request ARIMA confirmation, DB access and schema **on day 1** (H18) | PO → client IT |
 | A-3 | Send the data-sharing agreement, fund parameter sheet, opening-balance request and Frankfurt acceptance request | PO |
 | A-4 | Commission the widened legal opinion and the motor decision texts | Client counsel |
@@ -599,7 +599,7 @@ Validator-proposed tests (A-1…41 and those in the B, C and D reports) are mapp
 | A-8 | Procure the pen-test firm (lead time 4–6 weeks) | PO |
 | A-9 | Build session runs W1 once D00-A is approved and the auditor approves the W1 briefs | Orchestrator |
 | A-10 | After W3: re-baseline times, tokens and gate durations; publish **Plan V2** | Auditor |
-| A-11 | Confirm client facts (founding year, capital paid, products, ARIMA, GWP) and plan workshops for BPMN workflow maps | PO |
+| A-11 | Confirm client facts (founding year, capital paid, products, ARIMA, GWC (gross written contributions)) and plan workshops for BPMN workflow maps | PO |
 
 ---
 
@@ -607,7 +607,7 @@ Validator-proposed tests (A-1…41 and those in the B, C and D reports) are mapp
 
 | Report | Findings | Applied in this V1 |
 |---|---|---|
-| R1 feasibility (`validation/R1-redteam-feasibility.md`) | 4 BLOCKER, 15 HIGH, 14 MED, 6 LOW | **All BLOCKERs resolved:** R1-01 (§7.5), R1-02 (§7.3), R1-03 (D00-A/B split), R1-04/05 (wave table rebuilt; every dependency now in an earlier wave). **HIGH resolved:** R1-06 (precedence note), R1-07/08 (§7.4), R1-09 (§7.7), R1-10/11 (§7.8), R1-12 (H23), R1-13…15 (WPs 209b, 309, 310; F16b restore drill; 231 UAT scripts), R1-16 (§7.6), R1-17 (D00-01 written basis), R1-18 (D00-09 SSB), R1-19 (this section). **MEDIUM / LOW applied:** R1-20 (×2 money contingency; 220 size watch), R1-22 (target vs P50 columns), R1-23 (D00-02), R1-24 (D00-03), R1-25 (D00-25…28), R1-26 (PG matrix), R1-27 (successor auditors), R1-28 (§12), R1-29 (P1 exit day 51; finance UAT window), R1-30 (generated files), R1-31 (§7.9), R1-32 (WPs 224, 116, 216, F09), R1-33 (P10 → 14 Mar), R1-34 (day 161; day 75/90 weekdays; wave count), R1-35 (holidays), R1-36 (D-16 regrade recorded), R1-38 (concurrency note), R1-39 (M07). R1-21 (stalls) reflected in §10.1. R1-37 (naming): reactive waves renamed RW1–RW10. |
-| R2 traceability (`validation/R2-traceability.md`) | 491 README rows: 61% explicit, 24% via brief line ranges, 3% changed by decision, 6% partial, 6% not covered (24 gaps) | All 24 gaps assigned in `WP-CATALOGUE.md`: product lines WP-232; payables / FA / budgets 209b; security monitoring 309; responsive UI F08 / F09 / G15; access review F12; CSP / CSRF / rate limits F11 / F12; break-glass F16b; key rotation F19; retention F13 / F06; recurring journals 103; FX revaluation 209; zakat 216; Art. 22 registers 224; statutory payroll returns 222; P1 cession backfill 201; BPMN maps A-11 + 229; UAT scripts 231; runbooks / warranty / weekly report 310; LC role paths and `search_log` 122; schema docs F03; Q10 → errata 19. Partials: E-27 → 123a in W8; E-48/49 → F12; P1 claim payment → 116b; M06 renewal-credit hook → 111 / 215; M33 size watch → 220. AT table corrected (§12). README line ranges are now mandatory per WP. |
+| R1 feasibility (`validation/R1-redteam-feasibility.md`) | 4 BLOCKER, 15 HIGH, 14 MED, 6 LOW | **All BLOCKERs resolved:** R1-01 (§7.5), R1-02 (§7.3), R1-03 (D00-A/B split), R1-04/05 (wave table rebuilt; every dependency now in an earlier wave). **HIGH resolved:** R1-06 (precedence note), R1-07/08 (§7.4), R1-09 (§7.7), R1-10/11 (§7.8), R1-12 (H23), R1-13…15 (BUs 209b, 309, 310; F16b restore drill; 231 UAT scripts), R1-16 (§7.6), R1-17 (D00-01 written basis), R1-18 (D00-09 SSB), R1-19 (this section). **MEDIUM / LOW applied:** R1-20 (×2 money contingency; 220 size watch), R1-22 (target vs P50 columns), R1-23 (D00-02), R1-24 (D00-03), R1-25 (D00-25…28), R1-26 (PG matrix), R1-27 (successor auditors), R1-28 (§12), R1-29 (P1 exit day 51; finance UAT window), R1-30 (generated files), R1-31 (§7.9), R1-32 (BUs 224, 116, 216, F09), R1-33 (P10 → 14 Mar), R1-34 (day 161; day 75/90 weekdays; wave count), R1-35 (holidays), R1-36 (D-16 regrade recorded), R1-38 (concurrency note), R1-39 (M07). R1-21 (stalls) reflected in §10.1. R1-37 (naming): reactive waves renamed RW1–RW10. |
+| R2 traceability (`validation/R2-traceability.md`) | 491 README rows: 61% explicit, 24% via brief line ranges, 3% changed by decision, 6% partial, 6% not covered (24 gaps) | All 24 gaps assigned in `BUILD-UNITS.md`: product lines BU-232; payables / FA / budgets 209b; security monitoring 309; responsive UI F08 / F09 / G15; access review F12; CSP / CSRF / rate limits F11 / F12; break-glass F16b; key rotation F19; retention F13 / F06; recurring journals 103; FX revaluation 209; zakat 216; Art. 22 registers 224; statutory payroll returns 222; P1 cession backfill 201; BPMN maps A-11 + 229; UAT scripts 231; runbooks / warranty / weekly report 310; LC role paths and `search_log` 122; schema docs F03; Q10 → errata 19. Partials: E-27 → 123a in W8; E-48/49 → F12; P1 claim payment → 116b; M06 renewal-credit hook → 111 / 215; M33 size watch → 220. AT table corrected (§12). README line ranges are now mandatory per BU. |
 
 **Residual risks the auditor accepts for V1:** all estimates are modelled; Libyan legal texts are partly UNVERIFIED (paywalled sources); P90 depends on the outcome of the hosting opinion. All three are re-assessed in Plan V2 after W3.

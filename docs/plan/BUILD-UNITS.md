@@ -1,14 +1,14 @@
-# TakafulTech — Work-Package Catalogue (Plan V1)
+# TakafulTech — Build-Unit Catalogue (Plan V1)
 
 This is the source for every builder brief. The **README lines** column lists the line ranges in `README.md` that the builder must read in full. A brief may add ranges but must never drop one (R2 traceability rule). **h** is builder agent-hours. **Deps** must be merged in an *earlier* wave (see `PLAN-V1.md` §9).
 
-Every WP also inherits:
+Every BU also inherits:
 
 | Applies to | Rule |
 |---|---|
-| All WPs | README §2 (L63–96), §4 (L160–174), the D00 ADRs it cites, `docs/conventions.md` (from F01) and `AGENT-PROTOCOL.md` §3 |
-| Any WP touching money | README §5 (L178–236) |
-| Any WP with UI | README §9 (L704–757) and §10.1 (L763–775) |
+| All BUs | README §2 (L63–96), §4 (L160–174), the D00 ADRs it cites, `docs/conventions.md` (from F01) and `AGENT-PROTOCOL.md` §3 |
+| Any BU touching money | README §5 (L178–236) |
+| Any BU with UI | README §9 (L704–757) and §10.1 (L763–775) |
 
 README section line index:
 
@@ -46,15 +46,15 @@ README section line index:
 
 ## P0 / W1: Pre-build (parallel with F01)
 
-| WP | Wave | Name and scope | README lines | Deps | Closes | h |
+| BU | Wave | Name and scope | README lines | Deps | Closes | h |
 |---|---|---|---|---|---|---|
-| WP-00-DOC | W1 | README errata (PLAN §6) as a PR; ADR-001…028 drafts from D00 into `docs/adr/` | all | — | Errata 1–20 | 6 |
-| WP-00-TEST | W1 | Golden scenarios as **data + expected results**, not code: <ul><li>fund lifecycle (issue → receipt → earning → cancel), per fund</li><li>surplus golden year</li><li>retakaful layer cases incl. QS + XoL + limit</li><li>commission tiers marginal / whole-band</li><li>payroll 30-employee control-sheet template</li><li>claim transition table</li></ul>**Takaful accountant signs the fund and surplus numbers.** Locked by checksum manifest | 178–236, 337–371, 373–400, 433–461, 575–609, 657–672 | D00-B draft | Basis of AT-M12-3, M15-1/2, M10-2, M04-2, M34-1 | 8 |
+| BU-00-DOC | W1 | README errata (PLAN §6) as a PR; ADR-001…028 drafts from D00 into `docs/adr/` | all | — | Errata 1–20 | 6 |
+| BU-00-TEST | W1 | Golden scenarios as **data + expected results**, not code: <ul><li>fund lifecycle (issue → receipt → earning → cancel), per fund</li><li>surplus golden year</li><li>retakaful layer cases incl. QS + XoL + limit</li><li>commission tiers marginal / whole-band</li><li>payroll 30-employee control-sheet template</li><li>claim transition table</li></ul>**Takaful accountant signs the fund and surplus numbers.** Locked by checksum manifest | 178–236, 337–371, 373–400, 433–461, 575–609, 657–672 | D00-B draft | Basis of AT-M12-3, M15-1/2, M10-2, M04-2, M34-1 | 8 |
 | A-0 | P0 | Arabic brief vs README §6(a) / §19 diff (human, or AI given the document) | 240–631, 1068–1105 | Brief supplied | Q36 | — |
 
 ## Foundation (W1–W7)
 
-| WP | Wave | Name and scope | README lines | Deps | Closes | h |
+| BU | Wave | Name and scope | README lines | Deps | Closes | h |
 |---|---|---|---|---|---|---|
 | F01 | W1 | Monorepo (pnpm + turbo, strict TS); packages per §3.2 under `@takafultech/*`; CLAUDE.md with DoD/R1–R8; `docs/conventions.md` (ownership map, migration ranges, generated-file rules); local PG cluster scripts (no Docker daemon); Dockerfiles (built in CI) | 100–156 | — | — | 3 |
 | F02 | W2 | GitHub Actions: PG16 + PG17 matrix, gate scripts, gate applicability matrix, CI artefacts = evidence of record, e2e sharding, Docker image build/boot (G19), Neon `int/wNN` automation (when H27 ready), golden-test checksum gate | 63–96, 123 | F01 | DoD 1 | 3 |
@@ -83,7 +83,7 @@ README section line index:
 
 ## Phase 1 domain (W7–W15)
 
-| WP | Wave | Name and scope | README lines | Deps | Closes | h |
+| BU | Wave | Name and scope | README lines | Deps | Closes | h |
 |---|---|---|---|---|---|---|
 | 101 | W7 | M08 schema: fund, `gl_account` (composite FK), journal header/lines, header deferred balance trigger (definer), immutability, period lock, `inter_fund_transfer` + pairing check, `contribution_allocation` as an allowed cross-fund reference, transfer types (D00-03), posting entry function | 178–236 | F03, F05, F06, F17, F21, D00-B | AT-M16-2, AT-M12-4 (DB), A-tests 1–7 | 6 |
 | 103 | W8 | M12 core: posting-rule engine (event + product + fund → accounts; ownership registry), per-fund CoA, manual journals (maker-checker), reversals, recurring journals, TB per fund / combined with eliminations | 463–493 | 101, F15, F07 | AT-M12-3/4, A-tests 13–14 | 6 |
@@ -117,7 +117,7 @@ README section line index:
 
 ## Phase 2 (W16–W25)
 
-| WP | Wave | Name and scope | README lines | Deps | Closes | h |
+| BU | Wave | Name and scope | README lines | Deps | Closes | h |
 |---|---|---|---|---|---|---|
 | 201 | W16 | M10 treaties: counterparty (party extension, Decision 374/2026 registration, rating, Sharia status, SSB necessity approval), QS / surplus cession per certificate and endorsement, XoL / stop-loss M&D, cession basis (D00-26), local compulsory cession, **backfill cessions for P1 certificates** | 373–392 | 111, 103, 107 | AT-M10-1 | 6 |
 | 204 | W16 | M04 commission engine: tiers (marginal / whole-band), KPI multipliers, regulated caps (Decision 88/2026), collected-only, clawback recompute, net remittance per D00-25, SHF postings, targets with maker-checker | 433–461 | 118, 114, 103 | AT-M04-2/3/4 | 6 |
@@ -158,7 +158,7 @@ README section line index:
 
 ## Phase 3 engineering (W26–W28) and reactive waves
 
-| WP | Wave | Name and scope | README lines | Deps | h |
+| BU | Wave | Name and scope | README lines | Deps | h |
 |---|---|---|---|---|---|
 | 301 | W26 | 3-year synthetic data + k6 (200 VUs, issue p95 < 2 s, close < 30 min, cold-start profile) | 890, 987 | P2 | 6 |
 | 304 | W26 | DAST full + hardening | 890 | P2 | 4 |
@@ -175,9 +175,9 @@ README section line index:
 
 M14 chain, 7 deep: 401 data / cohorts / backfill → 402 PAA → 403 reinsurance held → 404 onerous / RA / curves → 405 GMM / VFA CSM → 406 FAS 43 view → 407 transition.
 
-The other Phase 4 work packages:
+The other Phase 4 build units:
 
-| WPs | Module |
+| BUs | Module |
 |---|---|
 | 408–409 | M13 full |
 | 410 | M19 full, including the life component |

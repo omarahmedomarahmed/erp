@@ -11,7 +11,7 @@ Inputs read in full: README.md L1–1160; validator findings A-finance-sharia.md
 This document contains:
 
 - §0 Roles and wave lifecycle
-- §1 Pre-build decision gate (ADRs that must exist before dependent WPs launch)
+- §1 Pre-build decision gate (ADRs that must exist before dependent BUs launch)
 - §2 Frozen contracts and ownership mechanics
 - §3 Builder brief template
 - §4 Reviewer brief template
@@ -21,7 +21,7 @@ This document contains:
 - Appendix X: adversarial test library
 - Appendix Y: role list for RLS and SoD matrices
 
-Everything in a `«…»` placeholder is filled in by the orchestrator per WP. Nothing else in the templates should be edited per WP without auditor approval.
+Everything in a `«…»` placeholder is filled in by the orchestrator per BU. Nothing else in the templates should be edited per BU without auditor approval.
 
 ---
 
@@ -32,9 +32,9 @@ Everything in a `«…»` placeholder is filled in by the orchestrator per WP. N
 | Role | Session | Can write | Cannot |
 |---|---|---|---|
 | **Auditor** (plan owner) | Separate, long-lived | `docs/plan/**` (plan, ADRs, ledgers, sign-offs), README errata via ADR | Write application code; approve its own plan changes without recording them |
-| **Orchestrator** | Claude Code, long-lived | Wave branches, merge commits, `docs/plan/waves/**`, integration-point files (§2.5) | Write business logic; edit a WP's owned files; mark a finding resolved |
-| **Builder** | Fresh subagent per WP, own git worktree | Only the WP's owned paths (§2.4) | Touch other paths, change frozen contracts, edit README/ADRs, skip gates |
-| **Reviewer** | Fresh subagent per wave, no builder context | `review/«wave»` branch: adversarial tests under `tests/adversarial/**` and findings files | Edit WP-owned source; see builder transcripts; trust builder gate output |
+| **Orchestrator** | Claude Code, long-lived | Wave branches, merge commits, `docs/plan/waves/**`, integration-point files (§2.5) | Write business logic; edit a BU's owned files; mark a finding resolved |
+| **Builder** | Fresh subagent per BU, own git worktree | Only the BU's owned paths (§2.4) | Touch other paths, change frozen contracts, edit README/ADRs, skip gates |
+| **Reviewer** | Fresh subagent per wave, no builder context | `review/«wave»` branch: adversarial tests under `tests/adversarial/**` and findings files | Edit BU-owned source; see builder transcripts; trust builder gate output |
 | **Fix agent** | Fresh subagent, or the original builder re-launched | Only the paths named in the findings it is assigned | Fix findings it was not assigned; weaken tests |
 
 ### 0.2 Wave lifecycle (state machine; every arrow needs an artefact)
@@ -47,9 +47,9 @@ RE-VERIFY ──(reviewer re-verify: 0 open BLOCKER/HIGH)──► FIX_VERIFIED 
 MERGE_READY ──(orchestrator merges, gates on merged SHA)──► MERGED ──(auditor A-4)──► SIGNED_OFF
 ```
 
-- A wave has at most **4 builders**. WPs in one wave must have **disjoint ownership** and must not depend on each other's unmerged output. They depend only on frozen contracts and previously merged waves.
+- A wave has at most **4 builders**. BUs in one wave must have **disjoint ownership** and must not depend on each other's unmerged output. They depend only on frozen contracts and previously merged waves.
 - Each wave state change is a row appended to `docs/plan/waves/«wave».md`, giving the timestamp, actor, SHA and evidence path.
-- The wave ID format is `P«phase»W«nn»` (e.g. `P1W03`). The WP ID format is `«wave»-WP«n»-«module(s)»-«slug»` (e.g. `P1W03-WP2-M08-fund-core`).
+- The wave ID format is `P«phase»W«nn»` (e.g. `P1W03`). The BU ID format is `«wave»-BU«n»-«module(s)»-«slug»` (e.g. `P1W03-BU2-M08-fund-core`).
 
 ### 0.3 Evidence rule (applies to all roles)
 
@@ -63,13 +63,13 @@ A gate result counts as evidence only if it is a file under `docs/plan/evidence/
 <full unedited stdout+stderr>
 ```
 
-The following are **not evidence**: prose like "all tests pass", truncated output, or output taken at a different SHA. `tools/plan/run-gate.sh` (built in WP-00) produces these logs, so no one writes them by hand.
+The following are **not evidence**: prose like "all tests pass", truncated output, or output taken at a different SHA. `tools/plan/run-gate.sh` (built in BU-00) produces these logs, so no one writes them by hand.
 
 ---
 
-## 1. Pre-build decision gate (ADRs before dependent WPs)
+## 1. Pre-build decision gate (ADRs before dependent BUs)
 
-The validators found spec contradictions. If parallel builders meet these, each will resolve them differently. **A WP whose scope touches an item below may not be launched until the ADR exists in `docs/plan/adr/` with status `accepted`.** Every builder brief must cite the ADR. The auditor checks this at A-1.
+The validators found spec contradictions. If parallel builders meet these, each will resolve them differently. **A BU whose scope touches an item below may not be launched until the ADR exists in `docs/plan/adr/` with status `accepted`.** Every builder brief must cite the ADR. The auditor checks this at A-1.
 
 | ADR | Decision | Source findings | Blocks |
 |---|---|---|---|
@@ -90,17 +90,17 @@ The validators found spec contradictions. If parallel builders meet these, each 
 | ADR-015 | Payment rails in scope for Libya (Moamalat, LYPAY, Sadad, bank transfer). Stripe/PayPal as dormant adapters. Pay-by-link page | B-01, B-03, D-08 | M07, M30 (P2) |
 | ADR-016 | Regulated commission override (Dec. 88/2026) and payroll statutory pipeline (SS 20.5% three-way, solidarity 1%, stamp 0.5%, exemptions, ordering) as `illustrative` seeds | D-04, D-05 | M04, M34 (P2) |
 
-The orchestrator may launch non-blocked WPs (design system, auth shell, audit chain) while ADRs are pending.
+The orchestrator may launch non-blocked BUs (design system, auth shell, audit chain) while ADRs are pending.
 
 ---
 
 ## 2. Frozen contracts and ownership mechanics
 
-### 2.1 Wave 0 / WP-00 "Contracts & Rails"
+### 2.1 Wave 0 / BU-00 "Contracts & Rails"
 
-WP-00 runs alone, before any feature WP. Its output is frozen at tag `contracts-v1`. It creates:
+BU-00 runs alone, before any feature BU. Its output is frozen at tag `contracts-v1`. It creates:
 
-| Contract | Path (proposed; WP-00 finalises) | Contents |
+| Contract | Path (proposed; BU-00 finalises) | Contents |
 |---|---|---|
 | Kernel types | `packages/domain/kernel/` | `Money` (decimal.js wrapper, scale 3, currency, banker's or ADR-defined rounding, no `number` constructor from float), `FundCode = 'PTF'\|'PIF'\|'SHF'`, `ShariaStatus` enum, branded IDs, `EffectiveDated<T>`, `RuleVersionRef`, `TenantContext`, `AccessLevel 0–5` |
 | Zod schemas | `packages/config/` and `packages/domain/kernel/zod.ts` | Shared field rules; `moneySchema` rejects >3 dp and JS floats |
@@ -113,27 +113,27 @@ WP-00 runs alone, before any feature WP. Its output is frozen at tag `contracts-
 | UI primitives | `packages/ui/` | Base components with required `infoKey: InfoKey` prop (template-literal type `${Module}.${string}.${string}`); ESLint rule `no-raw-controls` (R8) |
 | Help content schema | `content/help/_schema.yaml`, `tools/help-check/` | Per-module YAML schema (§10.1 fields); checker for G13 |
 | Test harness | `tests/harness/` | Ephemeral PG16 container (testcontainers, plain `postgres:16` image), per-role login helpers, factory builders, fast-check arbitraries for Money and Fund |
-| Gate runner | `tools/plan/run-gate.sh`, `pnpm wp:verify` | Implements §6 gates and writes evidence logs |
-| Ownership checker | `tools/plan/check-ownership.ts` | Compares `git diff --name-only base..head` against the WP manifest |
+| Gate runner | `tools/plan/run-gate.sh`, `pnpm bu:verify` | Implements §6 gates and writes evidence logs |
+| Ownership checker | `tools/plan/check-ownership.ts` | Compares `git diff --name-only base..head` against the BU manifest |
 
-**Contract change request (CCR):** After the freeze, any change under a contract path needs a `docs/plan/ccr/CCR-nnn.md` approved by the orchestrator and the auditor. The change goes in its own WP and bumps the tag (`contracts-v2`). A builder that needs a contract change **stops and reports an open question**. It does not edit the contract.
+**Contract change request (CCR):** After the freeze, any change under a contract path needs a `docs/plan/ccr/CCR-nnn.md` approved by the orchestrator and the auditor. The change goes in its own BU and bumps the tag (`contracts-v2`). A builder that needs a contract change **stops and reports an open question**. It does not edit the contract.
 
 ### 2.2 Migration numbering
 
 - Files are named `packages/db/migrations/«NNNN»_«module»_«slug».up.sql` with a matching `.down.sql` (hand-written plain SQL, R4).
-- The orchestrator assigns each WP a **reserved block** in `docs/plan/migration-ledger.md`, e.g. `P1W03-WP2 → 0300–0319`. WP-00 owns 0001–0099.
+- The orchestrator assigns each BU a **reserved block** in `docs/plan/migration-ledger.md`, e.g. `P1W03-BU2 → 0300–0319`. BU-00 owns 0001–0099.
 - A builder may only create numbers inside its block. It may never edit or rename a migration that has already been merged. Fixes go in a new migration.
-- Ordering across WPs in a wave is by block. Blocks are assigned so that dependencies sort earlier.
+- Ordering across BUs in a wave is by block. Blocks are assigned so that dependencies sort earlier.
 
 ### 2.3 Table ownership
 
-`docs/plan/table-ownership.md` lists `table | module | owning WP | created in migration | RLS policy family | sharia-tracked (Y/N) | money columns`.
+`docs/plan/table-ownership.md` lists `table | module | owning BU | created in migration | RLS policy family | sharia-tracked (Y/N) | money columns`.
 
-- Only the owning WP may `CREATE` or `ALTER` a table.
-- Other WPs read the table through the owning module's domain API, or through a view the owner publishes. Writes go through the owner's domain functions or events, never through direct `INSERT` from another module's code.
-- The §5.6 tables (`fund`, `account`, `journal`, `journal_line`, `inter_fund_transfer`, `period`, …) are owned by the **M08/M12 ledger WP**. Every other module posts only via `ledger.post(postingRequest)` and the posting rules.
+- Only the owning BU may `CREATE` or `ALTER` a table.
+- Other BUs read the table through the owning module's domain API, or through a view the owner publishes. Writes go through the owner's domain functions or events, never through direct `INSERT` from another module's code.
+- The §5.6 tables (`fund`, `account`, `journal`, `journal_line`, `inter_fund_transfer`, `period`, …) are owned by the **M08/M12 ledger BU**. Every other module posts only via `ledger.post(postingRequest)` and the posting rules.
 
-### 2.4 File ownership manifest (per WP)
+### 2.4 File ownership manifest (per BU)
 
 Each brief carries a manifest of globs, for example:
 
@@ -156,19 +156,19 @@ G0 fails the wave if the diff touches anything outside `owns`.
 
 ### 2.5 Integration points (no shared hand-edited files)
 
-WP-00 makes navigation, route permissions, job registration, help-file loading and event subscriptions **auto-discovered** from per-module files (e.g. `apps/web/app/(app)/m09/module.ts` exports nav, permissions and infoKeys). The remaining shared files are root `package.json`, `pnpm-lock.yaml`, `turbo.json`, root ESLint/TS config and CI workflow. The **orchestrator** owns these. A builder that needs a new dependency lists it under "Integration requests" in its report. The orchestrator applies it in the wave merge commit, and the reviewer re-runs G1 on the merged SHA.
+BU-00 makes navigation, route permissions, job registration, help-file loading and event subscriptions **auto-discovered** from per-module files (e.g. `apps/web/app/(app)/m09/module.ts` exports nav, permissions and infoKeys). The remaining shared files are root `package.json`, `pnpm-lock.yaml`, `turbo.json`, root ESLint/TS config and CI workflow. The **orchestrator** owns these. A builder that needs a new dependency lists it under "Integration requests" in its report. The orchestrator applies it in the wave merge commit, and the reviewer re-runs G1 on the merged SHA.
 
 ---
 
 ## 3. BUILDER BRIEF TEMPLATE (paste, fill `«…»`)
 
 ```markdown
-# Builder Brief — «WP-ID» — «one-line goal»
+# Builder Brief — «BU-ID» — «one-line goal»
 
 Wave: «P1W03»   Base SHA: «40-hex»   Contracts tag: «contracts-v1»
-Branch / worktree: wave/«P1W03»/«WP-ID»  (git worktree at «path»)
+Branch / worktree: wave/«P1W03»/«BU-ID»  (git worktree at «path»)
 Owning module(s): «M09»   Phase: «P1»   Time-box: «n» agent-hours
-Depends on (merged): «P1W02-WP1-M08-fund-core @ sha …»   ADRs: «ADR-003, ADR-004, ADR-008»
+Depends on (merged): «P1W02-BU1-M08-fund-core @ sha …»   ADRs: «ADR-003, ADR-004, ADR-008»
 
 ## 1. Goal
 «2–5 sentences: what exists when you are done, in user terms, e.g. "A claim can be registered and moved
@@ -185,7 +185,7 @@ ranges you read.
 - Related: «§12.4 L854–871 events; §12.5 L873–875; §15.2 L963–977 sprint row»
 - ADRs: «docs/plan/adr/ADR-003.md, ADR-004.md, ADR-008.md»
 - Contracts: packages/domain/kernel/README.md, packages/events/catalogue/«ClaimStageChanged, ClaimApproved, ClaimPaid…»
-- Validator findings relevant to this WP (context, not spec; the ADR wins): «B-18…B-24, A-13»
+- Validator findings relevant to this BU (context, not spec; the ADR wins): «B-18…B-24, A-13»
 If README and ADR conflict, the ADR governs. If README conflicts with itself and no ADR covers it,
 STOP that item and raise it as an Open Question. Do not choose an answer yourself.
 
@@ -193,7 +193,7 @@ STOP that item and raise it as an Open Question. Do not choose an answer yoursel
 | Contract | Path | You use it for |
 |---|---|---|
 | Money / FundCode / ShariaStatus | packages/domain/kernel | all amounts, fund tagging |
-| ledger.post(PostingRequest) | packages/domain/ledger (merged in «WP») | every financial effect; you never insert journal rows |
+| ledger.post(PostingRequest) | packages/domain/ledger (merged in «BU») | every financial effect; you never insert journal rows |
 | Events | packages/events/catalogue | publish «ClaimStageChanged v1, ClaimApproved v1, ClaimPaymentOrdered v1»; consume «ClaimPaymentConfirmed v1» |
 | Audit | packages/db/audit attach_audit() | every new business table |
 | RLS | packages/db/rls enable_force_rls() + policy family «branch+class» | every new business table |
@@ -217,7 +217,7 @@ dependency, list it under "Integration requests" in your report.
 | DoD2 | Domain logic + tests (§2.2#2) | Pure logic in packages/domain/«module» (no I/O imports). Unit tests ≥90% lines / ≥85% branches for the package. Fund, ledger, split, surplus and recovery logic also has fast-check property tests (≥10,000 runs in CI, seed logged) | G4, G5 |
 | DoD3 | Server-side permission (§2.2#3, §9.1) | Every route handler calls `authorize({module, level, scope})` before any read or write. Level 0 → 404. A test per route covers allowed, wrong level and out-of-scope | G8, G10 |
 | DoD4 | RLS (§2.2#4, §9.4) | Every new business table has ENABLE + FORCE RLS and a policy from the family. The app role neither owns nor bypasses it. A test per role in Appendix Y proves in-scope rows are visible and out-of-scope rows are invisible, for SELECT/INSERT/UPDATE/DELETE | G7, G8 |
-| DoD5 | infoKey + ar/en text (§2.2#5, §10.1) | Every screen, field, button, column, status, report and error message uses an `infoKey` matching `^(m\d{2}\|err\.m\d{2})\.[a-z0-9-]+\.[a-z0-9-]+$`. Each key exists in content/help/«m09».yaml with title/body in ar and en, ≤80 words each, rule_ref, LYD example, lesson_link, review_type. Status `draft` is allowed in a WP; `approved` is required at the phase gate | G2, G13 |
+| DoD5 | infoKey + ar/en text (§2.2#5, §10.1) | Every screen, field, button, column, status, report and error message uses an `infoKey` matching `^(m\d{2}\|err\.m\d{2})\.[a-z0-9-]+\.[a-z0-9-]+$`. Each key exists in content/help/«m09».yaml with title/body in ar and en, ≤80 words each, rule_ref, LYD example, lesson_link, review_type. Status `draft` is allowed in a BU; `approved` is required at the phase gate | G2, G13 |
 | DoD6 | Learning Center (§2.2#6, §10.2) | content/learning/«m09»/ lesson added or updated: overview, glossary, workflow diagram, rules mapped, steps, quiz (≥5 questions) | G13 |
 | DoD7 | Audit event per write (§2.2#7, §4, M27) | Every new business table has the audit trigger. A test proves INSERT/UPDATE/DELETE each produce an audit row with actor, time, before, after, IP/device and a valid chain hash | G7, G11 |
 | DoD8 | No hard-coded rules (§2.2#8, R7) | Every rate, %, limit, day count, threshold or country rule is read from config or the rule pack through a versioned, effective-dated getter. Running records store the rule version id. Semgrep rule pack is clean | G14 |
@@ -251,8 +251,8 @@ thresholds, deleting or relaxing existing assertions, snapshot updates of other 
 
 ## 7. Commands you must run before declaring done (from repo root, in your worktree)
 pnpm install --frozen-lockfile
-pnpm wp:verify --wp «WP-ID» --base «base-sha»
-#   which runs, writing evidence to docs/plan/evidence/«wave»/builder-«WP-ID»/:
+pnpm bu:verify --bu «BU-ID» --base «base-sha»
+#   which runs, writing evidence to docs/plan/evidence/«wave»/builder-«BU-ID»/:
 #   G0 ownership · G1 build · G2 typecheck · G3 lint · G4 unit+coverage · G5 property ·
 #   G6 migrations round-trip · G7 schema invariants · G8 RLS · G9 ledger guarantees ·
 #   G10 SoD · G11 audit chain · G12 events · G13 help+learning · G14 semgrep rules ·
@@ -260,9 +260,9 @@ pnpm wp:verify --wp «WP-ID» --base «base-sha»
 If any gate fails, fix it. If you cannot fix it inside your ownership, report it. Do NOT declare done with a red gate
 unless the failure is listed under Deviations and the orchestrator has acknowledged it.
 
-## 8. Report format (write to docs/plan/waves/«wave»/reports/«WP-ID».md, also return it)
+## 8. Report format (write to docs/plan/waves/«wave»/reports/«BU-ID».md, also return it)
 ---
-wp: «WP-ID»
+bu: «BU-ID»
 head_sha: <40-hex>
 base_sha: «base»
 status: DONE | DONE_WITH_DEVIATIONS | BLOCKED
@@ -294,7 +294,7 @@ status: DONE | DONE_WITH_DEVIATIONS | BLOCKED
 ## 9. Prohibitions (violation = BLOCKER finding)
 1. No hard-coded rates, percentages, limits, day counts, tax bands, commission tiers or country rules (DoD8/R7).
 2. No floating-point money: no `number` for amounts, no `real`/`double precision`/`float` columns, no `parseFloat`/`toFixed`/`Math.round` on money.
-3. No edits outside your ownership manifest, and no edits to frozen contracts, README.md, docs/plan/** (except your report and evidence) or another WP's migrations.
+3. No edits outside your ownership manifest, and no edits to frozen contracts, README.md, docs/plan/** (except your report and evidence) or another BU's migrations.
 4. No skipping, disabling or weakening tests, lint rules, type checks, coverage thresholds or gates. No `// eslint-disable` or `@ts-ignore`/`@ts-expect-error` without a linked finding ID.
 5. No Neon-only or Vercel-only features in business logic (R4). Examples: Neon branching or serverless driver features used in domain code, Vercel KV/Blob/Edge Config, `@vercel/*` imports outside apps/web deploy glue.
 6. No direct writes to another module's tables, and no direct INSERT into journal/journal_line (use `ledger.post`).
@@ -306,7 +306,7 @@ status: DONE | DONE_WITH_DEVIATIONS | BLOCKED
 12. No long-running work in route handlers (R5).
 13. No raw HTML controls (R8), and no UI component without an `infoKey`.
 14. No choosing an answer to a spec ambiguity yourself. Raise it as an Open Question.
-15. No git operations on branches other than your own. Do not merge or rebase onto other WPs.
+15. No git operations on branches other than your own. Do not merge or rebase onto other BUs.
 ```
 
 ---
@@ -317,31 +317,31 @@ status: DONE | DONE_WITH_DEVIATIONS | BLOCKED
 # Reviewer Brief — Wave «P1W03» — Round «1»
 
 Diff under review: «base-sha»..«frozen-head-sha» on branch wave/«P1W03»/integration
-(the orchestrator's pre-merge integration of WPs «list»; the per-WP heads are also given: «WP→sha»)
+(the orchestrator's pre-merge integration of BUs «list»; the per-BU heads are also given: «BU→sha»)
 Your branch: review/«P1W03»-r«1» (adversarial tests only)   Contracts tag: «contracts-v1»
 
 ## 0. Independence rules
 1. You are a fresh session. You have NOT seen builder transcripts or reasoning, and you must not ask for them.
-2. Inputs you may use: the diff, the WP briefs, README.md, ADRs, frozen contracts, the table and migration ledgers,
+2. Inputs you may use: the diff, the BU briefs, README.md, ADRs, frozen contracts, the table and migration ledgers,
    and the findings ledger. You may read builder reports ONLY AFTER Step 3 below, and only to check their claims.
    Their claims are hypotheses to test, never evidence.
 3. You run every gate yourself on the frozen SHA, in a clean checkout (`git clean -xfd`, fresh DB container).
    Builder evidence logs are never accepted as your evidence.
-4. You do not edit WP-owned source. You may add adversarial tests under tests/adversarial/«wave»/**. A failing
+4. You do not edit BU-owned source. You may add adversarial tests under tests/adversarial/«wave»/**. A failing
    adversarial test is attached to a finding and later handed to the fixer.
 5. You report what you find with file:line evidence. "Looks fine" is not a result. Every checklist row gets
    PASS / FAIL (with finding ID) / N/A (with a reason).
-6. You did not build, and will not fix, any WP in this wave.
+6. You did not build, and will not fix, any BU in this wave.
 
 ## 1. Inputs
-- WP briefs: docs/plan/waves/«wave»/briefs/*.md
+- BU briefs: docs/plan/waves/«wave»/briefs/*.md
 - README sections: §2 L63–96, §4 L160–174, §5 L178–236, §9 L704–757, §10.1 L763–775, §11 L818, §12.4 L854–871,
-  §13 L879–892, plus each WP's module section «list with lines»
+  §13 L879–892, plus each BU's module section «list with lines»
 - ADRs: «list»   Validator findings relevant: «list IDs»
 - Prior open findings for these modules: docs/plan/findings-ledger.md (filter: module ∈ «…», status ≠ CLOSED)
 
 ## 2. Procedure
-Step 1. Scope: run G0 (ownership) per WP. List every file outside a manifest as a BLOCKER.
+Step 1. Scope: run G0 (ownership) per BU. List every file outside a manifest as a BLOCKER.
 Step 2. Gates: run the full per-wave gate set (§6: G0–G19) on the frozen SHA and write logs to
         docs/plan/evidence/«wave»/reviewer-r«n»/. Any red gate is a finding.
 Step 3. Read the diff against the checklist (§3 below), module by module, and record each row.
@@ -391,14 +391,14 @@ C29 Webhooks (if any): signature verified; duplicate delivery gives one receipt 
 C30 Sandbox: outbound connectors are disabled in code (not by config alone). Messages land in the internal mailbox. "SIMULATION" watermark (§13).
 ### Platform hygiene (R4, R5, §13)
 C31 No secrets in diff or history range (gitleaks). No PII in fixtures.
-C32 Migrations are reversible, plain PG16, numbered inside the WP block. No edits to merged migrations.
+C32 Migrations are reversible, plain PG16, numbered inside the BU block. No edits to merged migrations.
 C33 No Neon- or Vercel-only features in business logic. The Docker/plain-PG run passes (G19).
 C34 Long jobs are in apps/worker. Route handlers only enqueue.
 C35 Input validation uses shared Zod schemas. Output encoding/CSP is not weakened. File uploads (if any) go via signed short-lived links.
 C36 Field-level encryption for national IDs, passports, bank accounts, medical data and salaries (§13), searchable by keyed hash.
 ### Spec fidelity
 C37 Each in-scope README (e) acceptance test has a tagged, passing test, and the test asserts the README condition (not something weaker).
-C38 Behaviour matches the WP brief and ADRs. Any divergence is listed in the builder's Deviations; an unlisted divergence is a finding.
+C38 Behaviour matches the BU brief and ADRs. Any divergence is listed in the builder's Deviations; an unlisted divergence is a finding.
 C39 Client-quoted requirements (§6 (a)) are not silently softened.
 
 ## 4. Severity scale and merge policy
@@ -426,16 +426,16 @@ verdict: PASS | FAIL     counts: {BLOCKER: n, HIGH: n, MEDIUM: n, LOW: n}
 For each finding:
 - **ID:** «P1W03-F007»
 - **Severity:** HIGH
-- **WP / module:** «P1W03-WP2 / M08»
+- **BU / module:** «P1W03-BU2 / M08»
 - **Location:** packages/db/migrations/0305_m08_journal.up.sql:41
 - **Rule violated:** «R2 / DoD4 / C05 / ADR-003 §2 / README L221»
 - **Description:** what is wrong, in one paragraph
 - **Repro:** the exact command or test, e.g. `pnpm vitest run tests/adversarial/P1W03/x05-posted-update.test.ts`, plus the observed output excerpt
 - **Expected:** «UPDATE on posted journal_line raises 'posted journal immutable'»
 - **Suggested fix:** a concrete change (not code-golf)
-- **Fix owner:** «WP-ID» (paths within its manifest)
+- **Fix owner:** «BU-ID» (paths within its manifest)
 ### Builder claims check
-| WP | Claim | Verified? | Note |
+| BU | Claim | Verified? | Note |
 ### Residual risk / not covered
 ```
 
@@ -449,15 +449,15 @@ The auditor records each check as ✔ / ✘ / N/A with a note in `docs/plan/wave
 
 | # | Check |
 |---|---|
-| 1.1 | The wave is in the plan, and the phase/sprint mapping matches README §15.2 (or a recorded plan deviation). At most 4 WPs |
-| 1.2 | Every ADR the WPs depend on (§1 table) is `accepted`. No WP touches an ADR-blocked area without the ADR |
-| 1.3 | Contracts tag exists and is frozen. The WP's consumed contracts are listed and exist at that tag |
-| 1.4 | Ownership manifests are disjoint across WPs (`tools/plan/check-ownership.ts --overlap`). No WP owns contract paths or root files |
+| 1.1 | The wave is in the plan, and the phase/sprint mapping matches README §15.2 (or a recorded plan deviation). At most 4 BUs |
+| 1.2 | Every ADR the BUs depend on (§1 table) is `accepted`. No BU touches an ADR-blocked area without the ADR |
+| 1.3 | Contracts tag exists and is frozen. The BU's consumed contracts are listed and exist at that tag |
+| 1.4 | Ownership manifests are disjoint across BUs (`tools/plan/check-ownership.ts --overlap`). No BU owns contract paths or root files |
 | 1.5 | Migration blocks are assigned, non-overlapping and dependency-ordered. Table ownership rows exist for every table to be created |
 | 1.6 | Each brief: the goal is testable; out-of-scope is explicit; README sections are given with **line ranges** that actually cover the module's (a)–(e) plus §2, §4, §5, §9, §10.1; relevant validator IDs are listed |
 | 1.7 | Each brief's DoD table is complete (DoD1–11, R1–R8, MC, EV). Rows are N/A only with a reason (e.g. no money in M29) |
 | 1.8 | Each brief lists required tests, including in-scope README acceptance IDs (`@acc`) and the Appendix X cases for its modules |
-| 1.9 | No dependency between WPs in the same wave on unmerged code. Stubs/ports are named for later-phase modules (e.g. M10 RecoveryPort in P1) |
+| 1.9 | No dependency between BUs in the same wave on unmerged code. Stubs/ports are named for later-phase modules (e.g. M10 RecoveryPort in P1) |
 | 1.10 | Prohibitions block is present and unmodified. The report format is present |
 | 1.11 | The reviewer brief for the wave is drafted, includes all C-rows plus wave-specific adversarial targets, and names a reviewer session distinct from the builders |
 | 1.12 | External dependencies from D-§4 that this wave needs (e.g. motor decrees for M03, holiday calendar for M09 SLA) are received, or the brief says to use `illustrative` values |
@@ -466,12 +466,12 @@ The auditor records each check as ✔ / ✘ / N/A with a note in `docs/plan/wave
 
 | # | Check |
 |---|---|
-| 2.1 | Independence: the reviewer session ID differs from every builder and fixer. The report shows builder reports were read only at Step 5. The reviewer did not edit WP-owned files (`git diff` on review branch ⊆ tests/adversarial/**) |
+| 2.1 | Independence: the reviewer session ID differs from every builder and fixer. The report shows builder reports were read only at Step 5. The reviewer did not edit BU-owned files (`git diff` on review branch ⊆ tests/adversarial/**) |
 | 2.2 | Gate evidence is real. Each gate log has the reviewer as actor, sha = frozen SHA, a timestamp after the freeze, exit code and full output. Spot-check: the auditor re-runs **G6, G8, G9 and one random gate** on the frozen SHA and compares results |
 | 2.3 | Checklist coverage: every C01–C39 row has a result. Each N/A has a valid reason. FAIL rows map to findings |
 | 2.4 | Adversarial coverage: every applicable Appendix X case was run, plus ≥3 wave-specific cases. Each has a test file and observed output |
 | 2.5 | Findings are well-formed: ID, file:line, rule, repro command, expected result, fix owner. Severity matches the §4 scale. The auditor re-grades any finding it believes is under-rated and records why |
-| 2.6 | Claims check is done for every WP report |
+| 2.6 | Claims check is done for every BU report |
 | 2.7 | Findings are appended to the ledger with status OPEN |
 
 ### A-3 Fix verification
@@ -491,7 +491,7 @@ The auditor records each check as ✔ / ✘ / N/A with a note in `docs/plan/wave
 |---|---|
 | 4.1 | Merged SHA recorded. Per-wave gates G0–G19 are green **on the merged SHA**, from the orchestrator's run, with logs present |
 | 4.2 | Ledger for this wave: 0 OPEN/FIXED BLOCKER or HIGH. MEDIUMs are VERIFIED or DEFERRED (approved). LOWs are logged |
-| 4.3 | Table ownership, migration ledger and event catalogue are updated to reflect what merged. CCRs (if any) were applied in their own WP |
+| 4.3 | Table ownership, migration ledger and event catalogue are updated to reflect what merged. CCRs (if any) were applied in their own BU |
 | 4.4 | Coverage did not drop versus the previous wave. Test count increased. No `.skip` in the tree (`rg` count = 0, or each is linked to a deferred finding) |
 | 4.5 | `content/help` key count increased by at least the number of new UI elements. Count of draft keys is recorded (must reach 0 by phase gate) |
 | 4.6 | Acceptance traceability (G25 report) is updated. The README (e) IDs newly covered are listed |
@@ -564,17 +564,17 @@ Cadence:
 - **W** = per wave (builder self-check, reviewer run, merged-SHA run)
 - **P** = per phase gate
 
-Commands assume the WP-00 scripts. Package scope is `@tt/*` (proposed).
+Commands assume the BU-00 scripts. Package scope is `@tt/*` (proposed).
 
 | Gate | Name | Intent | Example command(s) | When | Pass criteria |
 |---|---|---|---|---|---|
-| G0 | Ownership & scope | Diff stays inside the WP manifest. No edits to contracts, merged migrations or root files | `pnpm tsx tools/plan/check-ownership.ts --wp $WP --base $BASE --head HEAD`; `--overlap` across a wave's briefs | C, W | 0 files outside manifest. 0 manifest overlaps. 0 modified merged migrations |
+| G0 | Ownership & scope | Diff stays inside the BU manifest. No edits to contracts, merged migrations or root files | `pnpm tsx tools/plan/check-ownership.ts --bu $BU --base $BASE --head HEAD`; `--overlap` across a wave's briefs | C, W | 0 files outside manifest. 0 manifest overlaps. 0 modified merged migrations |
 | G1 | Install & build | Reproducible build | `pnpm install --frozen-lockfile && pnpm turbo run build` | C, W | Exit 0. Lockfile unchanged unless an orchestrator integration commit |
 | G2 | Typecheck | Strict TS; infoKey and Money enforced by types | `pnpm turbo run typecheck` (`tsc --noEmit`, `strict`, `noUncheckedIndexedAccess`) | C, W | 0 errors. 0 new `@ts-ignore`/`@ts-expect-error` without a finding ID |
 | G3 | Lint | R8 raw controls, money misuse, forbidden imports (R4), no `.only`/`.skip` | `pnpm turbo run lint` (ESLint with `@tt/eslint-plugin`: `no-raw-controls`, `no-float-money`, `no-restricted-imports` for `@neondatabase/*`, `@vercel/*`, `nodemailer`, `twilio` outside allowed packages; `no-focused-tests`, `no-skipped-tests`) | C, W | 0 errors, 0 warnings in changed files |
 | G4 | Unit tests + coverage | Domain correctness | `pnpm turbo run test -- --coverage --passWithNoTests=false` (Vitest) | C, W | All pass. packages/domain ≥90% lines / ≥85% branches. funds, ledger, surplus, claims state machine and recoveries ≥95% branches. Coverage not lower than the previous merged SHA |
 | G5 | Property tests | Fund-engine invariants at scale | `FC_NUM_RUNS=10000 pnpm --filter @tt/domain test:property` (fast-check; seed printed) | W (C at 500 runs) | All properties hold. Seed and run count logged. Includes per-fund balance, split sum, inter-fund net-zero, reversal symmetry, and allocation sum = distributable (M15) |
-| G6 | Migration round-trip | DoD1 reversible, plain PG16 | `docker run -d postgres:16`; `pnpm db:migrate up && pg_dump -s > a.sql && pnpm db:migrate down --to 0 && pnpm db:migrate up && pg_dump -s > b.sql && diff a.sql b.sql` | W | Exit 0 and empty diff. Every up has a down. Numbers are inside WP blocks |
+| G6 | Migration round-trip | DoD1 reversible, plain PG16 | `docker run -d postgres:16`; `pnpm db:migrate up && pg_dump -s > a.sql && pnpm db:migrate down --to 0 && pnpm db:migrate up && pg_dump -s > b.sql && diff a.sql b.sql` | W | Exit 0 and empty diff. Every up has a down. Numbers are inside BU blocks |
 | G7 | Schema invariants (catalog meta-tests) | DB-level DoD across all tables | `pnpm --filter @tt/db test:invariants`. SQL over `pg_class`/`pg_attribute`/`pg_policy`/`pg_trigger`: every business table has `relrowsecurity AND relforcerowsecurity`, ≥1 policy and the audit trigger; app role is not owner and not BYPASSRLS; no `real`/`double precision`/`money` types; money columns are `numeric(20,3)`; registered sharia tables have `sharia_status` NOT NULL, a CHECK and **no default**; `journal_line.fund_id` NOT NULL FK; no UPDATE/DELETE grant on audit tables | W | 0 violations |
 | G8 | RLS per role | DoD4, §9.4 | `pnpm --filter @tt/db test:rls` (logs in as each Appendix Y role with scoped GUCs and asserts visibility for SELECT/INSERT/UPDATE/DELETE in and out of scope) | W | 100% of (role × table × op) matrix cells for new tables tested and passing. Agent A cannot see Agent B's rows (`@acc:M04-1`) |
 | G9 | Ledger guarantees (adversarial SQL) | §5.4, R1, R2, closed period | `pnpm --filter @tt/db test:ledger-guarantees` (Appendix X1–X8 as the app role) | W | Every forbidden operation is rejected with the expected error code. Allowed paths succeed. A 100k-line journal posts within the ADR-003 budget (A-06) |
@@ -619,17 +619,17 @@ ID format: «wave»-F«nnn» for review findings; «wave»-A«nnn» for auditor 
 | P1W03 | 0 | 1 | 2/1 | 4 | 2026-11-12 |
 
 ## Findings
-| ID | Sev | Status | Wave found | WP / module | Location (file:line) | Rule / ref | Title | Repro (test or cmd) | Fix owner | Fix commit | Verified by / evidence | Target wave (if deferred) | Approved by |
+| ID | Sev | Status | Wave found | BU / module | Location (file:line) | Rule / ref | Title | Repro (test or cmd) | Fix owner | Fix commit | Verified by / evidence | Target wave (if deferred) | Approved by |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| P1W03-F001 | BLOCKER | VERIFIED | P1W03 | WP2 / M08 | packages/db/migrations/0305_m08_journal.up.sql:41 | R2, C05, ADR-003 | posted journal_line UPDATE allowed for app role | tests/adversarial/P1W03/x05-posted-update.test.ts | P1W03-WP2 | a1b2c3d | reviewer-r2 / evidence/P1W03/reviewer-r2/G9.log | — | — |
-| P1W03-F002 | HIGH | OPEN | P1W03 | WP3 / M09 | packages/db/test/rls/m09.rls.test.ts | DoD4, C13 | no RLS test for surveyor role on claim_assessment | `pnpm test:rls -t surveyor` (0 tests) | P1W03-WP3 | | | | |
-| P1W03-F003 | MEDIUM | DEFERRED | P1W03 | WP3 / M09 | content/help/m09.yaml:88 | DoD5, C20 | ar text for err.m09.stage-skip is a literal translation, unclear | review note | P1W04-WP1 | | | P1W04 | auditor 2026-11-12 |
+| P1W03-F001 | BLOCKER | VERIFIED | P1W03 | BU2 / M08 | packages/db/migrations/0305_m08_journal.up.sql:41 | R2, C05, ADR-003 | posted journal_line UPDATE allowed for app role | tests/adversarial/P1W03/x05-posted-update.test.ts | P1W03-BU2 | a1b2c3d | reviewer-r2 / evidence/P1W03/reviewer-r2/G9.log | — | — |
+| P1W03-F002 | HIGH | OPEN | P1W03 | BU3 / M09 | packages/db/test/rls/m09.rls.test.ts | DoD4, C13 | no RLS test for surveyor role on claim_assessment | `pnpm test:rls -t surveyor` (0 tests) | P1W03-BU3 | | | | |
+| P1W03-F003 | MEDIUM | DEFERRED | P1W03 | BU3 / M09 | content/help/m09.yaml:88 | DoD5, C20 | ar text for err.m09.stage-skip is a literal translation, unclear | review note | P1W04-BU1 | | | P1W04 | auditor 2026-11-12 |
 
 ## History (append-only)
 | When (ISO) | ID | From → To | Actor | SHA | Note / evidence path |
 |---|---|---|---|---|---|
 | 2026-11-10T14:02Z | P1W03-F001 | — → OPEN | reviewer-r1 | f00d… | evidence/P1W03/reviewer-r1/X05.log |
-| 2026-11-11T09:40Z | P1W03-F001 | OPEN → FIXED | fix-WP2 | a1b2c3d | migration 0306 adds immutability trigger |
+| 2026-11-11T09:40Z | P1W03-F001 | OPEN → FIXED | fix-BU2 | a1b2c3d | migration 0306 adds immutability trigger |
 | 2026-11-11T12:15Z | P1W03-F001 | FIXED → VERIFIED | reviewer-r2 | a1b2c3d | G9 green; X05 passes |
 ```
 

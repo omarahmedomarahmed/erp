@@ -5,21 +5,21 @@
 | Auditor | R2 traceability / coverage (red team, wave 3) |
 | Date | 2026-10-28 |
 | Inputs read in full | `README.md` (L1–1160), `docs/plan/PLAN-V1.md` (L1–517), `validation/E-consistency.md`, `validation/A…D` (all flags), `AGENT-PROTOCOL.md` §1, §2, §5 A-5, §6 gate catalogue, App. X; `findings-ledger.md` |
-| Question | Is every README line covered by a PLAN-V1 work package (WP), D00 decision, erratum, gate or human gate (H), or explicitly deferred or changed? |
+| Question | Is every README line covered by a PLAN-V1 build unit (BU), D00 decision, erratum, gate or human gate (H), or explicitly deferred or changed? |
 | Edits made | None to PLAN-V1 or the README. This file is the only output |
 
 ## 0. Method and status codes
 
-- Each README row is mapped to the **most specific** PLAN-V1 artefact: WP (`F01`…`F21`, `101`…`127`, `201`…`231`, `301`…`308`, P4 chains), D00-nn, errata #n (§6), gate (G0–G27, G-P1/2/3), H-item (§10.2), action A-n (§14), or the §4 consolidated flag (B1–B11, H1–H14).
-- PLAN-V1 §8.3/§8.4 describe WPs in 3–6 words. AGENT-PROTOCOL A-1 item 1.6 requires every brief to cite README **line ranges covering the module's (a)–(e)**. So a feature that is inside a module's §6 section is covered *implicitly* when its module has an owning WP, even if PLAN-V1 never names the feature. Those rows are marked **I**. They are safe only if the brief author copies the full line range.
+- Each README row is mapped to the **most specific** PLAN-V1 artefact: BU (`F01`…`F21`, `101`…`127`, `201`…`231`, `301`…`308`, P4 chains), D00-nn, errata #n (§6), gate (G0–G27, G-P1/2/3), H-item (§10.2), action A-n (§14), or the §4 consolidated flag (B1–B11, H1–H14).
+- PLAN-V1 §8.3/§8.4 describe BUs in 3–6 words. AGENT-PROTOCOL A-1 item 1.6 requires every brief to cite README **line ranges covering the module's (a)–(e)**. So a feature that is inside a module's §6 section is covered *implicitly* when its module has an owning BU, even if PLAN-V1 never names the feature. Those rows are marked **I**. They are safe only if the brief author copies the full line range.
 
 | Code | Meaning |
 |---|---|
 | **C** | Covered explicitly: PLAN-V1 names the item or an artefact that clearly contains it |
-| **I** | Covered implicitly: the owning module has a WP, but PLAN-V1 does not name the item. It relies on the brief's README line range |
+| **I** | Covered implicitly: the owning module has a BU, but PLAN-V1 does not name the item. It relies on the brief's README line range |
 | **D** | Explicitly deferred or changed by D00, errata or the phase plan (an approved deviation) |
 | **P** | Partially covered: some of the requirement is assigned, some is not |
-| **NC** | NOT COVERED: no WP, D00, erratum, gate or H-item owns it |
+| **NC** | NOT COVERED: no BU, D00, erratum, gate or H-item owns it |
 
 ---
 
@@ -30,7 +30,7 @@
 | README ref | Item | Plan coverage | St |
 |---|---|---|---|
 | 1.1 Name | Working name; "not called an ERP" | D00-24, errata 1, A-0 | C |
-| 1.1 First client | Client profile, products, ARIMA "very likely" | H18 / A-2 (ARIMA only). Client facts (D-18: GWP, product list, founding date, §20 "ARIMA" stated as fact) not in errata | P |
+| 1.1 First client | Client profile, products, ARIMA "very likely" | H18 / A-2 (ARIMA only). Client facts (D-18: GWC (gross written contributions), product list, founding date, §20 "ARIMA" stated as fact) not in errata | P |
 | 1.1 Later clients | Country rules as rule-pack data | F13 rule-pack loader; P5 (§10.3) | C |
 | 1.1 Sources | Arabic proposal, research, HR | A-0 (Arabic-brief diff) | C |
 | D1 | One codebase, config per client | F13 | C |
@@ -50,7 +50,7 @@
 
 | README ref | Item | Plan coverage | St |
 |---|---|---|---|
-| 2.1 | Milestone order; in-WP order migration→…→e2e | §7.1 builder role; §9 waves | C |
+| 2.1 | Milestone order; in-BU order migration→…→e2e | §7.1 builder role; §9 waves | C |
 | DoD 1 | Reversible migration in CI | F03 (dbmate), G6 | C |
 | DoD 2 | Domain + unit; property tests for funds | G4, G5 | C |
 | DoD 3 | Server permission check per route | F12 `defineRoute`, G8 | C |
@@ -81,7 +81,7 @@
 | 3.1 i18n | next-intl, Arabic default | F10 | C |
 | 3.1 Database | PG16 on Neon | D00-20 (changed: PG17 runtime) | D |
 | 3.1 Data access | Drizzle + hand SQL | F03, H3 (dbmate + Drizzle pull) | C |
-| 3.1 Validation | Zod shared | F01 (WP-00 contracts in protocol) | C |
+| 3.1 Validation | Zod shared | F01 (BU-00 contracts in protocol) | C |
 | 3.1 Money | `numeric(20,3)` + decimal.js | F05 | C |
 | 3.1 Dates | Temporal + Hijri | F05 | C |
 | 3.1 Authentication | Better Auth, TOTP, passkeys | F11 | C |
@@ -110,7 +110,7 @@
 | Currency fields on every money line | F05 "FX line" | C |
 | Numbering gap-free; border-point blocks | F17, D00-16, 118 | C |
 | Soft limits per role | F12 | C |
-| Data retention configurable, default 10 y (Q24) | Nothing. No WP, no H-item, no D00 | **NC** |
+| Data retention configurable, default 10 y (Q24) | Nothing. No BU, no H-item, no D00 | **NC** |
 
 ### 5. Fund model (L178–236)
 
@@ -123,7 +123,7 @@
 | 5.2 | Wakala cap per rule pack | 102 / 204 | I |
 | 5.3 | `WAKALA_FEE` | 102, D00-01 | C |
 | 5.3 | `MUDARIB_SHARE` | 212/213 | I |
-| 5.3 | `QARD_DRAW` (CFO + SSB) | D00-03; the approval UI and workflow have no named WP (101/102 or 214) | P |
+| 5.3 | `QARD_DRAW` (CFO + SSB) | D00-03; the approval UI and workflow have no named BU (101/102 or 214) | P |
 | 5.3 | `QARD_REPAY` | 214 | C |
 | 5.3 | `SURPLUS_ALLOC` | D00-03, 214 | C |
 | 5.3 | `EXPENSE_RECHARGE` blocked by default | D00-09 (levy) | I |
@@ -162,10 +162,10 @@
 | (b) | 30-day alert e-mail/SMS; delivery log; sandbox mailbox | 112, F20, H15 | C |
 | (b) | Endorsements, pro rata | 111; `EndorsementIssued` (D00-11) | I |
 | (b) | Cancellation refund rule; refund via M07 | 111 + 114; `WAKALA_FEE_REVERSAL` (D00-01) | C |
-| (b) | Policy register (Art. 22) | Not assigned to any WP | **NC** |
+| (b) | Policy register (Art. 22) | Not assigned to any BU | **NC** |
 | (c) | Membership certificate; split rule ID + `sharia_status` on certificate | 111, F17 | I |
 | (c) | IFRS 17 data from day 1 | 111 (ADR-012 / A-12 list) | C |
-| (c) | Compulsory covers (Law 28/1971; Res. 315/2026) | 106 (motor); H6, H10; Res. 315 templates have no WP | P |
+| (c) | Compulsory covers (Law 28/1971; Res. 315/2026) | 106 (motor); H6, H10; Res. 315 templates have no BU | P |
 | (e) 1–5 | Acceptance | §12: 111–114 | C |
 
 ### 6.3 M05 Underwriting (L308–335)
@@ -192,7 +192,7 @@
 | (b) | Customer notified at each stage; timeline | 116/117 + F20 | I |
 | (b) | Recoveries: third party, salvage, subrogation | 116 (`claim_recovery`), not named | I |
 | (b) | Stage 3 surveyor **mobile** screen with photos | 117 (no responsive/mobile requirement anywhere in the plan; see §19 "responsive UI") | P |
-| (b) | Stage 5 payment from PTF | D00-13 single-payment disbursement; **no WP named** for the disbursement (116 or 103?) | P |
+| (b) | Stage 5 payment from PTF | D00-13 single-payment disbursement; **no BU named** for the disbursement (116 or 103?) | P |
 | (c) | PTF only; case OCR (Art. 15) | D00-13, 116 | C |
 | (c) | Retakaful recovery on approval | 202, D00-12 (P1 stub `retakaful_pending`) | C |
 | (c) | IFRS 17 LIC data | 116 (ADR-012 field list) | I |
@@ -244,7 +244,7 @@
 | (b) | Payment via M07/M12 | 204 (`CommissionRunApproved` → M07 not added; B-34) | I |
 | (b) | Number blocks | 118, D00-16 | C |
 | (c) | SHF only; Wakala-incl.-commission cap; AML of agents | 204 (M04-4), 223 | I |
-| (c+) | Agent net remittance mixes funds (B-26) | PLAN §3 M04 verdict says "resolve in WP brief"; no D00. Covered only by AGENT-PROTOCOL ADR-002 | P |
+| (c+) | Agent net remittance mixes funds (B-26) | PLAN §3 M04 verdict says "resolve in BU brief"; no D00. Covered only by AGENT-PROTOCOL ADR-002 | P |
 | (e) 1–4 | Acceptance | §12: 118, 204, 205 | C |
 
 ### 6.8 M12 Accounting (L463–493)
@@ -252,7 +252,7 @@
 | Ref | Item | Plan coverage | St |
 |---|---|---|---|
 | (b) | Double entry; per-fund balance | 101, 103 | C |
-| (b) | Automatic journals (issue, collect, claim, commission, others) | 103 + producer WPs (111, 114, 116, 204, 201, 221, 213) | C |
+| (b) | Automatic journals (issue, collect, claim, commission, others) | 103 + producer BUs (111, 114, 116, 204, 201, 221, 213) | C |
 | (b) | Posting rules mapping | 103; "posting-rule ownership registry" W8 | C |
 | (b) | One-click BS / IS / TB per fund, combined, branch, class; PDF + Excel | 104 (TB), 208 (BS/IS) | C |
 | (b) | FAS 42 presentation; FAS 43 recognition | D00-10, errata 4 | D |
@@ -260,13 +260,13 @@
 | (b) | **Recurring journals; accruals; multi-currency revaluation** | Not named. ADR-006 covers balancing only | **NC** |
 | (b) | Period close checklist; closed periods locked | 209; 101 trigger | C |
 | (b) | **Payables: supplier register, expense invoices, payment runs, budgets vs actual** | README §15 lists "M12 … payables" as a P2 deliverable (L941). PLAN 208–209 = "statements + close" only | **NC** |
-| (b) | **Fixed assets register + depreciation** | Not in any WP | **NC** |
+| (b) | **Fixed assets register + depreciation** | Not in any BU | **NC** |
 | (b) | Bank accounts per fund; reconciliation with M07 | 207; E §3 ownership | I |
 | (c) | Accounts per class (Art. 23) | 103 (dimension) | I |
 | (c) | Annual returns via M18 | 224 | C |
 | (c) | Technical reserve postings (M13) | 210 | C |
 | (c) | IFRS 17 view (M14) | P4 chain | D |
-| (c) | Zakat calculation support (M16) | Not in any WP | **NC** |
+| (c) | Zakat calculation support (M16) | Not in any BU | **NC** |
 | (c+) | Combined-statement inter-fund elimination (A-23) | M12 verdict only | I |
 | (e) 1–4 | Acceptance | §12: 101–103, 208 (M12-1 mapping incomplete; see §4) | C |
 
@@ -295,7 +295,7 @@
 | (b) | Governance: members, meetings, resolutions; approvals link | 216 (P2). The minimal register needed by M03/M24/M05 in P1 (E-27) is not scheduled | P |
 | (b) | Internal Sharia audit per branch | 216; D-13 (optional until texts arrive) | I |
 | (b) | Purification to charity with SSB approval | D00-06 | I |
-| (b) | **Zakat on shareholders' funds** | Not named in any WP | **NC** |
+| (b) | **Zakat on shareholders' funds** | Not named in any BU | **NC** |
 | (c) | Standards (AAOIFI SS 26, IFSB-8) | Briefs | I |
 | (e) 1–3 | Acceptance | §12: F17, 123, 101, 216 | C |
 
@@ -311,7 +311,7 @@
 | Step 11 | 100% to participants; other packs configurable | 214; P5 (D-17 `SURPLUS_TO_SHAREHOLDERS` only in protocol ADR-002) | I |
 | Step 12 | Pro rata by contribution; eligibility rules | D00-02 (basis), 214 | C |
 | Step 13 | Individual statements (PDF) | 215 | C |
-| Step 14 | Voucher or renewal discount | 215 (voucher). **Renewal-credit application inside M06 at renewal** has no P2 WP. M06 code is owned by 111/112 (P1) (E-08) | P |
+| Step 14 | Voucher or renewal discount | 215 (voucher). **Renewal-credit application inside M06 at renewal** has no P2 BU. M06 code is owned by 111/112 (P1) (E-08) | P |
 | Step 15 | CFO → actuary → SSB → Board | F15 capabilities, D00-08 | C |
 | (e) 1–5 | Acceptance | §12: 214, 215; S8 golden run | C |
 
@@ -344,14 +344,14 @@
 | 7.1 End of service | Configurable formula (by nationality, D-06) | 220; M33 verdict | I |
 | 7.1 Self-service | Payslips, leave balance, requests | 220/222 | I |
 | 7.1 Reports | Headcount, turnover, leave, document expiry | 220 | I |
-| 7.1 Capacity | 10 feature rows in one 4–6 h WP (220) | Under-sized (see §2) | P |
+| 7.1 Capacity | 10 feature rows in one 4–6 h BU (220) | Under-sized (see §2) | P |
 | 7.2 Pay components | Basic, allowances, overtime, bonuses, deductions | 221 | C |
 | 7.2 Payroll run | calc → review → maker → checker → lock (+ CFO final, §9.2) | 221, F15. The §7.2 vs §9.2 CFO-step conflict (E-49) is not fixed | P |
 | 7.2 Statutory deductions | SS, income tax, versioned tables | 221, errata 9/10, ADR-016, H7 | C |
 | 7.2 Payslips | Bilingual PDF + self-service | 222 | I |
 | 7.2 Bank file | Salary transfer file per bank format | 222 / 226 (E-44) | I |
 | 7.2 Accounting | SHF journal by cost centre | 221 | C |
-| 7.2 **Statutory reports** | SS (INAS) and tax return data (D-05) | Not named in any WP | **NC** |
+| 7.2 **Statutory reports** | SS (INAS) and tax return data (D-05) | Not named in any BU | **NC** |
 | 7.2 Retro and corrections | Recalculated in the next run | 221 | I |
 | 7.2 Security | HR-only visibility; encrypted salaries; maker-checker | F19, G8 (X14), F15 | C |
 | 7.2 `sharia_status` | On every payroll run | F17 registry | I |
@@ -362,22 +362,22 @@
 | Module | README content | Plan coverage | St |
 |---|---|---|---|
 | M00 | Branding, languages, module switch + dependency check, rule-pack version, calendar, currencies | F13 (branding/visual identity not named) | C |
-| M01 | Users, roles, levels, scopes, limits, MFA, sessions, **access reviews** | F11, F12. Access reviews not in any WP | P |
+| M01 | Users, roles, levels, scopes, limits, MFA, sessions, **access reviews** | F11, F12. Access reviews not in any BU | P |
 | M03 | Products without code; SSB approval; versioned | 105, 106, H7 | C |
-| M03 (scope) | Client product lines: comprehensive motor, property/general, marine, Hajj/Umrah, Res. 315/2026 lines, Q7 2026 products | 106 seeds **motor TPL + travel only**. D00-17 keeps only family, health and export credit on ARIMA. **No WP configures the other lines that go live** | **NC** |
+| M03 (scope) | Client product lines: comprehensive motor, property/general, marine, Hajj/Umrah, Res. 315/2026 lines, Q7 2026 products | 106 seeds **motor TPL + travel only**. D00-17 keeps only family, health and export credit on ARIMA. **No BU configures the other lines that go live** | **NC** |
 | M08 | Fund engine | 101, 102 | C |
 | M13 | UCR, OCR, IBNR, fluctuation, Art. 15 floors, actuary sign-off | 210 (M13-lite, P2); full in P4 | D |
-| M14 | Data capture P1; engine P4 | 111 (ADR-012); P4 chain (7 WPs). Event retention / backfill for M14 (A-12) not decided | C |
+| M14 | Data capture P1; engine P4 | 111 (ADR-012); P4 chain (7 BUs). Event retention / backfill for M14 (A-12) not decided | C |
 | M17 | Screening, scoring, alerts, STR, complaints | 223 (complaints not named) | I |
 | M18 | Art. 24 returns, per-class accounts, Libyan-asset statement, levy | 224, D00-09, H11 | C |
 | M19 | Art. 17 margin, stress tests, surplus gate | 211 (basic); P4 full | C |
-| M20 | Family takaful | P4 (4 WPs); D00-17 stays on ARIMA | D |
-| M21 | Medical / health | P4 (4 WPs); D00-17 | D |
+| M20 | Family takaful | P4 (4 BUs); D00-17 stays on ARIMA | D |
+| M21 | Medical / health | P4 (4 BUs); D00-17 | D |
 | M22 | 60-s motor, Orange Card, travel at border, offline PWA | 113 (online); 227 (Orange Card online simulator); offline → P4 (D00-17). Orange Card **claims / inter-bureau** flow (B-16) not assigned | P |
-| M23 | Export credit | P4 (2 WPs); D00-17 | D |
+| M23 | Export credit | P4 (2 BUs); D00-17 | D |
 | M24 | Templates, SSB wording, versions | F18 | C |
-| M25 | Agent dashboard P2; customer portal P4 | 205 (moved to M04); P4 (2 WPs); pay-by-link 206 | D |
-| M26 | State machines, approval matrix, SLA, inbox; designer P4 | F15; P4 (2 WPs) | C |
+| M25 | Agent dashboard P2; customer portal P4 | 205 (moved to M04); P4 (2 BUs); pay-by-link 206 | D |
+| M26 | State machines, approval matrix, SLA, inbox; designer P4 | F15; P4 (2 BUs) | C |
 | M27 | Append-only hash chain; daily verification | F06, 123 (UI) | C |
 | M29 | "i" engine + Learning Center | F10, 122, 124/125, 229/230 | C |
 | M30 | Integration hub | F07, F20, 225, 226 | C |
@@ -422,7 +422,7 @@
 | 10.3 English | FTS + stemming | F19 | C |
 | 10.3 Scope | i texts, lessons, glossary, rules, screens, workflows | 122 | I |
 | 10.3 Results | Grouped; jump to screen if allowed | 122 | I |
-| 10.3 **`search_log`** | Zero/poor results reviewed weekly | Not in any WP or H-item | **NC** |
+| 10.3 **`search_log`** | Zero/poor results reviewed weekly | Not in any BU or H-item | **NC** |
 
 ### 11. Integrations (L802–818)
 
@@ -455,7 +455,7 @@
 | 12.2 | Dev / staging / prod / sandbox | F16a/b, 228; errata 13 (staging in P1) | C |
 | 12.3 Default | Neon + Vercel + AWS Frankfurt | F16 | C |
 | 12.3 Private cloud / on-prem | G19 (Compose + PG16 + MinIO) | C |
-| 12.3 Azure | No WP; R4 portability only | I |
+| 12.3 Azure | No BU; R4 portability only | I |
 | 12.3 Data residency opinion | B9, H9, A-4 | C |
 | 12.3 KSA/UAE in-country | P5 | D |
 
@@ -502,23 +502,23 @@
 |---|---|---|---|
 | Standard | ASVS L2 (L3 for identity, money, payroll); ISO 27001 later | Errata 15 (ASVS 5.0); 127; P5. L3 control list per module (C-21) not assigned | P |
 | Application | Server permission check; shared validation; output encoding | F12, Zod | C |
-| Application | **Strict CSP, CSRF protection, rate limits (app)** | Not in any WP. 225 covers the public-API rate limit only | **NC** |
+| Application | **Strict CSP, CSRF protection, rate limits (app)** | Not in any BU. 225 covers the public-API rate limit only | **NC** |
 | Application | Secure upload, malware scan, signed short-lived links | F18 (ClamAV), errata 15 | C |
 | Identity | MFA all staff; passkeys for admins/checkers; 15-min idle | F11 | C |
-| Identity | **Anomaly alerts** | Not in any WP | **NC** |
-| Identity | **Quarterly access review** | Not in any WP | **NC** |
+| Identity | **Anomaly alerts** | Not in any BU | **NC** |
+| Identity | **Quarterly access review** | Not in any BU | **NC** |
 | Identity | Leavers disabled the same day | 220 | C |
 | Database | Separate Neon per client; RLS forced; no bypass; migration role; reporting role | F03, F04, F16, G7 | C |
 | Database | IP allow-list / private networking | H14 (cost); F16a/b | I |
-| Database | **Break-glass access with dual approval and full logging** | Not in any WP | **NC** |
+| Database | **Break-glass access with dual approval and full logging** | Not in any BU | **NC** |
 | Encryption | TLS 1.2+; at rest | F16 | I |
 | Encryption | Field-level per-tenant keys; keyed-hash search | F19 | C |
-| Encryption | **Yearly key rotation (+ blind-index re-index, C-17)** | Not in any WP | **NC** |
+| Encryption | **Yearly key rotation (+ blind-index re-index, C-17)** | Not in any BU | **NC** |
 | Audit | Hash chain; daily verify; WORM copies | F06, H1 | C |
 | Audit | Retention per tenant (10 y) | Not assigned (see §4 row) | **NC** |
 | Backups / DR | PITR ≥7 d; second-region logical backups; RPO/RTO; quarterly restore | 305, G24, H14, errata 15 | C |
 | Testing | SAST/deps/secrets per commit; weekly DAST; RLS/SoD in CI; k6; pen test then yearly | G18, G21, 304, G8, G10, 301, G20, H22, A-8 | C |
-| Monitoring | **Security log stream; alerts (failed logins, privilege changes, bulk exports, RLS denials); incident response plan** | Not in any WP, gate or H-item | **NC** |
+| Monitoring | **Security log stream; alerts (failed logins, privilege changes, bulk exports, RLS denials); incident response plan** | Not in any BU, gate or H-item | **NC** |
 | Sandbox | Masked only; outbound blocked in code and network; SIMULATION watermark on screens and PDFs | F09, F18, F16b, F20, G16, G22 | C |
 
 ### 14. Masking, simulation, migration (L896–929)
@@ -537,7 +537,7 @@
 |---|---|---|---|
 | 15 intro | 90 days, weekly sprints, client tests each part | §9 pacing rule (weekly trains); §1 verdict restates go-live | D |
 | Phase 0 | Kick-off, DSA, extract, fund parameter sheet, legal opinion | A-1…A-8, H2, H3, H6, H9 | C |
-| Phase 0 | **Requirement workshops and workflow maps** | Not in §14 actions or any WP (see §16 row) | **NC** |
+| Phase 0 | **Requirement workshops and workflow maps** | Not in §14 actions or any BU (see §16 row) | **NC** |
 | Phase 0 | **Visual identity** | F13 branding (implicit); no P0 action | I |
 | Phase 1 | Deliverable list | W1–W14 | C |
 | Phase 1 exit 1–9 | §15.1 | 126 + G-P1; AGENT-PROTOCOL A-5; errata 18 (exit 6, 7) | C |
@@ -546,7 +546,7 @@
 | Phase 3 | UAT, load, DAST, pen test, migration rehearsals, training, manuals, videos, DR | H24, 301, G20, 304, H22, 306/307, H20, H25, 308, 305 | C |
 | Phase 3 exit | Final UAT; no open high-severity | G-P3 | C |
 | Go-live gates | SSB, legal, pen test, migration, fund parameters | G-P3 human, H6–H9, H20, H22, H26, H28 | C |
-| Hypercare | 15 days | §10.3 date only; no support plan or runbook WP | I |
+| Hypercare | 15 days | §10.3 date only; no support plan or runbook BU | I |
 | Warranty | 6 months | §10.3 date only | I |
 | Phase 4 | M14, M19, M20, M21, M23, M25, M26 designer | §8.6 | C |
 | Phase 5 | KSA, UAE, Bahrain; in-country; ISO | §10.3; H13 (§4) | D |
@@ -558,13 +558,13 @@
 
 | Deliverable | Plan coverage | St |
 |---|---|---|
-| Requirements analysis + **BPMN workflow maps** in `docs/workflows/` and the Learning Center | No WP, no action | **NC** |
-| **Schema documentation generated from migrations** | No WP | **NC** |
+| Requirements analysis + **BPMN workflow maps** in `docs/workflows/` and the Learning Center | No BU, no action | **NC** |
+| **Schema documentation generated from migrations** | No BU | **NC** |
 | Tenant branding (visual identity) | F13 | I |
 | Unit, property, e2e, integration tests in CI | G4, G5, G12, G15 | C |
 | Load targets (200 users, p95 < 2 s, close < 30 min on 3 years) | 301, G20, G-P3, D00-23 | C |
 | Security testing | G18, G21, H22 | C |
-| **UAT scripts per role** | H24 (UAT) but no WP writes the scripts | **NC** |
+| **UAT scripts per role** | H24 (UAT) but no BU writes the scripts | **NC** |
 | Cloud setup + automatic backups | F16, 305 | C |
 | User manuals (PDF AR/EN) | 308 | C |
 | Video tutorials | 308, H25 | C |
@@ -586,12 +586,12 @@
 | Technical reserve floors Art. 15 | 210, errata 9 | C |
 | Assets in Libya Art. 16 | 212/213, errata 5 | C |
 | Solvency Art. 17 | 211, errata 9 | C |
-| **Registers Art. 22** (policies, claims, brokers, agents, treaties, allocated assets) | No WP owns the register reports | **NC** |
+| **Registers Art. 22** (policies, claims, brokers, agents, treaties, allocated assets) | No BU owns the register reports | **NC** |
 | Accounts per class Art. 23 | 103 | I |
 | Annual returns Art. 24 | 224, H11 | C |
 | Auditor from register Arts. 25–26 | F12 (auditor role) | I |
 | Motor TPL Law 28/1971 | 106, errata 9 (Dec. 400/460) | C |
-| **Res. 315/2026 product templates** | Errata 9 does not include D-14's re-description. No WP builds the templates | **NC** |
+| **Res. 315/2026 product templates** | Errata 9 does not include D-14's re-description. No BU builds the templates | **NC** |
 | Reinsurer registration Dec. 374/2026 | 201, errata 9 | C |
 | Takaful decisions 529/201/60 | D-13 (configurable); 216 | I |
 | Law 6/2022 data protection | Errata 8; 107 | C |
@@ -613,7 +613,7 @@ Errata 19 adds an owner and a due date to every Q. The table shows which Qs also
 | Q4 | Qard history | H4 (opening balances) | C |
 | Q5 | Branches, agents, border points, internet | Errata 19 only | I |
 | Q6 | Annual volumes | Errata 19 only (301 load data) | I |
-| Q7 | Three 2026 products | Errata 19 only; no product WP (see M03 scope row) | **NC** |
+| Q7 | Three 2026 products | Errata 19 only; no product BU (see M03 scope row) | **NC** |
 | Q8 | Reinsurers, Libya Re | H11 (Art. 13 quota) | I |
 | Q9 | Aug 2025 statement | Errata 19 only | I |
 | Q10 | Bancassurance (orphan, E-81) | Not resolved | **NC** |
@@ -708,11 +708,11 @@ Severity: **HIGH** = a client-contract deliverable or a go-live/production contr
 
 | # | README ref | Gap | Sev | Add to |
 |---|---|---|---|---|
-| N1 | §8 M03 / §1.1 products / Q7 / §17 Res. 315 | Under D00-17 the client goes live with comprehensive motor, property/general, marine (open covers, declarations) and Hajj/Umrah, plus Res. 315/2026 lines and the three 2026 products (Q7). The only seed WP, 106, covers motor TPL and travel. No WP configures, tests or i-texts the other lines | HIGH | New P2 WP **232 "M03 product catalogue: comprehensive motor, property/general, marine, Hajj/Umrah, Res. 315 TPL"** in W17–W20, gated on H10 + Q7. Add an H-item for Q7 product specs |
+| N1 | §8 M03 / §1.1 products / Q7 / §17 Res. 315 | Under D00-17 the client goes live with comprehensive motor, property/general, marine (open covers, declarations) and Hajj/Umrah, plus Res. 315/2026 lines and the three 2026 products (Q7). The only seed BU, 106, covers motor TPL and travel. No BU configures, tests or i-texts the other lines | HIGH | New P2 BU **232 "M03 product catalogue: comprehensive motor, property/general, marine, Hajj/Umrah, Res. 315 TPL"** in W17–W20, gated on H10 + Q7. Add an H-item for Q7 product specs |
 | N2 | §6.8 M12(b); §15 L941 | Payables: supplier register, expense invoices, payment runs, budgets vs actual (SHF). This is a named client P2 deliverable | HIGH | Split **209** or add **209b "M12 payables, payment runs, budgets"** in W17. Include bank payment files (§11 Banks) |
-| N3 | §13 Monitoring | Security log stream, alerts (failed logins, privilege changes, bulk exports, RLS denials), incident response plan | HIGH | New P3 WP **309 "Security monitoring, alerting, incident-response runbook"**. Emit the security events from F06/F11/F12 now (add to their briefs). Add a G-P3 check |
+| N3 | §13 Monitoring | Security log stream, alerts (failed logins, privilege changes, bulk exports, RLS denials), incident response plan | HIGH | New P3 BU **309 "Security monitoring, alerting, incident-response runbook"**. Emit the security events from F06/F11/F12 now (add to their briefs). Add a G-P3 check |
 | N4 | §19 client §2 | Responsive UI on computers, tablets, phones; M09 stage 3 surveyor mobile screen | HIGH (client requirement) | **F08/F09**: breakpoint and touch requirements. **G15**: add `ar-rtl-mobile` and `tablet` Playwright projects. **117**: mobile assessment screen with photo capture |
-| N5 | §13 Identity, §8 M01 | Quarterly access review campaigns | MEDIUM | **F12** (data model + scheduled campaign), UI in **123** or a P2 WP |
+| N5 | §13 Identity, §8 M01 | Quarterly access review campaigns | MEDIUM | **F12** (data model + scheduled campaign), UI in **123** or a P2 BU |
 | N6 | §13 Identity | Anomaly alerts | MEDIUM | **309** (with N3), using the F11 session events |
 | N7 | §13 Application | Strict CSP (nonce in `proxy.ts`), CSRF protection, app-wide rate limits | MEDIUM | **F11/F12** (middleware); verified by **127** and **304** |
 | N8 | §13 Database | Break-glass access with dual approval and full logging | MEDIUM | **F16b** (role + procedure) + a runbook in 305 |
@@ -723,9 +723,9 @@ Severity: **HIGH** = a client-contract deliverable or a go-live/production contr
 | N13 | §6.10 (b), §6.8 (c) | Zakat calculation on shareholders' funds | MEDIUM | **216** (name it in the brief) |
 | N14 | §17 Art. 22; §6.2 Registers | Art. 22 registers (policies, claims, brokers, agents, treaties, allocated assets) | MEDIUM | **224** (M18) owns the register reports, reading 111/116/118/201/212 data |
 | N15 | §7.2 | Statutory payroll returns (SS/INAS, monthly tax) | MEDIUM | **222** |
-| N16 | §16, §15 P0, §19 client §4 | Requirement workshops + BPMN workflow maps in `docs/workflows/` and the Learning Center | MEDIUM | P0 action **A-11** (workshops) + content WPs **124/125/229/230** (maps embedded in courses) |
+| N16 | §16, §15 P0, §19 client §4 | Requirement workshops + BPMN workflow maps in `docs/workflows/` and the Learning Center | MEDIUM | P0 action **A-11** (workshops) + content BUs **124/125/229/230** (maps embedded in courses) |
 | N17 | §16 | UAT scripts per role | MEDIUM | **126** (P1 roles) and **231** (P2), reused in H24 |
-| N18 | §16 | Warranty severity SLA and support process; hypercare plan | MEDIUM | New P3 WP **310 "Support runbooks: hypercare, warranty SLA, on-call"**, or 308 |
+| N18 | §16 | Warranty severity SLA and support process; hypercare plan | MEDIUM | New P3 BU **310 "Support runbooks: hypercare, warranty SLA, on-call"**, or 308 |
 | N19 | §6.6/§6.5 | Cession backfill for certificates issued in P1 before M10 (201) exists | MEDIUM | **201** (backfill job + test); mirror D00-13 |
 | N20 | §16 | Schema documentation generated from migrations | LOW | **F02/F03** (CI artefact) |
 | N21 | §10.2 | Learning Center role paths; manager team-progress view | LOW | **122** |
@@ -739,7 +739,7 @@ Severity: **HIGH** = a client-contract deliverable or a go-live/production contr
 |---|---|---|---|
 | P1 | SSB approval register (`ssb_member`, `ssb_resolution`, `ssb_approval`) needed by 105/106 (W8–W9), 110, F18 in P1 (E-27). 123 (M16 P1) is in W10, *after* its consumers | HIGH | Move a minimal register into **105** or a slot in W7, or allow a manual "approval reference" field until 123. Add it to D00-07/D00-14 |
 | P2 | Role × module level matrix for every module (E-48); multiple-role rule "highest level wins"; §7.2 vs §9.2 payroll CFO step (E-49) | HIGH | **F12** + errata 12 (extend to E-48/E-49) |
-| P3 | P1 claim disbursement from PTF (D00-13) has no WP | HIGH | **116** (domain + posting) or **103**; state it in §8.3 |
+| P3 | P1 claim disbursement from PTF (D00-13) has no BU | HIGH | **116** (domain + posting) or **103**; state it in §8.3 |
 | P4 | M06 applies M15 renewal credits at renewal (M15-5, E-08). M06 code is owned by 111/112; nothing in P2 owns the change | MEDIUM | **215** with a CCR on M06 renewal, or a generic "renewal credit" hook in **111** |
 | P5 | Sample treaties, payroll month and last surplus replayed in P2 (E-65) | MEDIUM | **S8** / **231**: name the replay of treaties (201–203) and payroll (221) |
 | P6 | Orange Card claims / inter-bureau flow (B-16) | MEDIUM | **227** |
@@ -748,7 +748,7 @@ Severity: **HIGH** = a client-contract deliverable or a go-live/production contr
 | P9 | M14 event retention / backfill policy (A-12) | MEDIUM | **F07** (outbox retention) or ADR-012 |
 | P10 | `ClaimPaymentOrdered`; M06 as consumer of `PaymentReceived`; M07 as consumer of `CommissionRunApproved`; M08 of `SurplusApproved` | MEDIUM | Make the **D00-11** list exhaustive (B-33 + E-35…E-42) |
 | P11 | Backup export job needed for the P1 restore test (G24 at W14); 305 is P3 | MEDIUM | **F16b** |
-| P12 | M33 HR: 10 feature rows in one ≤6 h WP (220) | MEDIUM | Split **220a** (org, contracts, lifecycle, M01 link) / **220b** (attendance, leave, advances, appraisal, EOS, self-service, reports) |
+| P12 | M33 HR: 10 feature rows in one ≤6 h BU (220) | MEDIUM | Split **220a** (org, contracts, lifecycle, M01 link) / **220b** (attendance, leave, advances, appraisal, EOS, self-service, reports) |
 | P13 | Licensing-office "compulsory insurance status" lookup (§11 Traffic) | LOW | **225** (endpoint) |
 | P14 | Power BI Service vs D12 (B-40) | LOW | D00 or errata 15 |
 | P15 | Client facts (D-18); §20 states ARIMA as fact | LOW | Errata 1/19 |
@@ -772,13 +772,13 @@ A-04, A-05, A-06, A-08, A-09, A-10, A-14 · B-01, B-03, B-07, B-08, B-09, B-14, 
 
 | Flag | Issue | Status in PLAN-V1 | What is missing |
 |---|---|---|---|
-| **E-27** | SSB approval register needed in P1 | **Not addressed** | No WP or D00. 123 (M16 P1) comes after its consumers (see §3.2 P1) |
+| **E-27** | SSB approval register needed in P1 | **Not addressed** | No BU or D00. 123 (M16 P1) comes after its consumers (see §3.2 P1) |
 | **D-18** | Client facts unverified; §20 states ARIMA as fact | **Not addressed** (H18 covers ARIMA access only) | Errata line for §1.1 / §20 "client-reported, unverified" |
 | **E-48** | Modules with no maker/checker holders in the role template | Partial (D00-08 adds roles only) | Role × module level matrix |
 | **E-49** | Levels vs approval chains; multiple roles; §7.2 CFO step | Partial (capabilities only) | "Highest level per module" rule; §7.2/§9.2 payroll chain fix |
 | **E-65** | P1 replay scope; treaties, payroll, surplus replay in P2 | Partial (121, S8) | Named P2 replay of treaties and payroll |
 | **E-60** | M26 core before its consumers | Partial: F15 is in **W7 alongside 107** (M02 merge needs maker-checker) | Move F15 to W6, or move 107 to W8 |
-| **E-36** | Claim payment loop direction | Partial (`ClaimPaymentConfirmed` only) | `ClaimPaymentOrdered` and the P1 disbursement WP |
+| **E-36** | Claim payment loop direction | Partial (`ClaimPaymentConfirmed` only) | `ClaimPaymentOrdered` and the P1 disbursement BU |
 | **B-34** | Missing consumers (M06 ← PaymentReceived, M07 ← CommissionRunApproved) | Partial | Exhaustive D00-11 list |
 | **B-16** | Orange Card online-only + claims flow | Partial (online-only decided) | Inter-bureau claims flow in 227 |
 | **B-26** | Agent net remittance mixes funds | Partial (PLAN verdict + protocol ADR-002; not in D00) | Add to D00-03 |
@@ -795,12 +795,12 @@ A-04, A-05, A-06, A-08, A-09, A-10, A-14 · B-01, B-03, B-07, B-08, B-09, B-14, 
 | T1 | M07-3, 4 → 114 | M07-4 (late fee → charity) depends on dunning/late-payment logic, which is 207 (P2). 114 alone cannot pass it | M07-3 → 114; **M07-4 → 114 + 207** (charity posting D00-06 in 102/103) |
 | T2 | M12-1, 3, 4 → 101–103 | M12-1 needs all four producers: issue (111), collect (114), pay claim (116 + P1 disbursement), **pay commission (204, P2)**. It cannot be green at the P1 gate | **M12-1 → 103 + 111, 114, 116, 204** (P1 partial: 3 of 4; full in P2). M12-3, 4 → 101–103 is fine |
 | T3 | M34 (3) → 221, 222, 118 | "Terminating an employee disables their login" needs M33 lifecycle + `EmployeeTerminated` → M01. Per E-75 / D-33 the link is activated in P2 in **220**, not in 118 (P1 master) | **M34-3 → 220 (+F12 consumer)**; drop 118 |
-| T4 | M15-5 → 215 | Renewal credit is applied by **M06 at renewal**. No P2 WP owns the M06 side | **M15-5 → 215 + M06 hook (111 or a CCR)** |
+| T4 | M15-5 → 215 | Renewal credit is applied by **M06 at renewal**. No P2 BU owns the M06 side | **M15-5 → 215 + M06 hook (111 or a CCR)** |
 | T5 | M15-1…4 → 214 | M15-1 runs on the 12-month sample: needs **S8** (golden run) + **121** (sample). M15-4 needs **211** (solvency) | **M15-1 → 214 + S8**; **M15-4 → 214 + 211** |
-| T6 | M09-1, 2, 5 → 116 | M09-2 (payment hits PTF) needs the D00-13 disbursement, which has no WP. M09-5 needs **F15** | Name the disbursement WP; **M09-5 → 116 + F15** |
+| T6 | M09-1, 2, 5 → 116 | M09-2 (payment hits PTF) needs the D00-13 disbursement, which has no BU. M09-5 needs **F15** | Name the disbursement BU; **M09-5 → 116 + F15** |
 | T7 | M10-1 → 201 | Cession on issue of certificates created in P1 needs a backfill (N19) | **M10-1 → 201** + backfill test |
-| T8 | M28 → 211, 217–219 | Fine, but the hourly-job and read-only-role checks have no named WP (217 implied) | State "hourly snapshot + reporting role → 217" |
-| T9 | Missing rows | Not in §12: (a) the corrected **M10-2** wording (errata 6 / ADR-014) should be noted; (b) validator-proposed tests from **B, C and D** (only "A-1…41" are mapped); (c) §16 performance targets (G-P3 covers them, but they have no AT IDs); (d) Phase 2 exit adds a real-SMS test (protocol A-5) with no WP (226) | Add rows: "B tests → per WP brief", "Real SMS on staging → 226 / H15", "§16 load → 301 / G20" |
+| T8 | M28 → 211, 217–219 | Fine, but the hourly-job and read-only-role checks have no named BU (217 implied) | State "hourly snapshot + reporting role → 217" |
+| T9 | Missing rows | Not in §12: (a) the corrected **M10-2** wording (errata 6 / ADR-014) should be noted; (b) validator-proposed tests from **B, C and D** (only "A-1…41" are mapped); (c) §16 performance targets (G-P3 covers them, but they have no AT IDs); (d) Phase 2 exit adds a real-SMS test (protocol A-5) with no BU (226) | Add rows: "B tests → per BU brief", "Real SMS on staging → 226 / H15", "§16 load → 301 / G20" |
 | T10 | All README (e) IDs | Check: every README AT ID (M02 1–5, M06 1–5, M05 1–4, M09 1–5, M10 1–3, M07 1–4, M04 1–4, M12 1–4, M28, M16 1–3, M15 1–5, M11, M34, EX-P1 1–9) appears at least once. **No README AT is missing** | — |
 
 ---
@@ -810,9 +810,9 @@ A-04, A-05, A-06, A-08, A-09, A-10, A-14 · B-01, B-03, B-07, B-08, B-09, B-14, 
 | # | Defect | Sev | Fix |
 |---|---|---|---|
 | X1 | **ADR numbering conflict.** PLAN §5 says D00-01…24 become ADR-001…024 (so ADR-002 = surplus formula). AGENT-PROTOCOL §1 defines ADR-001…016 with different content (ADR-002 = inter-fund transfers, ADR-013 = surplus). Briefs must cite ADRs, so builders will cite the wrong decision | HIGH | Use one numbering. Recommend ADR-0nn = D00-nn and renumber the protocol table |
-| X2 | **WP dependencies inside the same wave** (F's model is not in the repo): F06 needs F07 (both W4); F11 and F18 need F09 (all W5); 107 needs F15 (W7, E-60); 214 needs 213 investment income (W18); 113 uses 112 (W11) | HIGH | Re-sequence, or declare a stub contract per pair in the wave brief |
-| X3 | **WP-level scope is not written down for 101–127 / 201–231.** §8.3 says deps and ATs are "as in the validator F model", which is not in `docs/plan/`. No README line ranges per WP | HIGH | Publish `docs/plan/wp-catalogue.md` (WP → README line ranges, owned tables, ATs, deps) before W7 |
-| X4 | Dangling references: `validation/R-redteam.md` (§15) does not exist. `docs/adr/` does not exist yet (expected after WP-00-DOC) | MEDIUM | Create or re-point |
+| X2 | **BU dependencies inside the same wave** (F's model is not in the repo): F06 needs F07 (both W4); F11 and F18 need F09 (all W5); 107 needs F15 (W7, E-60); 214 needs 213 investment income (W18); 113 uses 112 (W11) | HIGH | Re-sequence, or declare a stub contract per pair in the wave brief |
+| X3 | **BU-level scope is not written down for 101–127 / 201–231.** §8.3 says deps and ATs are "as in the validator F model", which is not in `docs/plan/`. No README line ranges per BU | HIGH | Publish `docs/plan/build-units.md` (BU → README line ranges, owned tables, ATs, deps) before W7 |
+| X4 | Dangling references: `validation/R-redteam.md` (§15) does not exist. `docs/adr/` does not exist yet (expected after BU-00-DOC) | MEDIUM | Create or re-point |
 | X5 | PLAN §4 says "all [~216] flags are tracked in findings-ledger.md". The ledger holds only the 25 consolidated items and says the rest "stay in the reports" | MEDIUM | Seed V-* rows for every BLOCKER/HIGH (at least the 13 in §4.3), or fix the PLAN sentence |
-| X6 | Protocol vs plan conventions differ: package scope `@tt/*` vs `@takafultech/*` (D00-24); migration numbering "reserved block in migration-ledger.md" vs "wave*100+slot*25+n"; "WP-00 Contracts & Rails" vs F01–F21; G4 coverage thresholds (protocol ≥90/95% vs plan ≥85/90%) | MEDIUM | Align the protocol to PLAN-V1 (or the reverse) in WP-00-DOC |
+| X6 | Protocol vs plan conventions differ: package scope `@tt/*` vs `@takafultech/*` (D00-24); migration numbering "reserved block in migration-ledger.md" vs "wave*100+slot*25+n"; "BU-00 Contracts & Rails" vs F01–F21; G4 coverage thresholds (protocol ≥90/95% vs plan ≥85/90%) | MEDIUM | Align the protocol to PLAN-V1 (or the reverse) in BU-00-DOC |
 | X7 | PLAN §2 says D has "about 10 HIGH"; the report has 7 HIGH + 1 BLOCKER | LOW | Correct the count |
