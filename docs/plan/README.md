@@ -1,13 +1,15 @@
 # TakafulTech: build planning
 
-Start with **[PLAN-V1.md](PLAN-V1.md)**.
+**Active plan: [PLAN-V2-30D.md](PLAN-V2-30D.md).** It covers the lean 30-day build: the client's 12 modules plus HR and payroll, built in TypeScript, Arabic-first, with at most 4 agents and local gates only.
 
 | File | Purpose |
 |---|---|
-| [PLAN-V1.md](PLAN-V1.md) | The audited build execution plan: verdict, module verdicts, blockers, Decision Pack D00, README errata, multi-agent operating model, wave schedule, timeline, gates |
-| [BUILD-UNITS.md](BUILD-UNITS.md) | Every build unit with its wave, scope, README line ranges, dependencies, acceptance tests and hours. Builder briefs are written from this file |
-| [AGENT-PROTOCOL.md](AGENT-PROTOCOL.md) | Builder brief template, reviewer brief template, auditor checklist, gate catalogue G0–G27, adversarial test library |
-| [findings-ledger.md](findings-ledger.md) | Single register of findings (spec validation now; build waves later) |
-| [validation/](validation/) | Validator reports A–E and red-team reports R1 and R2 |
+| [PLAN-V2-30D.md](PLAN-V2-30D.md) | Active plan: what the platform is at day 30, compliance verdict, what is left out and whether it matters, 21-wave schedule, CPU budget, gates, client decision deadlines |
+| [ARABIC-DICTIONARY-SPEC.md](ARABIC-DICTIONARY-SPEC.md) | Arabic-first rule (R9) and the terminology dictionary admin page (M35) |
+| [../decisions/](../decisions/) | Arabic decision workbook for the client: rules and edge cases per module |
+| [AGENT-PROTOCOL.md](AGENT-PROTOCOL.md) | Builder brief, reviewer brief, auditor checklist, gate catalogue, adversarial tests (templates; V2 overrides on agents and CI) |
+| [findings-ledger.md](findings-ledger.md) | Register of findings |
+| [validation/](validation/) | Validator reports A–E, red-team reports R1 and R2, Arabic brief diff (H) |
+| [PLAN-V1.md](PLAN-V1.md), [BUILD-UNITS.md](BUILD-UNITS.md) | Reference only: audit and plan for the full README scope (superseded by V2) |
 
-The build has not started. It starts when D00-A is approved and the auditor approves the W1 briefs (PLAN-V1 §14).
+The build has not started.
