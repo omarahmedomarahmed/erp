@@ -549,7 +549,8 @@ export interface SsbApproval {
   id: string;
   subjectKind: "product" | "split_rule" | "investment" | "counterparty" | "surplus_run" | "form";
   subjectId: string;
-  resolutionId: string;
+  /** Absent while pending */
+  resolutionId?: string;
   date: ISODate;
   status: "approved" | "pending" | "rejected";
 }
