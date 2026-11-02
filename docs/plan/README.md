@@ -12,4 +12,6 @@
 | [validation/](validation/) | Validator reports A–E, red-team reports R1 and R2, Arabic brief diff (H) |
 | [PLAN-V1.md](PLAN-V1.md), [BUILD-UNITS.md](BUILD-UNITS.md) | Reference only: audit and plan for the full README scope (superseded by V2) |
 
-The build has not started.
+Client-facing demo: **https://takafuly.vercel.app** (code-protected; see `apps/demo/README.md`). Deck PDFs: `docs/presentation/`.
+
+The production build has not started.
