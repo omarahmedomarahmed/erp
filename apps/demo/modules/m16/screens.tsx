@@ -8,7 +8,7 @@ import {
 import { useT } from "@/components/I18n";
 import {
   accountById, agentById, cessions, claims, commissionLines, complianceCertificates, counterpartyById, customerById, interFundTransfers,
-  investmentContracts, journalById, journals, payrollRuns, policies, policyById, productById, receipts, round3, ssbApprovals, ssbMembers,
+  investmentContracts, journals, payrollRuns, policies, policyById, productById, receipts, round3, ssbApprovals, ssbMembers,
   ssbResolutions, shariaExceptions, surplusRun, TODAY,
 } from "@/data/seed";
 import type { FundCode, ShariaException, ShariaStatus, SsbResolution } from "@/data/seed";
@@ -39,7 +39,7 @@ const REGISTER: RegRow[] = [
   ...policies.map((p): RegRow => ({ id: p.certNo, kind: "policy", date: p.issuedAt, funds: ["PTF", "SHF"], amount: p.contribution, status: p.sharia_status,
     descAr: `${productById[p.productId].nameAr} – ${customerById[p.customerId].nameAr}`, descEn: `${productById[p.productId].nameEn} – ${customerById[p.customerId].nameEn}` })),
   ...receipts.map((r): RegRow => ({ id: r.id, kind: "receipt", date: r.date, funds: ["PTF", "SHF"], amount: r.amount, status: r.sharia_status,
-    descAr: `تحصيل ${policyById[r.policyId].certNo}`, descEn: `Collection ${policyById[r.policyId].certNo}` })),
+    descAr: policyById[r.policyId].certNo, descEn: policyById[r.policyId].certNo })),
   ...claims.map((c): RegRow => ({ id: c.id, kind: "claim", date: c.registeredAt, funds: ["PTF"], amount: c.paid ?? c.approved ?? c.reserve, status: c.sharia_status,
     descAr: c.descriptionAr, descEn: c.descriptionEn })),
   ...journals.map((j): RegRow => ({ id: j.id, kind: "journal", date: j.date, funds: Array.from(new Set(j.lines.map((l) => l.fund))) as FundCode[],
@@ -49,7 +49,7 @@ const REGISTER: RegRow[] = [
     descAr: agentById[l.agentId].nameAr, descEn: agentById[l.agentId].nameEn })),
   ...cessions.map((c): RegRow => ({ id: c.id, kind: "cession", date: c.date, funds: ["PTF"], amount: c.ceded, status: c.sharia_status, descAr: c.treatyId, descEn: c.treatyId })),
   ...payrollRuns.map((r): RegRow => ({ id: r.id, kind: "payroll", date: `${r.month}-27`, funds: ["SHF"], amount: r.totals.gross, status: r.sharia_status,
-    descAr: `رواتب ${r.month}`, descEn: `Payroll ${r.month}` })),
+    descAr: r.month, descEn: r.month })),
   ...Object.values(counterpartyById).map((c): RegRow => ({ id: c.id, kind: "counterparty", date: "", funds: ["PTF"], amount: 0, status: c.sharia_status, descAr: c.nameAr, descEn: c.nameEn })),
 ].sort((a, b) => b.date.localeCompare(a.date));
 
@@ -429,5 +429,3 @@ export const screens: Record<string, ComponentType> = {
   s3: Board,
   s4: AnnualReview,
 };
-
-void journalById;
