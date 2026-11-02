@@ -2,14 +2,28 @@ import type { ModuleMeta } from "@/lib/types";
 
 export const meta: ModuleMeta = {
   id: "m02",
-  decisionIds: [],
+  decisionIds: ["M02"],
   nameKey: "m02.name",
   taglineKey: "m02.tagline",
-  deptKey: "dept.management",
-  icon: "LayoutGrid",
+  deptKey: "dept.underwriting",
+  icon: "Users",
   color: "#0f75db",
-  briefRef: "",
-  needs: [],
+  briefRef: "3.1",
+  sensitive: {
+    riskKey: "m02.risk",
+    controlKeys: ["m02.control.1", "m02.control.2", "m02.control.3", "m02.control.4"],
+    guards: [
+      { id: "m02-dup-create", tryKey: "m02.guard.dup.try", blockedKey: "m02.guard.dup.blocked" },
+      { id: "m02-merge-self", tryKey: "m02.guard.merge.try", blockedKey: "m02.guard.merge.blocked" },
+    ],
+  },
+  needs: [
+    { ar: "عينة مموّهة من ملف العملاء الحالي لنقيس التكرار ونخطط للترحيل", en: "An anonymised sample of today's customer file, to measure duplicates and plan migration" },
+    { ar: "البيانات والوثائق الإلزامية لكل مستوى KYC ولكل منتج", en: "Mandatory data and documents for each KYC level and product" },
+    { ar: "من يعتمد دمج السجلات المكررة، وحدود تنبيه الاحتيال لمسؤول الامتثال", en: "Who approves merging duplicates, and the fraud-alert thresholds for compliance" },
+    { ar: "هل لديكم اتفاق أو API مع السجل المدني للتحقق من الرقم الوطني؟", en: "Do you have an agreement or API with the Civil Registry to verify national numbers?" },
+    { ar: "نص موافقة العميل على معالجة بياناته وفق القانون 6/2022", en: "Customer consent wording for data processing under Law 6/2022" },
+  ],
   screens: [
     { id: "s1", titleKey: "m02.s1.title", captionKey: "m02.s1.caption" },
     { id: "s2", titleKey: "m02.s2.title", captionKey: "m02.s2.caption" },

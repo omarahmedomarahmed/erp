@@ -2,14 +2,20 @@ import type { ModuleMeta } from "@/lib/types";
 
 export const meta: ModuleMeta = {
   id: "m10",
-  decisionIds: [],
+  decisionIds: ["M10"],
   nameKey: "m10.name",
   taglineKey: "m10.tagline",
-  deptKey: "dept.management",
-  icon: "LayoutGrid",
-  color: "#0f75db",
-  briefRef: "",
-  needs: [],
+  deptKey: "dept.reinsurance",
+  icon: "Share2",
+  color: "#284dae",
+  briefRef: "3.5",
+  needs: [
+    { ar: "نسخ اتفاقيات إعادة التكافل السارية وملاحقها (الاحتفاظ، الحدود، الطبقات، العمولات)", en: "Current retakaful treaties and addenda (retention, limits, layers, commissions)" },
+    { ar: "قائمة المعيدين وتصنيفاتهم وحالة تسجيلهم لدى هيئة الإشراف", en: "Counterparties with ratings and ISA registration status" },
+    { ar: "نموذج الكشف الشهري و Bordereau الذي يطلبه كل معيد", en: "The monthly statement and bordereau format each counterparty expects" },
+    { ar: "قرارات الهيئة الشرعية بشأن الإسناد لمعيد تقليدي", en: "Sharia board resolutions on cessions to conventional reinsurers" },
+    { ar: "نسبة الإسناد الإلزامي المحلي إن وُجدت (المادة 13)", en: "Compulsory local cession quota, if any (Art. 13)" },
+  ],
   screens: [
     { id: "s1", titleKey: "m10.s1.title", captionKey: "m10.s1.caption" },
     { id: "s2", titleKey: "m10.s2.title", captionKey: "m10.s2.caption" },

@@ -16,6 +16,7 @@ import { dict as d_m33 } from "./m33";
 import { dict as d_m34 } from "./m34";
 import { dict as d_pages } from "./pages";
 import { dict as d_deck } from "./deck";
+import { dict as d_risks } from "./risks";
 
 export const BASE_DICT: Dict = {
   ...d_common,
@@ -35,4 +36,5 @@ export const BASE_DICT: Dict = {
   ...d_m34,
   ...d_pages,
   ...d_deck,
+  ...d_risks,
 };

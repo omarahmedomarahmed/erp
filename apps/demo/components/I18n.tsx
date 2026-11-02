@@ -18,7 +18,9 @@ export function useT() {
     if (vars) for (const [k, v] of Object.entries(vars)) s = s.replaceAll(`{${k}}`, String(v));
     return s;
   };
+  /** Text in a specific language (e.g. the second language on a bilingual document). */
+  const tl = (key: string, l: Lang) => dict[key]?.[l] || key;
   /** Pick between inline Arabic/English values (for seed data such as names). */
   const pick = (ar: string, en?: string) => (lang === "en" && en ? en : ar);
-  return { t, lang, pick };
+  return { t, tl, lang, pick };
 }

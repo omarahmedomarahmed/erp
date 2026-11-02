@@ -2,14 +2,20 @@ import type { ModuleMeta } from "@/lib/types";
 
 export const meta: ModuleMeta = {
   id: "m33",
-  decisionIds: [],
+  decisionIds: ["M33"],
   nameKey: "m33.name",
   taglineKey: "m33.tagline",
-  deptKey: "dept.management",
-  icon: "LayoutGrid",
-  color: "#0f75db",
+  deptKey: "dept.hr",
+  icon: "Users",
+  color: "#0f8b8d",
   briefRef: "",
-  needs: [],
+  needs: [
+    { ar: "الهيكل التنظيمي الحالي: الإدارات والوظائف والدرجات ومراكز التكلفة", en: "Current org structure: departments, positions, grades and cost centres" },
+    { ar: "لائحة شؤون الموظفين: أنواع الإجازات وأرصدتها وقواعد الترحيل", en: "Staff regulations: leave types, entitlements and carry-over rules" },
+    { ar: "نماذج العقود وقائمة الوثائق المطلوبة لكل موظف مع مدة صلاحيتها", en: "Contract templates and the required documents per employee with validity" },
+    { ar: "بيانات الموظفين الحالية في Excel، مع أرقام الحسابات المصرفية", en: "Current staff data in Excel, including bank account numbers" },
+    { ar: "من يعتمد الإجازات والتعيينات في كل إدارة", en: "Who approves leave and hiring in each department" },
+  ],
   screens: [
     { id: "s1", titleKey: "m33.s1.title", captionKey: "m33.s1.caption" },
     { id: "s2", titleKey: "m33.s2.title", captionKey: "m33.s2.caption" },
