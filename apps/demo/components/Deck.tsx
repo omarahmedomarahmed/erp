@@ -49,11 +49,11 @@ function ModuleSlide({ m, n, total }: { m: ModuleMeta; n: number; total: number 
           {m.sensitive && <span className="rounded-full bg-accent px-3 py-1 font-bold text-white">{t("deck.module.sensitive")}</span>}
         </div>
       </header>
-      <div className="grid flex-1 grid-cols-2 gap-x-6 gap-y-3 px-12 pb-14">
+      <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-2 gap-x-6 gap-y-3 px-12 pb-12">
         {m.screens.map((s) => (
           <figure key={s.id} className="flex min-h-0 flex-col gap-1.5">
             <div className="min-h-0 flex-1 overflow-hidden rounded-lg border border-line bg-canvas shadow-sm">
-              <img src={`/deck/${m.id}-${s.id}-${lang}.png`} alt={t(s.titleKey)} className="h-full w-full object-cover object-top" />
+              <img src={`/deck/${m.id}-${s.id}-${lang}.jpg`} alt={t(s.titleKey)} className="h-full w-full object-cover object-top" />
             </div>
             <figcaption className="text-[14px] leading-snug"><b className="text-navy">{t(s.titleKey)}:</b> <span className="text-muted">{t(s.captionKey)}</span></figcaption>
           </figure>
