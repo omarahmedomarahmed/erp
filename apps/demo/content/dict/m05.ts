@@ -97,7 +97,7 @@ export const dict: Dict = {
   "m05.rv.reviewed": { ar: "راجعناها مع الهيئة الشرعية لسنة 2026", en: "Reviewed with the SSB for 2026", cat: "message" },
   "m05.rv.first": { ar: "أول إصدار", en: "First version", cat: "message" },
   "m05.vs.active": { ar: "سارية", en: "Active", cat: "status" },
-  "m05.vs.superseded": { ar: "استُبدلت", en: "Superseded", cat: "status" },
+  "m05.vs.superseded": { ar: "سابقة", en: "Superseded", cat: "status" },
   "m05.vs.draft": { ar: "مسودة", en: "Draft", cat: "status" },
 
   "m05.sim.title": { ar: "محاكاة حد القبول الآلي للشامل (UW-MTR-01 / UW-MTR-02)", en: "Simulate the comprehensive motor auto-accept limit (UW-MTR-01 / UW-MTR-02)", cat: "label" },

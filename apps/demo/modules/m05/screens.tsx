@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState, type ComponentType, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ComponentType, type ReactNode } from "react";
 import { Zap, CheckCircle2 } from "lucide-react";
 import {
   Badge, BarChart, Button, ControlPanel, DataTable, DateText, Fields, KpiRow, Modal, Money, Panel, Timeline,
@@ -82,7 +82,10 @@ function InstantDecision() {
     si: 950000, hazardous: false, age: ageOf(STORY.customerId), days: 21, zone: "schengen",
   });
   const run = (x: Input) => { const t0 = performance.now(); const d = evaluate(x); return { d, ms: performance.now() - t0, at: new Date().toISOString().slice(11, 19) }; };
-  const [res, setRes] = useState(() => run(inp));
+  // Deterministic first render (no clock values) so server and client markup match; the real timing runs after mount.
+  const [res, setRes] = useState(() => ({ d: evaluate(inp), ms: 0, at: "00:00:00" }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { setRes(run(inp)); }, []);
   const set = <K extends keyof Input>(k: K, v: Input[K]) => setInp((x) => ({ ...x, [k]: v }));
   const lvl = res.d.level ? levelRow(res.d.level) : undefined;
   const isHero = inp.product === "MTR" && inp.customerId === STORY.customerId && inp.value === heroQ.sumInsured && res.d.outcome === "auto_accept";

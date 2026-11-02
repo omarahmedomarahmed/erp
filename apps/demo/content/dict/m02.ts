@@ -111,7 +111,7 @@ export const dict: Dict = {
   "m02.cl.id": { ar: "رقم المطالبة", en: "Claim no.", cat: "label" },
   "m02.cl.loss": { ar: "تاريخ الحادث", en: "Loss date", cat: "label" },
   "m02.cl.paid": { ar: "المدفوع", en: "Paid", cat: "label" },
-  "m02.cl.fund": { ar: "يُصرف من", en: "Paid from", cat: "label" },
+  "m02.cl.fund": { ar: "نصرفه من", en: "Paid from", cat: "label" },
 
   "m02.dup.k.open": { ar: "حالات تكرار مفتوحة", en: "Open duplicate cases", cat: "label" },
   "m02.dup.k.merged": { ar: "دمجناها", en: "Merged", cat: "label" },
