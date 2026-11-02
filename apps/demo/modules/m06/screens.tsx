@@ -128,7 +128,7 @@ function PolicyRecord({ id, onBack }: { id: string; onBack: () => void }) {
             { key: "seq", label: "#", render: (i) => <span className="num">{i.seq}</span> },
             { key: "due", label: t("m06.ins.due"), render: (i) => <DateText value={i.dueDate} /> },
             { key: "amt", label: t("common.amount"), align: "end", render: (i) => <Money value={i.amount} /> },
-            { key: "st", label: t("common.status"), render: (i) => <Badge tone={i.status === "paid" ? "ok" : i.status === "overdue" ? "danger" : "neutral"}>{t(`m06.ins.${i.status}`)}</Badge> },
+            { key: "st", label: t("common.status"), render: (i) => <Badge tone={i.status === "paid" ? "ok" : i.status === "overdue" ? "danger" : "neutral"}>{t(`m06.insSt.${i.status}`)}</Badge> },
           ]} />
         </Panel>
       </div>
