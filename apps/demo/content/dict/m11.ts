@@ -9,9 +9,9 @@ export const dict: Dict = {
   "m11.ctl.portfolio": { ar: "محفظة مستقلة لكل صندوق، والنظام يمنع جمع أموالها", en: "One portfolio per fund; the system never pools their money", cat: "help" },
   "m11.ctl.mudarib": { ar: "حصة المضارب بنسبة معتمدة فقط، وتنتقل بتحويل بين الصناديق", en: "Mudarib share only at the approved ratio, moved by an inter-fund transfer", cat: "help" },
   "m11.ctl.purify": { ar: "أي دخل غير متوافق يذهب إلى حساب التطهير لا الإيرادات", en: "Any non-compliant income goes to purification, never to income", cat: "help" },
-  "m11.guard.riba.try": { ar: "جرّب حجز وديعة بفائدة", en: "Try to book an interest-bearing deposit", cat: "button" },
+  "m11.guard.riba.try": { ar: "محاولة حجز وديعة بفائدة", en: "Attempt to book an interest-bearing deposit", cat: "button" },
   "m11.guard.riba.blocked": { ar: "رفض النظام الحجز: الوديعة بفائدة ربا محرّم. النظام يقبل فقط العقود والجهات التي اعتمدتها الهيئة الشرعية (مرابحة، مضاربة، إجارة، وكالة استثمار، صكوك). وإن قيّد مصرف فائدة على حساب الشركة، يحوّلها النظام إلى التطهير.", en: "The system blocked it: an interest-bearing deposit is riba. The system accepts only SSB-approved contracts and counterparties (Murabaha, Mudaraba, Ijara, Wakala investment, sukuk). If a bank credits interest anyway, the system moves it to purification.", cat: "message" },
-  "m11.guard.pool.try": { ar: "جرّب استثمار مال المشتركين في محفظة المساهمين", en: "Try to invest participants' money in the shareholders' portfolio", cat: "button" },
+  "m11.guard.pool.try": { ar: "محاولة استثمار مال المشتركين في محفظة المساهمين", en: "Attempt to invest participants' money in the shareholders' portfolio", cat: "button" },
   "m11.guard.pool.blocked": { ar: "رفضت قاعدة البيانات العملية: محفظة كل صندوق مستقلة، ومال صندوق المشتركين يبقى في محفظته فقط، ويأخذ المشغل حصة المضارب المعتمدة بتحويل بين الصناديق.", en: "The database blocked it: each fund has its own portfolio. Participants' money stays only in their portfolio; the operator takes the approved Mudarib share by an inter-fund transfer.", cat: "message" },
 
   "m11.s1.title": { ar: "المحافظ", en: "Portfolios", cat: "menu" },
