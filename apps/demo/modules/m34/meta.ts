@@ -19,7 +19,7 @@ export const meta: ModuleMeta = {
   },
   needs: [
     { ar: "نسب الضمان الاجتماعي وشرائح ضريبة الدخل والدمغة والتضامن، يؤكدها محاسب الرواتب", en: "Social security, income tax bands, stamp and solidarity rates, confirmed by the payroll accountant" },
-    { ar: "آخر 3 مسيّرات رواتب فعلية لنطابق الحساب حتى الدرهم", en: "The last 3 actual payroll runs, to match our calculation to the dirham" },
+    { ar: "آخر 3 مسيّرات رواتب فعلية، لمطابقة حساب النظام حتى الدرهم", en: "The last 3 actual payroll runs, to match the system's calculation to the dirham" },
     { ar: "مكونات الراتب والبدلات وقواعد العمل الإضافي لكل درجة", en: "Pay components, allowances and overtime rules per grade" },
     { ar: "صيغة ملف التحويل لكل مصرف تتعامل معه الشركة", en: "The transfer file format of each bank the company uses" },
     { ar: "من يعدّ المسيّر ومن يدققه ومن يعتمده", en: "Who prepares, checks and approves the payroll" },

@@ -21,7 +21,7 @@ export const meta: ModuleMeta = {
     { ar: "قائمة الاستثمارات القائمة لكل صندوق: العقد والطرف ورأس المال والمدة والعائد", en: "Current investments per fund: contract, counterparty, principal, term and return" },
     { ar: "نسبة حصة المضارب أو أجرة وكالة الاستثمار التي اعتمدتها الهيئة الشرعية", en: "The Mudarib share or investment Wakala fee approved by the SSB" },
     { ar: "قنوات الاستثمار والمصارف المعتمدة شرعاً وحدود التركّز", en: "SSB-approved investment channels and banks, and concentration limits" },
-    { ar: "كشوف المصارف لحسابات الاستثمار وأي فوائد قيّدها المصرف سابقاً، لنطهّرها", en: "Bank statements of investment accounts and any interest credited before, for purification" },
+    { ar: "كشوف المصارف لحسابات الاستثمار وأي فوائد قيّدها المصرف سابقاً، لغرض التطهير", en: "Bank statements of investment accounts and any interest credited before, for purification" },
   ],
   screens: [
     { id: "s1", titleKey: "m11.s1.title", captionKey: "m11.s1.caption" },

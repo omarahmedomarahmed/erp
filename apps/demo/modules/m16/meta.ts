@@ -20,7 +20,7 @@ export const meta: ModuleMeta = {
   needs: [
     { ar: "أسماء أعضاء الهيئة الشرعية وأرقام هواتفهم للتوقيع الإلكتروني (OTP)", en: "SSB member names and phone numbers for e-signature (OTP)" },
     { ar: "سجل قرارات الهيئة السابقة واعتماداتها للمنتجات والنماذج وقواعد التقسيم", en: "Past SSB resolutions and their approvals of products, forms and split rules" },
-    { ar: "آخر تقرير مراجعة شرعية سنوية وشهادة الالتزام الصادرة", en: "Your latest annual Sharia review report and issued compliance certificate" },
+    { ar: "آخر تقرير مراجعة شرعية سنوية وشهادة الالتزام الصادرة", en: "Latest annual Sharia review report and issued compliance certificate" },
     { ar: "من يملك صلاحية تغيير الحالة الشرعية (الهيئة، المراجع الشرعي الداخلي، مراجع كل فرع)", en: "Who may change a Sharia status (SSB, internal Sharia auditor, branch auditors)" },
     { ar: "حالات التطهير السابقة ومبالغها والجهات الخيرية المعتمدة", en: "Past purification cases, amounts and approved charities" },
   ],
