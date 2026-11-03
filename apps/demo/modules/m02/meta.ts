@@ -18,10 +18,10 @@ export const meta: ModuleMeta = {
     ],
   },
   needs: [
-    { ar: "عينة مموّهة من ملف العملاء الحالي لنقيس التكرار ونخطط للترحيل", en: "An anonymised sample of today's customer file, to measure duplicates and plan migration" },
+    { ar: "عينة مموّهة من ملف العملاء الحالي لقياس التكرار وتخطيط الترحيل", en: "Anonymised sample of the current customer file, for duplicate measurement and migration planning" },
     { ar: "البيانات والوثائق الإلزامية لكل مستوى KYC ولكل منتج", en: "Mandatory data and documents for each KYC level and product" },
-    { ar: "من يعتمد دمج السجلات المكررة، وحدود تنبيه الاحتيال لمسؤول الامتثال", en: "Who approves merging duplicates, and the fraud-alert thresholds for compliance" },
-    { ar: "هل لديكم اتفاق أو API مع السجل المدني للتحقق من الرقم الوطني؟", en: "Do you have an agreement or API with the Civil Registry to verify national numbers?" },
+    { ar: "جهة اعتماد دمج السجلات المكررة، وحدود تنبيه الاحتيال لمسؤول الامتثال", en: "Approver for duplicate merges, and fraud-alert thresholds for compliance" },
+    { ar: "حالة الاتفاق أو API مع السجل المدني للتحقق من الرقم الوطني", en: "Status of any agreement or API with the Civil Registry for national-number checks" },
     { ar: "نص موافقة العميل على معالجة بياناته وفق القانون 6/2022", en: "Customer consent wording for data processing under Law 6/2022" },
   ],
   screens: [

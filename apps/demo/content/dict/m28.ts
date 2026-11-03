@@ -3,7 +3,7 @@ import type { Dict } from "@/lib/types";
 // Dictionary entries for m28 (Dashboards & reports). Keys are prefixed with "m28.".
 export const dict: Dict = {
   "m28.name": { ar: "لوحات القيادة والتقارير", en: "Dashboards & reports", cat: "menu" },
-  "m28.tagline": { ar: "24 مؤشر KPI و12 لوحة تفاعلية نحدّثها كل ساعة، مع ربط Metabase أو Power BI", en: "24 KPIs and 12 interactive dashboards refreshed hourly, linked to Metabase or Power BI", cat: "help" },
+  "m28.tagline": { ar: "24 مؤشر KPI و12 لوحة تفاعلية تتحدّث كل ساعة، مع ربط Metabase أو Power BI", en: "24 KPIs and 12 interactive dashboards refreshed hourly, linked to Metabase or Power BI", cat: "help" },
 
   "m28.s1.title": { ar: "اللوحة التنفيذية", en: "Executive dashboard", cat: "menu" },
   "m28.s1.caption": { ar: "أهم المؤشرات للإدارة العليا في شاشة واحدة، مع التنبيهات واختيار أي لوحة من اللوحات الـ12.", en: "Top-management KPIs on one screen, with alerts and a switch to any of the 12 dashboards.", cat: "help" },
@@ -33,7 +33,7 @@ export const dict: Dict = {
   "m28.exec.lr": { ar: "نسبة الخسارة الشهرية", en: "Monthly loss ratio", cat: "label" },
   "m28.exec.alerts": { ar: "تنبيهات للإدارة", en: "Management alerts", cat: "label" },
   "m28.alert.lr": { ar: "نسبة الخسارة لـ {p} بلغت {v}% في أكتوبر (فوق 60%).", en: "{p} loss ratio reached {v}% in October (above 60%).", cat: "message" },
-  "m28.alert.recoverable": { ar: "استردادات إعادة تكافل لم نحصّلها: {v}.", en: "Retakaful recoveries not yet collected: {v}.", cat: "message" },
+  "m28.alert.recoverable": { ar: "استردادات إعادة تكافل غير محصّلة: {v}.", en: "Retakaful recoveries not yet collected: {v}.", cat: "message" },
   "m28.alert.sla": { ar: "متوسط تسوية المطالبات {v} يوم عمل: ضمن هدف 5 أيام.", en: "Average claim settlement {v} working days: within the 5-day target.", cat: "message" },
 
   "m28.dim.branch": { ar: "الفرع والمنفذ", en: "Branch / outlet", cat: "label" },
@@ -55,13 +55,13 @@ export const dict: Dict = {
   "m28.lr.paid": { ar: "التعويضات المصروفة", en: "Claims paid", cat: "label" },
   "m28.lr.ytd": { ar: "منذ بداية السنة", en: "Year to date", cat: "label" },
   "m28.lr.last": { ar: "أكتوبر", en: "October", cat: "label" },
-  "m28.lr.def": { ar: "نسبة الخسارة = التعويضات المصروفة ÷ المساهمات المكتتبة. حدّدوا التعريف النهائي في الإعدادات.", en: "Loss ratio = claims paid ÷ contributions written. Set the final definition in Settings.", cat: "help" },
+  "m28.lr.def": { ar: "نسبة الخسارة = التعويضات المصروفة ÷ المساهمات المكتتبة. التعريف النهائي من الإعدادات.", en: "Loss ratio = claims paid ÷ contributions written. Final definition in Settings.", cat: "help" },
   "m28.lr.trend": { ar: "نسبة الخسارة شهرياً", en: "Loss ratio per month", cat: "label" },
   "m28.lr.all": { ar: "كل الخطوط", en: "All lines", cat: "label" },
   "m28.lr.days": { ar: "متوسط أيام التسوية شهرياً", en: "Average settlement days per month", cat: "label" },
 
   "m28.fund.trend": { ar: "السيولة آخر كل شهر لكل صندوق", en: "Month-end liquidity per fund", cat: "label" },
-  "m28.fund.note": { ar: "نحسب السيولة من حسابات النقد والمصارف في دفتر الأستاذ، لكل صندوق على حدة.", en: "We derive liquidity from the cash and bank accounts in the general ledger, per fund.", cat: "help" },
+  "m28.fund.note": { ar: "النظام يحسب السيولة من حسابات النقد والمصارف في دفتر الأستاذ، لكل صندوق على حدة.", en: "The system derives liquidity from the cash and bank accounts in the general ledger, per fund.", cat: "help" },
   "m28.bi.title": { ar: "ربط Metabase / Power BI", en: "Metabase / Power BI connection", cat: "label" },
   "m28.bi.metabase": { ar: "Metabase", en: "Metabase", cat: "label" },
   "m28.bi.powerbi": { ar: "Power BI", en: "Power BI", cat: "label" },
@@ -75,7 +75,7 @@ export const dict: Dict = {
   "m28.bi.views": { ar: "العروض المتاحة", en: "Available views", cat: "field" },
   "m28.bi.test": { ar: "اختبار الاتصال", en: "Test connection", cat: "button" },
   "m28.bi.ok": { ar: "متصل · {n} عروض · قراءة فقط", en: "Connected · {n} views · read only", cat: "status" },
-  "m28.guard.write.try": { ar: "جرّب الكتابة من أداة التقارير", en: "Try to write from the BI tool", cat: "button" },
+  "m28.guard.write.try": { ar: "تجربة الكتابة من أداة التقارير", en: "Try to write from the BI tool", cat: "button" },
   "m28.guard.write.blocked": { ar: "دور rpt_readonly يقرأ العروض فقط. قاعدة البيانات ترفض أي إضافة أو تعديل أو حذف.", en: "The rpt_readonly role reads views only. The database refuses any insert, update or delete.", cat: "message" },
 
   "m28.cat.title": { ar: "قائمة المؤشرات KPI", en: "KPI catalogue", cat: "label" },
@@ -94,7 +94,7 @@ export const dict: Dict = {
   "m28.k.11": { ar: "نسبة الخسارة", en: "Loss ratio", cat: "label" },
   "m28.k.12": { ar: "عدد المطالبات وتكرارها", en: "Claims count and frequency", cat: "label" },
   "m28.k.13": { ar: "متوسط أيام تسوية المطالبة", en: "Average settlement days", cat: "label" },
-  "m28.k.14": { ar: "مطالبات صرفناها خلال 5 أيام عمل", en: "Claims paid within 5 working days", cat: "label" },
+  "m28.k.14": { ar: "مطالبات مصروفة خلال 5 أيام عمل", en: "Claims paid within 5 working days", cat: "label" },
   "m28.k.15": { ar: "المطالبات القائمة", en: "Outstanding claims", cat: "label" },
   "m28.k.16": { ar: "رصيد استردادات إعادة التكافل", en: "Retakaful recoverable", cat: "label" },
   "m28.k.17": { ar: "السيولة لكل صندوق", en: "Liquidity per fund", cat: "label" },

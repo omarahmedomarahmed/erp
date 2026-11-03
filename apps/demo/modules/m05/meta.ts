@@ -11,9 +11,9 @@ export const meta: ModuleMeta = {
   briefRef: "3.3",
   needs: [
     { ar: "حدود مصفوفة الموافقة لكل دور وفرع: على مبلغ التغطية أم المساهمة؟", en: "Approval-matrix limits per role and branch: on sum covered or contribution?" },
-    { ar: "قواعد الاكتتاب المكتوبة اليوم لكل منتج، بما فيها حالات الرفض", en: "Today's written underwriting guidelines per product, including declines" },
+    { ar: "قواعد الاكتتاب المكتوبة اليوم لكل منتج، بما فيها حالات الرفض", en: "Current written underwriting guidelines per product, including declines" },
     { ar: "أسئلة الخطر لكل منتج، وأسئلة السن والصحة للسفر والحج والعمرة", en: "Risk questions per product, and age and health questions for travel, Hajj and Umrah" },
-    { ar: "مهلة الرد على الإحالة، ومن يقرر ليلاً عند المنافذ الحدودية", en: "Referral response time, and who decides at night at border points" },
+    { ar: "مهلة الرد على الإحالة، وصاحب القرار ليلاً عند المنافذ الحدودية", en: "Referral response time, and the night-time decision-maker at border points" },
     { ar: "طاقة اتفاقيات إعادة التكافل التي توجب إسناداً اختيارياً قبل الإصدار", en: "Treaty capacity limits that require facultative cover before issue" },
   ],
   screens: [

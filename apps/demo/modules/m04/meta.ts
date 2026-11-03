@@ -12,7 +12,7 @@ export const meta: ModuleMeta = {
   needs: [
     { ar: "قائمة الوكلاء والوسطاء ونقاط البيع مع أرقام التراخيص وتواريخ انتهائها", en: "Agents, brokers and outlets with licence numbers and expiry dates" },
     { ar: "جدول العمولات الحالي لكل منتج وشريحة، والنسبة المنظمة للإجباري", en: "Current commission table per product and tier, and the regulated compulsory rate" },
-    { ar: "مؤشرات KPI التي تريدون ربطها بالعمولة وقيمة كل مضاعف", en: "The KPIs you want to link to commission and each multiplier value" },
+    { ar: "مؤشرات KPI المرتبطة بالعمولة وقيمة كل مضاعف", en: "KPIs linked to commission and each multiplier value" },
     { ar: "أهداف كل وكيل للفترة القادمة ومن يعتمدها", en: "Each agent's targets for the next period and who approves them" },
     { ar: "عيّنة كشوف عمولة مصروفة وسياسة الاسترداد عند الإلغاء", en: "Sample paid commission statements and the clawback policy on cancellation" },
   ],

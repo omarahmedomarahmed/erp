@@ -14,7 +14,7 @@ export const meta: ModuleMeta = {
     { ar: "تعريف معتمد لـ «نسبة الخسارة» و«السيولة المتوفرة»", en: "An approved definition of “loss ratio” and “available liquidity”" },
     { ar: "من يرى أي لوحة، ومن يصدّر البيانات", en: "Who sees which dashboard, and who may export data" },
     { ar: "أداة التحليل المفضلة (Metabase أو Power BI) ومن يديرها", en: "Preferred BI tool (Metabase or Power BI) and who runs it" },
-    { ar: "أرقام النظام القديم للسنوات السابقة إن أردتم المقارنة", en: "Legacy-system figures for past years, if you want comparisons" },
+    { ar: "أرقام النظام القديم للسنوات السابقة للمقارنة", en: "Legacy-system figures for past years, for comparison" },
   ],
   screens: [
     { id: "s1", titleKey: "m28.s1.title", captionKey: "m28.s1.caption" },

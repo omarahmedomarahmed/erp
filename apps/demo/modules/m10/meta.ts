@@ -14,7 +14,7 @@ export const meta: ModuleMeta = {
     { ar: "قائمة المعيدين وتصنيفاتهم وحالة تسجيلهم لدى هيئة الإشراف", en: "Counterparties with ratings and ISA registration status" },
     { ar: "نموذج الكشف الشهري و Bordereau الذي يطلبه كل معيد", en: "The monthly statement and bordereau format each counterparty expects" },
     { ar: "قرارات الهيئة الشرعية بشأن الإسناد لمعيد تقليدي", en: "Sharia board resolutions on cessions to conventional reinsurers" },
-    { ar: "نسبة الإسناد الإلزامي المحلي (المادة 13) إن طبّقتموها", en: "Compulsory local cession quota, if any (Art. 13)" },
+    { ar: "نسبة الإسناد الإلزامي المحلي (المادة 13)، عند وجودها", en: "Compulsory local cession quota, if any (Art. 13)" },
   ],
   screens: [
     { id: "s1", titleKey: "m10.s1.title", captionKey: "m10.s1.caption" },
