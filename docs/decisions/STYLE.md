@@ -1,9 +1,14 @@
 # Arabic style rules for the decision workbook (owner's instructions, 2026-10-28)
 
-1. **No passive voice and no impersonal forms.** Banned: أُجِّل، يُحفظ، تُحسب، يُطبَّق، مُؤجَّل as a verb substitute, «يتم + مصدر», «تم + مصدر», «سيتم». Use:
-   - first person plural for our side: نبني، نحفظ، نحسب، أجّلنا، نقترح
-   - direct address for the company: اختاروا، حدّدوا، هل تريدون…؟
-   - a named actor when someone else acts: الهيئة الشرعية تعتمد…، المدير المالي يوقّع…
+1. **The system speaks, not us and not to them** (owner's instruction, 2026-11-03; replaces the earlier "we / you" rule).
+   - **Banned:** first person, e.g. «نسجل، نربط، نحفظ، نحسب، نقترح، أجّلنا، نحتاج، نريد، نحن، لنا، لدينا».
+   - **Banned:** addressing the reader, e.g. «أسئلتكم، لكم، منكم، تجاوبون، تقومون، اختاروا، حدّدوا، أرسلوا، هل تريدون».
+   - **Still banned:** passive and impersonal forms, e.g. «أُجِّل، يُحفظ، يتم + مصدر، تم + مصدر، سيتم».
+   - **Use** the system or a feature as the subject: «يسجّل النظام العميل ويتحقق من هويته», «تمنع قاعدة البيانات خلط الأموال», «تحسب المنصة الفائض».
+   - **Or use** a noun phrase: «تسجيل العميل والتحقق من هويته», «منع خلط أموال الصندوقين».
+   - **Named actors** are fine when a role acts: «الهيئة الشرعية تعتمد…», «المدير المالي يوقّع…».
+   - **English** follows the same rule: "The system blocks…", "Customer registration and identity check". Never "we" or "you".
+   - **Questions to the company** are neutral topic labels or noun phrases, e.g. «النظام الحالي: الاسم والإصدار وقاعدة البيانات وصلاحية الدخول», not «ما نظامكم؟».
 2. **Short and to the point.** Limits:
    - summary ≤ 20 words
    - each rule ≤ 12 words; at most 10 rules per module
