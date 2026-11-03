@@ -24,13 +24,13 @@ export const dict: Dict = {
   "m12.s3.caption": { ar: "ميزان مراجعة لكل صندوق أو مجمّع مع استبعاد الأرصدة المتبادلة، بضغطة واحدة", en: "Trial balance per fund, or combined with inter-fund eliminations, in one click", cat: "help" },
   "m12.s4.title": { ar: "القوائم المالية", en: "Financial statements", cat: "menu" },
   "m12.s4.caption": { ar: "المركز المالي وقائمة فائض المشتركين ودخل المساهمين بعناوين AAOIFI FAS 42، وإقفال الفترات", en: "Financial position, participants' surplus and shareholders' income in AAOIFI FAS 42 headings, plus period close", cat: "help" },
-  "m12.s2.pick": { ar: "قيود قصة محمد الورفلي:", en: "Mohamed Al-Warfalli story journals:", cat: "label" },
+  "m12.s2.pick": { ar: "قيود قصة محمد و.:", en: "Mohamed W. story journals:", cat: "label" },
 
   "m12.hero": { ar: "قصة العميل", en: "Hero story", cat: "label" },
   "m12.back": { ar: "رجوع إلى القائمة", en: "Back to list", cat: "button" },
   "m12.auto": { ar: "تلقائي", en: "Automatic", cat: "label" },
   "m12.filter.cross": { ar: "بين صندوقين (بتحويل)", en: "Cross-fund (with transfer)", cat: "label" },
-  "m12.filter.hero": { ar: "قصة الورفلي", en: "Al-Warfalli story", cat: "label" },
+  "m12.filter.hero": { ar: "قصة محمد و.", en: "Mohamed W. story", cat: "label" },
   "m12.list.count": { ar: "نعرض {shown} من {total} قيداً", en: "Showing {shown} of {total} journals", cat: "message" },
 
   "m12.col.journal": { ar: "رقم القيد", en: "Journal", cat: "field" },

@@ -18,6 +18,7 @@ export default async function Gate({ searchParams }: { searchParams: Promise<{ e
         {e && <p className="mt-2 text-[12px] text-danger">{t("pg.gate.wrongCode")}</p>}
         <button type="submit" className="mt-4 w-full rounded-md bg-brand py-2 font-bold text-white hover:bg-brand-deep">{t("pg.gate.submit")}</button>
         <p className="mt-3 text-center text-[11px] text-muted">{t("pg.gate.help")}</p>
+        <p className="mt-3 border-t border-line pt-3 text-center text-[10px] leading-relaxed text-muted">{t("app.disclaimer")}</p>
       </form>
     </div>
   );

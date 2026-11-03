@@ -4,7 +4,9 @@ import type { Dict } from "@/lib/types";
 export const dict: Dict = {
   "app.name": { ar: "منصة التكافل", en: "Takaful Platform", cat: "label" },
   "app.company": { ar: "شركة التكافل للتأمين", en: "Takaful Insurance Company", cat: "label" },
-  "app.demo": { ar: "نسخة عرض – بيانات تجريبية", en: "Demo version – sample data", cat: "message" },
+  "app.demo": { ar: "نسخة عرض · جميع الأسماء والبيانات وهمية، وأي تشابه مع أشخاص أو جهات حقيقية محض مصادفة", en: "Demo version · All names and data are fictitious; any resemblance to real persons or entities is purely coincidental", cat: "message" },
+  "app.demoShort": { ar: "نسخة عرض – بيانات وهمية", en: "Demo version – fictitious data", cat: "message" },
+  "app.disclaimer": { ar: "جميع الأسماء والأرقام والبيانات في هذا العرض وهمية لأغراض التوضيح فقط، وأي تشابه مع أشخاص أو جهات حقيقية محض مصادفة. الأسماء مختصرة عمداً، والمهم هو المسمى الوظيفي والصلاحيات.", en: "All names, figures and data in this demo are fictitious and for illustration only; any resemblance to real persons or entities is purely coincidental. Names are shortened on purpose: what matters is the job title and its access.", cat: "message" },
   "app.apps": { ar: "التطبيقات", en: "Apps", cat: "menu" },
   "app.home": { ar: "الرئيسية", en: "Home", cat: "menu" },
   "app.switchRole": { ar: "تبديل الدور", en: "Switch role", cat: "button" },

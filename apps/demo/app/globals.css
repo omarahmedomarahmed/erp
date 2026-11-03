@@ -23,7 +23,8 @@
 
 html, body { background: var(--color-canvas); color: var(--color-ink); }
 body { font-family: var(--font-sans); font-size: 14px; line-height: 1.65; }
-.num { font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; display: inline-block; }
+/* Digits read left-to-right inside Arabic text. No display rule here: it would override Tailwind layout (e.g. centred circles). */
+.num { font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
 .en { direction: ltr; unicode-bidi: isolate; }
 :focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }

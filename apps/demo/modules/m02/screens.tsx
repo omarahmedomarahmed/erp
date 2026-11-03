@@ -101,7 +101,7 @@ function NewCustomerModal({ open, onClose, onOpenExisting }: { open: boolean; on
   const { t, pick } = useT();
   const sample = customerById["CUS-1002"];
   const [nid, setNid] = useState(sample.nationalNo ?? "");
-  const [name, setName] = useState("احمد سالم الككلي");
+  const [name, setName] = useState("احمد سالم ك.");
   const [result, setResult] = useState<null | { existing?: Customer }>(null);
   const check = () => setResult({ existing: customers.find((c) => c.nationalNo && c.nationalNo === nid.trim()) });
   return (

@@ -28,8 +28,8 @@ export function Shell({ persona, current, children }: { persona: Persona; curren
             className="flex items-center gap-1 rounded-md px-2 py-1 text-[12px] hover:bg-white/10"><Languages size={15} aria-hidden />{t("app.lang")}</button>
           <Link href="/login" className="flex items-center gap-2 rounded-md bg-white/10 px-2 py-1 text-[12px] hover:bg-white/20">
             <UserRound size={15} aria-hidden />
-            <span className="hidden sm:inline">{lang === "en" ? persona.nameEn : persona.nameAr}</span>
-            <span className="text-white/70">· {t(persona.roleKey)}</span>
+            <span className="font-bold">{t(persona.roleKey)}</span>
+            <span className="hidden text-white/60 sm:inline">· {lang === "en" ? persona.nameEn : persona.nameAr}</span>
           </Link>
         </div>
       </header>

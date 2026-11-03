@@ -18,7 +18,7 @@ function Slide({ children, dark, n, total }: { children: ReactNode; dark?: boole
       {children}
       <footer className={`absolute bottom-0 inset-x-0 flex items-center gap-3 px-10 py-3 text-[12px] ${dark ? "text-white/60" : "text-muted"}`}>
         <img src={dark ? "/brand/logo.png" : "/brand/logo-navy.png"} alt="" className="h-5 w-auto opacity-80" />
-        <span>{t("app.demo")}</span><span className="ms-auto num">{n} / {total}</span>
+        <span>{t("app.demoShort")}</span><span className="ms-auto num">{n} / {total}</span>
       </footer>
     </section>
   );
@@ -80,6 +80,7 @@ export function Deck() {
           <h1 className="text-[56px] font-extrabold leading-tight">{t("deck.cover.title")}</h1>
           <p className="max-w-3xl text-[22px] text-white/80">{t("deck.cover.sub")}</p>
           <p className="text-[16px] text-accent">{t("deck.cover.date")}</p>
+          <p className="max-w-3xl text-[13px] text-white/60">{t("app.disclaimer")}</p>
         </div>
         <img src="/brand/slogan.svg" alt="" className="absolute bottom-16 end-16 h-16 w-auto opacity-70" />
       </Slide>,
