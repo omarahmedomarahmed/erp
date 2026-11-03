@@ -15,6 +15,7 @@ export const meta: ModuleMeta = {
     guards: [
       { id: "approveOwn", tryKey: "m34.guard.approveOwn.try", blockedKey: "m34.guard.approveOwn.blocked" },
       { id: "ownSalary", tryKey: "m34.guard.ownSalary.try", blockedKey: "m34.guard.ownSalary.blocked" },
+      { id: "m34-ptf", tryKey: "m34.guard.ptf.try", blockedKey: "m34.guard.ptf.blocked" },
     ],
   },
   needs: [

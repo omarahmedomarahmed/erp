@@ -3,7 +3,7 @@ import { useMemo, useState, type ComponentType } from "react";
 import { CheckCircle2, Download, Lock } from "lucide-react";
 import { useT } from "@/components/I18n";
 import {
-  Badge, Button, ControlPanel, DataTable, DateText, Fields, GuardButton, KpiRow, LockedNote, Money, Panel, Sheet, StatusBar, Timeline,
+  Badge, Button, ControlPanel, DataTable, DateText, Fields, KpiRow, LockedNote, Money, Panel, Sheet, StatusBar, Timeline,
   money, useFilter, type Column,
 } from "@/components/ui";
 import {
@@ -98,7 +98,6 @@ function PayrollRun() {
               {t(`m34.act.${run.current}`, { name: n.persona(ACTOR[run.current]) })}
             </Button>
           ) : <Badge tone="ok"><Lock size={11} aria-hidden />{t("m34.run.locked")}</Badge>}
-          {run.current === "checker" && !run.locked && <GuardButton tryLabel={t("m34.guard.approveOwn.try")} blockedText={t("m34.guard.approveOwn.blocked")} />}
         </>}
         side={<Timeline title={t("common.activity")} items={history} />}
       >
@@ -275,7 +274,7 @@ function PayrollJournal() {
         title={posted ? pick(posted.memoAr, posted.memoEn) : t("m34.j.memo", { month: run.month })}
         subtitle={<span className="num">{jId} · {posted?.date ?? `${run.month}-27`}</span>}
         status={<Badge tone={isPosted ? "ok" : "warn"}>{t(isPosted ? "m34.j.posted" : "m34.j.draft")}</Badge>}
-        actions={<GuardButton tryLabel={t("m34.guard.ptf.try")} blockedText={t("m34.guard.ptf.blocked")} />}
+       
         side={<Panel title={t("m34.j.checks")}>
           <ul className="grid gap-2 text-[12px]">
             {(["onlyShf", "balanced", "byCostCentre", "noInterest"] as const).map((k) => (

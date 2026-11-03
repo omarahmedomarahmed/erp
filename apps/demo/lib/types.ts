@@ -63,6 +63,8 @@ export interface ModuleMeta {
   /** Brief section from the client's proposal, e.g. "3.4"; empty for platform modules */
   briefRef: string;
   sensitive?: { riskKey: string; controlKeys: string[]; guards: GuardDemo[] };
+  /** Extra "not allowed" rules for modules that are not flagged sensitive. */
+  rules?: GuardDemo[];
   needs: ModuleNeed[];
   screens: [ScreenDef, ScreenDef, ScreenDef, ScreenDef];
 }

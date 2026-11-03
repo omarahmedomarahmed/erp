@@ -75,7 +75,7 @@ export const dict: Dict = {
   "m28.bi.views": { ar: "العروض المتاحة", en: "Available views", cat: "field" },
   "m28.bi.test": { ar: "اختبار الاتصال", en: "Test connection", cat: "button" },
   "m28.bi.ok": { ar: "متصل · {n} عروض · قراءة فقط", en: "Connected · {n} views · read only", cat: "status" },
-  "m28.guard.write.try": { ar: "تجربة الكتابة من أداة التقارير", en: "Try to write from the BI tool", cat: "button" },
+  "m28.guard.write.try": { ar: "تعديل البيانات من أداة التقارير", en: "Changing data from the reporting tool", cat: "button" },
   "m28.guard.write.blocked": { ar: "دور rpt_readonly يقرأ العروض فقط. قاعدة البيانات ترفض أي إضافة أو تعديل أو حذف.", en: "The rpt_readonly role reads views only. The database refuses any insert, update or delete.", cat: "message" },
 
   "m28.cat.title": { ar: "قائمة المؤشرات KPI", en: "KPI catalogue", cat: "label" },

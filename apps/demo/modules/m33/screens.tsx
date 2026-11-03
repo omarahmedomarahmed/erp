@@ -44,7 +44,7 @@ const STATUS_TONE: Record<string, Tone> = { active: "ok", on_leave: "info", term
 
 /** A new hire created inside the demo (local state only). */
 const NEW_HIRE: Employee = {
-  id: "EMP-031", nameAr: "يوسف د.", nameEn: "Youssef D.", departmentId: "DEP-UW", positionAr: "مكتتب", positionEn: "Underwriter",
+  id: "EMP-031", nameAr: "يوسف ا*****", nameEn: "Youssef A*******", departmentId: "DEP-UW", positionAr: "مكتتب", positionEn: "Underwriter",
   outletId: "BR-TRP", gender: "M", nationalNo: "119800005031", hireDate: TODAY, contractType: "fixed_term", contractEnd: "2029-11-01",
   grade: "G4", basic: 3000, housing: 450, transport: 150, children: 0, socialSecurity: true, idExpiry: "2030-05-01", status: "active",
 };

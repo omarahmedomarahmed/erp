@@ -150,7 +150,7 @@ export const dict: Dict = {
   },
   "pg.risks.col.risk": { ar: "الخطر", en: "Risk", cat: "label" },
   "pg.risks.col.control": { ar: "طريقة الحماية", en: "Control", cat: "label" },
-  "pg.risks.col.try": { ar: "تجربة", en: "Test", cat: "label" },
+  "pg.risks.col.try": { ar: "غير مسموح", en: "Not allowed", cat: "label" },
   "pg.risks.blocked.title": { ar: "النظام منع هذا الإجراء", en: "The system blocked this action", cat: "message" },
   "pg.risks.blocked.close": { ar: "حسنا", en: "Got it", cat: "button" },
   "pg.risks.openModule": { ar: "فتح الوحدة", en: "Open module", cat: "button" },

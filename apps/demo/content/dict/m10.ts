@@ -132,4 +132,8 @@ export const dict: Dict = {
   "m10.st.theyOwe": { ar: "الرصيد السالب: المعيد مدين للشركة.", en: "Negative balance: the counterparty owes the company.", cat: "help" },
   "m10.st.note": { ar: "النظام يصدر الكشف يوم 1 من كل شهر، ويقيد كل الحركات على صندوق المشتركين.", en: "The system issues the statement on the 1st of each month and post every movement to the participants' fund.", cat: "help" },
   "m10.st.months": { ar: "الكشوف المعروضة: من {a} إلى {b}.", en: "Statements shown: {a} to {b}.", cat: "help" },
+  "m10.guard.recovery.try": { ar: "ترحيل مطالبة دون حساب حصة معيد التكافل", en: "Posting a claim without the retakaful share", cat: "message" },
+  "m10.guard.recovery.blocked": { ar: "النظام يحسب حصة معيد التكافل من كل مطالبة حسب الاتفاقية، ويسجل المبلغ المستحق للاسترداد آلياً.", en: "The system calculates the retakaful share of every claim from the treaty and records the recoverable amount automatically.", cat: "message" },
+  "m10.guard.shf.try": { ar: "قيد اشتراكات إعادة التكافل على صندوق المساهمين", en: "Booking retakaful contributions to the shareholders' fund", cat: "message" },
+  "m10.guard.shf.blocked": { ar: "اشتراكات إعادة التكافل واستردادها تخص صندوق المشتركين، وقاعدة البيانات ترفض قيدها على صندوق المساهمين.", en: "Retakaful contributions and recoveries belong to the participants' fund; the database rejects booking them to the shareholders' fund.", cat: "message" },
 };

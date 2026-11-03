@@ -16,6 +16,10 @@ export const meta: ModuleMeta = {
     { ar: "مزود شهادة التوقيع الرقمي، وصورة الختم، واسم الموقّع على الشهادة", en: "The digital-signature certificate provider, stamp image and signatory name" },
     { ar: "عقد مزود SMS واسم المرسل، وطريقة التجديد لكل منتج", en: "The SMS provider contract and sender name, and the renewal mode per product" },
   ],
+  rules: [
+    { id: "m06-edit", tryKey: "m06.guard.edit.try", blockedKey: "m06.guard.edit.blocked" },
+    { id: "m06-unpaid", tryKey: "m06.guard.unpaid.try", blockedKey: "m06.guard.unpaid.blocked" },
+  ],
   screens: [
     { id: "s1", titleKey: "m06.s1.title", captionKey: "m06.s1.caption" },
     { id: "s2", titleKey: "m06.s2.title", captionKey: "m06.s2.caption" },

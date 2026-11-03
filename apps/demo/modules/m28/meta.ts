@@ -16,6 +16,9 @@ export const meta: ModuleMeta = {
     { ar: "أداة التحليل المفضلة (Metabase أو Power BI) ومن يديرها", en: "Preferred BI tool (Metabase or Power BI) and who runs it" },
     { ar: "أرقام النظام القديم للسنوات السابقة للمقارنة", en: "Legacy-system figures for past years, for comparison" },
   ],
+  rules: [
+    { id: "m28-write", tryKey: "m28.guard.write.try", blockedKey: "m28.guard.write.blocked" },
+  ],
   screens: [
     { id: "s1", titleKey: "m28.s1.title", captionKey: "m28.s1.caption" },
     { id: "s2", titleKey: "m28.s2.title", captionKey: "m28.s2.caption" },

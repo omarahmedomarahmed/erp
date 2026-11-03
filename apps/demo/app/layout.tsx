@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Almarai } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "@/components/I18n";
+import { Splash } from "@/components/Splash";
 import { loadDict } from "@/lib/dict";
 import { getSession } from "@/lib/session";
 
@@ -21,6 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} className={almarai.variable}>
       <body>
+        <Splash />
         <I18nProvider lang={lang} dict={dict}>{children}</I18nProvider>
       </body>
     </html>

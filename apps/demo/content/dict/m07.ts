@@ -9,9 +9,9 @@ export const dict: Dict = {
   "m07.control.2": { ar: "قاعدة البيانات ترفض قيد إيصال غير متوازن داخل كل صندوق، وتقفله بعد الترحيل", en: "The database rejects a receipt journal that does not balance inside each fund, and locks it once posted", cat: "message" },
   "m07.control.3": { ar: "قاعدة البيانات لا تنقل أجرة الوكالة للمساهمين إلا بتحويل موثق بين الصندوقين", en: "The database moves the Wakala fee to shareholders only through a documented inter-fund transfer", cat: "message" },
   "m07.control.4": { ar: "النظام لا يحسب فائدة تأخير، ويرحّل أي غرامة لحساب الخير", en: "The system never charges late-payment interest and posts any late fee to the charity account", cat: "message" },
-  "m07.guard.split.try": { ar: "تجربة ترحيل إيصال دون تقسيم بين الصندوقين", en: "Post a receipt without a fund split", cat: "button" },
+  "m07.guard.split.try": { ar: "ترحيل إيصال دون تقسيمه بين الصندوقين", en: "Posting a receipt without a fund split", cat: "button" },
   "m07.guard.split.blocked": { ar: "النظام يرفض ترحيل أي إيصال دون قاعدة تقسيم معتمدة. التبرع يذهب لصندوق المشتركين، وأجرة الوكالة لصندوق المساهمين.", en: "The system refuses to post a receipt without an approved split rule. Tabarru' goes to the participants' fund and the Wakala fee to the shareholders' fund.", cat: "message" },
-  "m07.guard.interest.try": { ar: "تجربة احتساب فائدة على قسط متأخر", en: "Charge interest on a late instalment", cat: "button" },
+  "m07.guard.interest.try": { ar: "فائدة على قسط متأخر", en: "Interest on a late instalment", cat: "button" },
   "m07.guard.interest.blocked": { ar: "النظام لا يحسب فائدة على التأخير لأنها ربا. أي غرامة تعتمدها الهيئة الشرعية تذهب لحساب الخير، لا لإيرادات أي صندوق.", en: "The system never charges late-payment interest: it is riba. Any late fee the SSB approves goes to the charity account, never to any fund's income.", cat: "message" },
 
   "m07.s1.title": { ar: "الإيصالات", en: "Receipts", cat: "menu" },

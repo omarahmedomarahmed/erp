@@ -2,7 +2,7 @@
 import { useMemo, useState, type ComponentType, type ReactNode } from "react";
 import { BadgeCheck, CheckCircle2, Lock, PenLine, Printer, ShieldCheck } from "lucide-react";
 import {
-  Badge, Button, ControlPanel, DataTable, Fields, GuardButton, KpiRow, LockedNote, Modal, Money, DateText, Panel, Sheet, StatusBar, Timeline,
+  Badge, Button, ControlPanel, DataTable, Fields, KpiRow, LockedNote, Modal, Money, DateText, Panel, Sheet, StatusBar, Timeline,
   money, useFilter, type Column, type Tone,
 } from "@/components/ui";
 import { useT } from "@/components/I18n";
@@ -242,7 +242,7 @@ function Exceptions() {
   const rows = [...shariaExceptions].sort((a, b) => b.at.localeCompare(a.at));
   return (
     <div>
-      <ControlPanel title={t("m16.s2.title")} actions={<GuardButton tryLabel={t("m16.guard.mix.try")} blockedText={t("m16.guard.mix.blocked")} />} />
+      <ControlPanel title={t("m16.s2.title")} />
       <KpiRow items={[
         { label: t("m16.kpi.blocked"), value: shariaExceptions.filter((e) => e.kind === "blocked_mixing").length, hint: t("m16.kpi.blockedHint"), tone: "danger" },
         { label: t("m16.kpi.purified"), value: <Money value={sum(shariaExceptions.filter((e) => e.outcome === "purified").map((e) => e.amount))} />, hint: t("m16.kpi.purifiedHint") },

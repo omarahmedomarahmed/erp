@@ -181,4 +181,8 @@ export const dict: Dict = {
   "m06.pr.path.2": { ar: "المدير المالي يراجع الأثر على الصندوقين", en: "The CFO reviews the impact on both funds", cat: "help" },
   "m06.pr.path.3": { ar: "الهيئة الشرعية تعتمد بقرار مرقّم", en: "The SSB approves with a numbered resolution", cat: "help" },
   "m06.pr.path.4": { ar: "تفعيل الإصدار من تاريخ سريان؛ الشهادات القائمة لا تتغير", en: "Activation from an effective date; existing certificates do not change", cat: "help" },
+  "m06.guard.edit.try": { ar: "تعديل وثيقة صادرة مباشرة", en: "Editing an issued policy directly", cat: "message" },
+  "m06.guard.edit.blocked": { ar: "الوثيقة الصادرة ثابتة. أي تغيير يمر بملحق مرقّم يُبقي الأصل ويصدر نسخة جديدة برمز QR.", en: "An issued policy is fixed. Any change goes through a numbered endorsement that keeps the original and issues a new copy with a QR code.", cat: "message" },
+  "m06.guard.unpaid.try": { ar: "إصدار وثيقة قبل التحصيل أو اعتماد البيع الآجل", en: "Issuing a policy before payment or credit approval", cat: "message" },
+  "m06.guard.unpaid.blocked": { ar: "النظام لا يصدر الوثيقة قبل تحصيل الاشتراك أو اعتماد البيع الآجل من صاحب الصلاحية.", en: "The system issues no policy before the contribution is collected or credit sale is approved.", cat: "message" },
 };

@@ -1,7 +1,7 @@
 "use client";
 import { useMemo, useState, type ComponentType } from "react";
 import { CheckCircle2, Star } from "lucide-react";
-import { Badge, Button, ControlPanel, DataTable, GuardButton, KpiRow, LockedNote, Money, DateText, Panel, StatusBar, useFilter, type Column } from "@/components/ui";
+import { Badge, Button, ControlPanel, DataTable, KpiRow, LockedNote, Money, DateText, Panel, StatusBar, useFilter, type Column } from "@/components/ui";
 import { useT } from "@/components/I18n";
 import {
   accountBalance, accountById, cessions, commissionLines, fundResult, isPeriodClosed, journalById, journals, periods, recoveries,
@@ -66,7 +66,6 @@ function JournalsList() {
             <option value="all">{t("m12.src.all")}</option>
             {SOURCES.map((s) => <option key={s} value={s}>{t(`m12.src.${s}`)}</option>)}
           </select>
-          <GuardButton tryLabel={t("m12.guard.mix.try")} blockedText={t("m12.guard.mix.blocked")} />
         </>}
         filters={[f("all", t("common.all")), f("PTF", t("fund.PTF")), f("SHF", t("fund.SHF")), f("cross", t("m12.filter.cross")), f("hero", t("m12.filter.hero"))]}
         onSearch={setQ}
@@ -321,9 +320,6 @@ function Statements() {
                 { key: "by", label: t("m12.close.closedBy"), render: (p) => (p.closedByPersonaId ? who(p.closedByPersonaId) : p.id === "2026-10" && octClosed ? who("cfo") : "—") },
               ]}
             />
-            <div className="mt-3 flex flex-wrap gap-2">
-              <GuardButton tryLabel={t("m12.guard.closed.try")} blockedText={t("m12.guard.closed.blocked", { p: "2026-09" })} />
-            </div>
           </Panel>
           <Panel title={t("m12.close.checklist")}>
             <StatusBar stages={[{ id: "o", label: t("m12.close.st.open") }, { id: "c", label: t("m12.close.st.check") }, { id: "l", label: t("m12.close.st.locked") }]}

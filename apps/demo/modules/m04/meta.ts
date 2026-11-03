@@ -16,6 +16,10 @@ export const meta: ModuleMeta = {
     { ar: "أهداف كل وكيل للفترة القادمة ومن يعتمدها", en: "Each agent's targets for the next period and who approves them" },
     { ar: "عيّنة كشوف عمولة مصروفة وسياسة الاسترداد عند الإلغاء", en: "Sample paid commission statements and the clawback policy on cancellation" },
   ],
+  rules: [
+    { id: "m04-ptf", tryKey: "m04.guard.ptf.try", blockedKey: "m04.guard.ptf.blocked" },
+    { id: "m04-uncollected", tryKey: "m04.guard.uncollected.try", blockedKey: "m04.guard.uncollected.blocked" },
+  ],
   screens: [
     { id: "s1", titleKey: "m04.s1.title", captionKey: "m04.s1.caption" },
     { id: "s2", titleKey: "m04.s2.title", captionKey: "m04.s2.caption" },

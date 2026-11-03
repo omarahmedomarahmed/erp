@@ -15,6 +15,7 @@ export const meta: ModuleMeta = {
     guards: [
       { id: "m12-mix", tryKey: "m12.guard.mix.try", blockedKey: "m12.guard.mix.blocked" },
       { id: "m12-edit", tryKey: "m12.guard.edit.try", blockedKey: "m12.guard.edit.blocked" },
+      { id: "m12-closed", tryKey: "m12.guard.closed.try", blockedKey: "m12.guard.closed.blocked" },
     ],
   },
   needs: [

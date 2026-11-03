@@ -4,7 +4,7 @@ import { ArrowRight, Eye } from "lucide-react";
 import { useT } from "@/components/I18n";
 import { personaById } from "@/content/personas";
 import {
-  Badge, BarChart, Button, ControlPanel, DataTable, DateText, Fields, GuardButton, KpiRow, LockedNote, Money, Panel, money, useFilter,
+  Badge, BarChart, Button, ControlPanel, DataTable, DateText, Fields, KpiRow, LockedNote, Money, Panel, money, useFilter,
   type Column, type Tone,
 } from "@/components/ui";
 import {
@@ -299,10 +299,6 @@ function Statement() {
               { label: t("m04.st.prepared"), value: `${L.persona("dist")} · ${t("role.distribution")}` },
               { label: t("m04.st.approved"), value: approved || months.every((m) => m.status === "paid") ? `${L.persona("cfo")} · ${t("role.cfo")}` : <span className="text-muted">{t("m04.st.awaiting")}</span> },
             ]} />
-            <div className="flex flex-wrap content-start gap-2">
-              <GuardButton tryLabel={t("m04.guard.ptf.try")} blockedText={t("m04.guard.ptf.blocked")} />
-              <GuardButton tryLabel={t("m04.guard.uncollected.try")} blockedText={t("m04.guard.uncollected.blocked")} />
-            </div>
           </div>
         </Panel>
         <Panel title={t("m04.st.lines")}>

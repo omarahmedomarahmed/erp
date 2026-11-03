@@ -16,6 +16,10 @@ export const meta: ModuleMeta = {
     { ar: "مهلة الرد على الإحالة، وصاحب القرار ليلاً عند المنافذ الحدودية", en: "Referral response time, and the night-time decision-maker at border points" },
     { ar: "طاقة اتفاقيات إعادة التكافل التي توجب إسناداً اختيارياً قبل الإصدار", en: "Treaty capacity limits that require facultative cover before issue" },
   ],
+  rules: [
+    { id: "m05-price", tryKey: "m05.guard.price.try", blockedKey: "m05.guard.price.blocked" },
+    { id: "m05-declined", tryKey: "m05.guard.declined.try", blockedKey: "m05.guard.declined.blocked" },
+  ],
   screens: [
     { id: "s1", titleKey: "m05.s1.title", captionKey: "m05.s1.caption" },
     { id: "s2", titleKey: "m05.s2.title", captionKey: "m05.s2.caption" },

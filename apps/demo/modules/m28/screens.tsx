@@ -3,7 +3,7 @@ import { useState, type ComponentType } from "react";
 import { Database, PlugZap, RefreshCw } from "lucide-react";
 import { useT } from "@/components/I18n";
 import {
-  Badge, BarChart, Button, ControlPanel, DataTable, Donut, Fields, GuardButton, KpiRow, LineChart, Money, Panel, type Column, type Tone,
+  Badge, BarChart, Button, ControlPanel, DataTable, Donut, Fields, KpiRow, LineChart, Money, Panel, type Column, type Tone,
 } from "@/components/ui";
 import {
   agentMonths, agents, bookSummary, claims, employees, fundResult, interFundTransfers, investmentReturns, kpis, outletById, outlets, payrollRuns,
@@ -277,7 +277,6 @@ function Funds() {
           <div className="mt-3 flex flex-wrap items-center gap-2">
             {tested ? <Badge tone="ok"><PlugZap size={11} aria-hidden />{t("m28.bi.ok", { n: VIEWS.length })}</Badge>
               : <Button variant="primary" onClick={() => setTested(true)}><PlugZap size={14} aria-hidden />{t("m28.bi.test")}</Button>}
-            <GuardButton tryLabel={t("m28.guard.write.try")} blockedText={t("m28.guard.write.blocked")} />
           </div>
         </Panel>
       </div>

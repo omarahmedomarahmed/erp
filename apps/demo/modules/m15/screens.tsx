@@ -2,7 +2,7 @@
 import { useMemo, useState, type ComponentType, type ReactNode } from "react";
 import { CheckCircle2, Lock, Star, Printer } from "lucide-react";
 import {
-  Badge, BarChart, Button, ControlPanel, DataTable, Donut, Fields, GuardButton, KpiRow, LockedNote, Modal, Money, DateText, Panel, Sheet,
+  Badge, BarChart, Button, ControlPanel, DataTable, Donut, Fields, KpiRow, LockedNote, Modal, Money, DateText, Panel, Sheet,
   StatusBar, Timeline, money, useFilter, type Column, type Tone,
 } from "@/components/ui";
 import { useT } from "@/components/I18n";
@@ -124,7 +124,6 @@ function Approvals() {
     <div>
       <ControlPanel title={t("m15.s2.title")} actions={<>
         <Button onClick={startReplay}>{t("m15.appr.replay")}</Button>
-        <GuardButton tryLabel={t("m15.guard.shareholders.try")} blockedText={t("m15.guard.shareholders.blocked")} />
       </>} />
       <div className="px-4 pt-4">
         <StatusBar current={stage} stages={[...steps.map((s) => ({ id: s.step, label: pick(s.labelAr, s.labelEn) })), { id: "ready", label: t("m15.appr.ready") }, { id: "posted", label: t("m15.appr.posted") }]} />

@@ -2,7 +2,7 @@
 // Private building blocks for m12 (accounting & the takaful fund engine).
 import { useState } from "react";
 import { ArrowLeftRight, CheckCircle2, Undo2, ArrowRight, ArrowLeft } from "lucide-react";
-import { Badge, Button, DataTable, Fields, GuardButton, LockedNote, Money, DateText, Panel, Sheet, Timeline, type Tone } from "@/components/ui";
+import { Badge, Button, DataTable, Fields, LockedNote, Money, DateText, Panel, Sheet, Timeline, type Tone } from "@/components/ui";
 import { useT } from "@/components/I18n";
 import { accountById, iftById, journalById, journalFundTotals, isJournalBalancedPerFund, isPeriodClosed, periods, round3, TODAY } from "@/data/seed";
 import type { FundCode, Journal, JournalLine, ShariaStatus } from "@/data/seed";
@@ -129,8 +129,6 @@ export function JournalRecord({ id, onBack }: { id: string; onBack?: () => void 
       actions={<>
         {onBack && <Button variant="ghost" onClick={onBack}>{t("m12.back")}</Button>}
         <Button variant="primary" disabled={reversal} onClick={() => setReversal(true)}><Undo2 size={14} aria-hidden />{t("m12.rec.reverse")}</Button>
-        <GuardButton tryLabel={t("m12.guard.edit.try")} blockedText={t("m12.guard.edit.blocked")} />
-        {closed && <GuardButton tryLabel={t("m12.guard.closed.try")} blockedText={t("m12.guard.closed.blocked", { p: ymOf(j.date) })} />}
       </>}
       side={<Timeline title={t("common.activity")} items={timeline} />}
     >

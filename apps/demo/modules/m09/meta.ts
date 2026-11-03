@@ -15,6 +15,7 @@ export const meta: ModuleMeta = {
     guards: [
       { id: "m09-skip-stage", tryKey: "m09.guard.skip.try", blockedKey: "m09.guard.skip.blocked" },
       { id: "m09-own-approval", tryKey: "m09.guard.own.try", blockedKey: "m09.guard.own.blocked" },
+      { id: "m09-shf", tryKey: "m09.guard.shf.try", blockedKey: "m09.guard.shf.blocked" },
     ],
   },
   needs: [

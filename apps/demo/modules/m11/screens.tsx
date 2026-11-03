@@ -2,7 +2,7 @@
 import { useMemo, useState, type ComponentType } from "react";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import {
-  Badge, BarChart, Button, ControlPanel, DataTable, Donut, Fields, GuardButton, KpiRow, LineChart, LockedNote, Money, DateText, Panel, Sheet,
+  Badge, BarChart, Button, ControlPanel, DataTable, Donut, Fields, KpiRow, LineChart, LockedNote, Money, DateText, Panel, Sheet,
   Timeline, money, type Column, type Tone,
 } from "@/components/ui";
 import { useT } from "@/components/I18n";
@@ -44,7 +44,6 @@ function ContractRecord({ id, onBack }: { id: string; onBack?: () => void }) {
       status={<div className="flex gap-2"><Badge tone={c.status === "active" ? "ok" : c.status === "proposed" ? "warn" : "neutral"}>{t(`m11.status.${c.status}`)}</Badge><ShariaBadge status={c.sharia_status} /></div>}
       actions={<>
         {onBack && <Button variant="ghost" onClick={onBack}>{t("m11.back")}</Button>}
-        <GuardButton tryLabel={t("m11.guard.riba.try")} blockedText={t("m11.guard.riba.blocked")} />
       </>}
       side={<Timeline title={t("common.activity")} items={[
         ...(res ? [{ at: res.date, who: t("m11.who.ssb"), text: t("m11.tl.ssb", { id: res.id }), tone: "ok" as Tone }] : [{ at: "2026-10-26", who: t("m11.who.invest"), text: t("m11.tl.submitted") }]),
@@ -176,7 +175,7 @@ function Portfolios() {
   ];
   return (
     <div>
-      <ControlPanel title={t("m11.s1.title")} actions={<GuardButton tryLabel={t("m11.guard.pool.try")} blockedText={t("m11.guard.pool.blocked")} />} />
+      <ControlPanel title={t("m11.s1.title")} />
       <KpiRow items={[
         { label: t("m11.kpi.ptfInvested"), value: <Money value={inv("PTF")} /> },
         { label: t("m11.kpi.shfInvested"), value: <Money value={inv("SHF")} /> },

@@ -142,10 +142,10 @@ export const dict: Dict = {
   "m34.control.encrypt": { ar: "يشفّر النظام حقول الراتب، ويراها دور الرواتب وحده", en: "Salary fields are encrypted; only payroll roles see them", cat: "help" },
   "m34.control.lock": { ar: "المسيّر المقفل لا يتغير، والتصحيح في الشهر التالي", en: "A locked run never changes; corrections go into the next month", cat: "help" },
   "m34.control.shf": { ar: "القيد على صندوق المساهمين فقط، وقاعدة البيانات تمنع غيره", en: "The entry hits the shareholders' fund only, enforced in the database", cat: "help" },
-  "m34.guard.approveOwn.try": { ar: "اعتماد مسيّر من إعداد المعتمد نفسه", en: "Approve a run one prepared", cat: "button" },
+  "m34.guard.approveOwn.try": { ar: "اعتماد مسيّر الرواتب ممن أعدّه", en: "Approving a payroll run by its preparer", cat: "button" },
   "m34.guard.approveOwn.blocked": { ar: "لا يعتمد المسيّر من أعدّه: صلاحيات النظام ترفض الاعتماد، والنظام يحيله إلى مدقق آخر ثم إلى المدير المالي.", en: "The preparer cannot approve the run: system permissions reject it, and the system routes it to another checker, then the CFO.", cat: "message" },
-  "m34.guard.ownSalary.try": { ar: "تعديل الموظف راتبه بنفسه", en: "Change one's own salary", cat: "button" },
+  "m34.guard.ownSalary.try": { ar: "تعديل الموظف راتبه بنفسه", en: "An employee changing their own salary", cat: "button" },
   "m34.guard.ownSalary.blocked": { ar: "لا يعدّل أحد راتبه: النظام يرفض التعديل ويحيل أي تغيير راتب إلى مدير الموارد البشرية ثم المدير المالي.", en: "Nobody can change their own salary: the system rejects it and routes any change to the HR manager, then the CFO.", cat: "message" },
-  "m34.guard.ptf.try": { ar: "تحميل الرواتب على صندوق المشتركين", en: "Charge salaries to the participants' fund", cat: "button" },
+  "m34.guard.ptf.try": { ar: "تحميل الرواتب على صندوق المشتركين", en: "Charging salaries to the participants' fund", cat: "button" },
   "m34.guard.ptf.blocked": { ar: "الرواتب مصروف على المشغّل. قاعدة البيانات ترفض أي سطر رواتب على غير صندوق المساهمين.", en: "Salaries are the operator's cost. The database rejects any payroll line outside the shareholders' fund.", cat: "message" },
 };

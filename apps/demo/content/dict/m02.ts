@@ -9,9 +9,9 @@ export const dict: Dict = {
   "m02.control.2": { ar: "الدمج يحتاج موافقة موظف ثانٍ (maker-checker)", en: "Merging needs a second person's approval (maker-checker)", cat: "message" },
   "m02.control.3": { ar: "يسجّل النظام كل تغيير: من غيّر، ومتى، والقيمة قبل وبعد", en: "The system logs every change: who, when, before and after", cat: "message" },
   "m02.control.4": { ar: "ينبّه النظام الامتثال عند مؤشرات الاحتيال وعملاء PEP", en: "The system alerts compliance on fraud indicators and PEP customers", cat: "message" },
-  "m02.guard.dup.try": { ar: "إنشاء عميل برقم وطني مسجل", en: "Customer creation with a registered national number", cat: "button" },
+  "m02.guard.dup.try": { ar: "إنشاء عميل ثانٍ بالرقم الوطني نفسه", en: "A second customer with the same national number", cat: "button" },
   "m02.guard.dup.blocked": { ar: "الرقم الوطني مسجل للعميل CUS-1002. يفتح النظام السجل القائم ولا ينشئ سجلاً ثانياً.", en: "This national number belongs to CUS-1002. The system opens the existing record and never creates a second one.", cat: "message" },
-  "m02.guard.merge.try": { ar: "دمج سجلين دون موافقة ثانية", en: "Merge of two records without a second approval", cat: "button" },
+  "m02.guard.merge.try": { ar: "دمج سجلين بموافقة موظف واحد", en: "Merging two records with one person's approval", cat: "button" },
   "m02.guard.merge.blocked": { ar: "الدمج يحتاج موافقة موظف ثانٍ. لا يعتمد الموظف طلباً أنشأه بنفسه.", en: "A merge needs a second person's approval. Nobody approves their own request.", cat: "message" },
 
   "m02.s1.title": { ar: "العملاء", en: "Customers", cat: "menu" },

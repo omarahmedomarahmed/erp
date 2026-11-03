@@ -16,6 +16,10 @@ export const meta: ModuleMeta = {
     { ar: "بيانات الموظفين الحالية في Excel، مع أرقام الحسابات المصرفية", en: "Current staff data in Excel, including bank account numbers" },
     { ar: "من يعتمد الإجازات والتعيينات في كل إدارة", en: "Who approves leave and hiring in each department" },
   ],
+  rules: [
+    { id: "m33-ownRecord", tryKey: "m33.guard.ownRecord.try", blockedKey: "m33.guard.ownRecord.blocked" },
+    { id: "m33-leave", tryKey: "m33.guard.leave.try", blockedKey: "m33.guard.leave.blocked" },
+  ],
   screens: [
     { id: "s1", titleKey: "m33.s1.title", captionKey: "m33.s1.caption" },
     { id: "s2", titleKey: "m33.s2.title", captionKey: "m33.s2.caption" },

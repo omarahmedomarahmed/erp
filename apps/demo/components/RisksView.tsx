@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, Database, History, ShieldAlert, ShieldCheck, Users } from "lucide-react";
 import { Shell } from "@/components/Shell";
 import { useT } from "@/components/I18n";
-import { Badge, GuardButton } from "@/components/ui";
+import { Badge, RuleItem } from "@/components/ui";
 import { MODULES } from "@/content/modules";
 import type { Persona } from "@/lib/types";
 
@@ -71,9 +71,9 @@ export function RisksView({ persona }: { persona: Persona }) {
                 </div>
                 <div className="mt-auto">
                   <div className="mb-1 text-[12px] font-bold text-muted">{t("pg.risks.col.try")}</div>
-                  <div className="flex flex-wrap gap-2">
-                    {s.guards.map((g) => <GuardButton key={g.id} tryLabel={t(g.tryKey)} blockedText={t(g.blockedKey)} />)}
-                  </div>
+                  <ul className="grid gap-2">
+                    {s.guards.map((g) => <RuleItem key={g.id} what={t(g.tryKey)} why={t(g.blockedKey)} />)}
+                  </ul>
                 </div>
               </article>
             );

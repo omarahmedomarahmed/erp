@@ -113,8 +113,8 @@ export const dict: Dict = {
   "m04.st.rules": { ar: "النظام يحسب العمولة لكل إيصال محصّل فقط. إلغاء الشهادة يعكس عمولتها في التشغيل التالي.", en: "The system calculates commission per collected receipt only. Cancelling a certificate reverses its commission in the next run.", cat: "help" },
   "m04.st.clawbackNote": { ar: "ألغى المشترك الشهادة، فاسترد النظام العمولة بقيد سالب على صندوق المساهمين.", en: "The participant cancelled the certificate, so the system clawed back the commission with a negative line in the shareholders' fund.", cat: "message" },
 
-  "m04.guard.ptf.try": { ar: "تجربة صرف العمولة من صندوق المشتركين", en: "Try to pay commission from the participants' fund", cat: "button" },
+  "m04.guard.ptf.try": { ar: "صرف عمولة الوكيل من صندوق المشتركين", en: "Paying agent commission from the participants' fund", cat: "button" },
   "m04.guard.ptf.blocked": { ar: "العمولة مصروف على المشغّل. قاعدة البيانات ترفض صرفها من غير صندوق المساهمين.", en: "Commission is an operator expense. The database refuses to pay it from any fund but the shareholders' fund.", cat: "message" },
-  "m04.guard.uncollected.try": { ar: "تجربة احتساب عمولة على شهادة غير محصّلة المساهمة", en: "Try to pay commission on an unpaid certificate", cat: "button" },
+  "m04.guard.uncollected.try": { ar: "عمولة على شهادة غير محصّلة المساهمة", en: "Commission on a certificate not yet paid", cat: "button" },
   "m04.guard.uncollected.blocked": { ar: "لا عمولة قبل التحصيل. النظام يحسبها عند تسجيل الإيصال فقط.", en: "No commission before collection. The system calculates it only when the receipt posts.", cat: "message" },
 };

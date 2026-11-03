@@ -4,7 +4,7 @@ import { ArrowRight, Camera, CheckCircle2, Circle, MapPin, Plus, Send } from "lu
 import { useT } from "@/components/I18n";
 import { personaById } from "@/content/personas";
 import {
-  Badge, BarChart, Button, ControlPanel, DataTable, DateText, Fields, GuardButton, Kanban, KpiRow, LockedNote, Money, Panel, Sheet,
+  Badge, BarChart, Button, ControlPanel, DataTable, DateText, Fields, Kanban, KpiRow, LockedNote, Money, Panel, Sheet,
   StatusBar, Timeline, type Column, type Tone,
 } from "@/components/ui";
 import {
@@ -238,7 +238,6 @@ function ClaimRecord({ id }: { id: string }) {
           ]} />
           <div className="mt-2 grid gap-2">
             {paidNow && <LockedNote text={t("common.locked")} />}
-            <div><GuardButton tryLabel={t("m09.guard.shf.try")} blockedText={t("m09.guard.shf.blocked")} /></div>
           </div>
         </Panel>
 

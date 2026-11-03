@@ -16,6 +16,10 @@ export const meta: ModuleMeta = {
     { ar: "قرارات الهيئة الشرعية بشأن الإسناد لمعيد تقليدي", en: "Sharia board resolutions on cessions to conventional reinsurers" },
     { ar: "نسبة الإسناد الإلزامي المحلي (المادة 13)، عند وجودها", en: "Compulsory local cession quota, if any (Art. 13)" },
   ],
+  rules: [
+    { id: "m10-recovery", tryKey: "m10.guard.recovery.try", blockedKey: "m10.guard.recovery.blocked" },
+    { id: "m10-shf", tryKey: "m10.guard.shf.try", blockedKey: "m10.guard.shf.blocked" },
+  ],
   screens: [
     { id: "s1", titleKey: "m10.s1.title", captionKey: "m10.s1.caption" },
     { id: "s2", titleKey: "m10.s2.title", captionKey: "m10.s2.caption" },

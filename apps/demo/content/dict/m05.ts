@@ -122,4 +122,8 @@ export const dict: Dict = {
   "m05.sim.nextText": { ar: "المحاكاة لا تغيّر أي قرار. الخطوة التالية: إرسال المسودة للاعتماد، ثم التفعيل من تاريخ سريان.", en: "The simulation changes no decision. Next: the draft goes for approval, then activation from an effective date.", cat: "help" },
   "m05.sim.submit": { ar: "إرسال المسودة للاعتماد", en: "Send draft for approval", cat: "button" },
   "m05.sim.sent": { ar: "وصلت المسودة ونتيجة المحاكاة إلى المدير العام.", en: "The draft and simulation result reached the general manager.", cat: "message" },
+  "m05.guard.price.try": { ar: "سعر خارج جدول الأسعار المعتمد دون صلاحية", en: "A price outside the approved tariff without authority", cat: "message" },
+  "m05.guard.price.blocked": { ar: "السعر يأتي من جدول الأسعار المعتمد، وأي خصم فوق حد الموظف يذهب إلى صاحب الصلاحية التالي.", en: "Prices come from the approved tariff, and any discount above the user's limit goes to the next approver.", cat: "message" },
+  "m05.guard.declined.try": { ar: "قبول خطر محظور في قواعد الاكتتاب", en: "Accepting a risk the underwriting rules exclude", cat: "message" },
+  "m05.guard.declined.blocked": { ar: "قواعد الاكتتاب ترفض الخطر المحظور آلياً، والاستثناء يحتاج اعتماد مدير الاكتتاب بسبب مكتوب.", en: "The underwriting rules decline an excluded risk automatically; an exception needs the underwriting manager's approval with a written reason.", cat: "message" },
 };

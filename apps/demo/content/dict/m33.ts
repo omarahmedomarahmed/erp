@@ -122,4 +122,8 @@ export const dict: Dict = {
   "m33.kpi.contractsEnding": { ar: "{n} عقود تنتهي خلال سنة", en: "{n} contracts end within a year", cat: "label" },
   "m33.org.head": { ar: "رئيس الإدارة", en: "Head", cat: "label" },
   "m33.org.noStaff": { ar: "لا موظفين آخرين", en: "No other staff", cat: "message" },
+  "m33.guard.ownRecord.try": { ar: "تعديل الموظف ملفه الوظيفي بنفسه", en: "An employee editing their own HR record", cat: "message" },
+  "m33.guard.ownRecord.blocked": { ar: "الملف الوظيفي يعدّله قسم الموارد البشرية فقط، والنظام يحفظ كل تغيير مع اسم من أجراه وتاريخه.", en: "Only HR edits an employee record, and the system keeps every change with who made it and when.", cat: "message" },
+  "m33.guard.leave.try": { ar: "إجازة تتجاوز الرصيد دون اعتماد", en: "Leave beyond the balance without approval", cat: "message" },
+  "m33.guard.leave.blocked": { ar: "النظام يحسب رصيد الإجازات آلياً، وأي طلب فوق الرصيد يحتاج اعتماد المدير المباشر ومدير الموارد البشرية.", en: "The system tracks leave balances automatically; any request above the balance needs the line manager's and HR manager's approval.", cat: "message" },
 };
