@@ -12,5 +12,5 @@ export async function getSession() {
   const c = await cookies();
   const lang: Lang = c.get(COOKIE_LANG)?.value === "en" ? "en" : "ar";
   const persona = personaById(c.get(COOKIE_USER)?.value);
-  return { lang, persona };
+  return { lang, persona, hasAccess: c.get(COOKIE_ACCESS)?.value === accessCode() };
 }

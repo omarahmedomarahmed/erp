@@ -3,7 +3,7 @@ import { getSession } from "@/lib/session";
 
 export default async function Gate({ searchParams }: { searchParams: Promise<{ e?: string }> }) {
   const { lang } = await getSession();
-  const { dict } = await loadDict();
+  const { dict } = await loadDict(false);
   const t = (k: string) => dict[k]?.[lang] ?? k;
   const { e } = await searchParams;
   return (

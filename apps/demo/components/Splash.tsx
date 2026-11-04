@@ -25,9 +25,9 @@ export function Splash() {
     try { if (sessionStorage.getItem("tt_splash")) return; sessionStorage.setItem("tt_splash", "1"); } catch { /* storage blocked: still show */ }
     setP(0);
     const steps = [18, 42, 63, 81, 94, 100];
-    const timers = steps.map((v, i) => setTimeout(() => setP(v), 180 * (i + 1)));
-    timers.push(setTimeout(() => setFading(true), 180 * steps.length + 250));
-    timers.push(setTimeout(() => setP(null), 180 * steps.length + 800));
+    const timers = steps.map((v, i) => setTimeout(() => setP(v), 513 * (i + 1)));
+    timers.push(setTimeout(() => setFading(true), 513 * steps.length + 250));
+    timers.push(setTimeout(() => setP(null), 513 * steps.length + 800));
     return () => timers.forEach(clearTimeout);
   }, []);
   if (p === null) return null;

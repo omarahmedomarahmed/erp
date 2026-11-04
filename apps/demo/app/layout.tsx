@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const { lang } = await getSession();
-  const { dict } = await loadDict();
+  const { lang, hasAccess } = await getSession();
+  const { dict } = await loadDict(hasAccess);
   return (
     <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} className={almarai.variable}>
       <body>

@@ -16,9 +16,10 @@ export interface DictRow {
 }
 
 /** Base dictionary merged with the company's edits from the database. */
-export async function loadDict(): Promise<{ dict: Dict; rows: DictRow[] }> {
+/** With useDb false (visitor has no access code yet) the database is not touched, so bots and link previews never wake it. */
+export async function loadDict(useDb = true): Promise<{ dict: Dict; rows: DictRow[] }> {
   let overrides: Record<string, Record<string, unknown>> = {};
-  try {
+  if (useDb) try {
     overrides = Object.fromEntries((await kvAll("dict_override")).map((r) => [String(r.key), r]));
   } catch {
     overrides = {};
