@@ -5,6 +5,7 @@ import { Shell } from "@/components/Shell";
 import { SettingsPanel } from "@/components/SettingsPanel";
 import { useT } from "@/components/I18n";
 import { RulesButton } from "@/components/ui";
+import { AutomationPanel } from "@/components/Automation";
 import { SCREENS } from "@/content/screens";
 import type { ModuleMeta, Persona, SettingDef } from "@/lib/types";
 
@@ -36,6 +37,7 @@ export function ModuleView({ persona, meta, settings, screen, allowed }: {
             {tab("settings", t("app.settings"), screen === "settings", <Settings2 size={13} aria-hidden />)}
             <div className="ms-auto shrink-0 ps-3"><RulesButton rules={rules} moduleName={t(meta.nameKey)} /></div>
           </div>
+          <AutomationPanel moduleId={meta.id} />
           {current && (
             <div className="flex items-center gap-2 bg-soft px-4 py-1.5 text-[12px] text-brand-deep">
               <Info size={14} aria-hidden /><span>{t(current.captionKey)}</span>

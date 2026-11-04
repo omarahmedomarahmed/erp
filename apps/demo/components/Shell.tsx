@@ -6,6 +6,7 @@ import { LayoutGrid, Languages, UserRound } from "lucide-react";
 import { useT } from "@/components/I18n";
 import type { Persona } from "@/lib/types";
 import { Name } from "@/components/ui";
+import { AutoToggle } from "@/components/Automation";
 
 /** Odoo-like top bar: logo, apps menu, current app name, language toggle, persona. */
 export function Shell({ persona, current, children }: { persona: Persona; current?: ReactNode; children: ReactNode }) {
@@ -26,6 +27,7 @@ export function Shell({ persona, current, children }: { persona: Persona; curren
         <Link href="/" className="flex items-center gap-2 rounded-lg px-3 py-2 text-[15px] font-bold hover:bg-white/10"><LayoutGrid size={19} aria-hidden />{t("app.apps")}</Link>
         {current && <span className="truncate text-[17px] font-extrabold text-white"><span className="text-white/40">/ </span>{current}</span>}
         <div className="ms-auto flex items-center gap-2">
+          <AutoToggle />
           <button type="button" onClick={() => post("/api/lang", { lang: lang === "ar" ? "en" : "ar" })}
             className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-[14px] font-bold hover:bg-white/10"><Languages size={18} aria-hidden />{t("app.lang")}</button>
           <Link href="/login" className="flex items-center gap-2 rounded-lg bg-white/10 px-3 py-2 text-[14px] hover:bg-white/20">

@@ -63,9 +63,37 @@ function Tile({ m, size = 76 }: { m: ModuleMeta; size?: number }) {
   );
 }
 
+const AUTO_SLIDES = new Set(["m02", "m06", "m09"]);
+
 function ModuleSlide({ m, n, total }: { m: ModuleMeta; n: number; total: number }) {
   const { t, lang } = useT();
   const hero = m.screens.find((s) => s.id === HERO[m.id]) ?? m.screens[0];
+  if (AUTO_SLIDES.has(m.id)) return (
+    <Slide n={n} total={total}>
+      <div className="flex h-full flex-col gap-5 px-12 pt-8 pb-14">
+        <div className="flex items-center gap-5">
+          <Tile m={m} size={72} />
+          <div className="min-w-0">
+            <h2 className="text-[32px] font-extrabold leading-tight text-navy">{t(m.nameKey)}</h2>
+            <p className="text-[16px] text-muted">{t(m.taglineKey)}</p>
+          </div>
+          <span className="ms-auto inline-flex items-center gap-2 rounded-full bg-[#0b0a09] px-4 py-2 text-[14px] font-bold text-white">
+            <img src="/brand/atmet-mark-white.svg" alt="" className="size-5" />{t("auto.by")}<img src="/brand/atmet-word-white.png" alt="Atmet" className="h-4 w-auto" />
+          </span>
+        </div>
+        <div className="grid flex-1 grid-cols-2 gap-6">
+          {[["off", `/deck/${m.id}-${hero.id}-${lang}.jpg`, "deck.before"], ["on", `/deck/${m.id}-${hero.id}-${lang}-auto.jpg`, "deck.after"]].map(([k, src, label]) => (
+            <div key={k} className="flex min-w-0 flex-col gap-2">
+              <span className={`inline-flex w-fit items-center gap-2 rounded-full px-4 py-1.5 text-[16px] font-extrabold ${k === "on" ? "bg-[#f55315] text-white" : "bg-canvas text-navy"}`}>
+                {k === "on" && <img src="/brand/atmet-mark-white.svg" alt="" className="size-4" />}{t(label)}
+              </span>
+              <Browser src={src} alt={t(hero.titleKey)} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </Slide>
+  );
   return (
     <Slide n={n} total={total}>
       <div className="flex h-full items-center gap-10 px-12 pt-6 pb-12">

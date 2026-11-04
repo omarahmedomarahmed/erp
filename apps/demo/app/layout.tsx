@@ -3,6 +3,7 @@ import { Almarai } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "@/components/I18n";
 import { Splash } from "@/components/Splash";
+import { AutoProvider } from "@/components/Automation";
 import { loadDict } from "@/lib/dict";
 import { getSession } from "@/lib/session";
 
@@ -17,13 +18,13 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const { lang, hasAccess } = await getSession();
+  const { lang, hasAccess, auto } = await getSession();
   const { dict } = await loadDict(hasAccess);
   return (
     <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} className={almarai.variable}>
       <body>
         <Splash />
-        <I18nProvider lang={lang} dict={dict}>{children}</I18nProvider>
+        <I18nProvider lang={lang} dict={dict}><AutoProvider initial={auto}>{children}</AutoProvider></I18nProvider>
       </body>
     </html>
   );
