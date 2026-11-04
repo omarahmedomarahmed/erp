@@ -54,8 +54,8 @@ export const AUTOMATION: Record<string, AutoPrompt[]> = {
       id: "m09-a", title: { ar: "ملخص المطالبة CLM-2026-00052", en: "Summary of claim CLM-2026-00052" }, ask: askWho, options: who, sensitive: true,
       summary: { ar: "أكبر مطالبة مفتوحة: التقدير 96,000 د.ل يتجاوز الاحتياطي الأولي بـ6.7%.", en: "Largest open claim: assessment LYD 96,000 is 6.7% above the initial reserve." },
       findings: [
-        { text: { ar: "تاريخ الحادث 2026-04-18، والاحتياطي الأولي 90,000 د.ل", en: "Loss date 2026-04-18, initial reserve LYD 90,000" }, sources: [{ label: "CLM-2026-00052", href: "/m/m09?s=s1" }] },
-        { text: { ar: "تقرير المعاين SV-04 وصل في 2026-07-12: التقدير 96,000 د.ل، والتحمل 1,000 د.ل", en: "Surveyor SV-04 report received 2026-07-12: assessed LYD 96,000, deductible LYD 1,000" }, sources: [{ label: "SV-04", href: "/m/m09?s=s4" }] },
+        { text: { ar: "تاريخ الحادث ⁦2026-04-18⁩، والاحتياطي الأولي 90,000 د.ل", en: "Loss date 2026-04-18, initial reserve LYD 90,000" }, sources: [{ label: "CLM-2026-00052", href: "/m/m09?s=s1" }] },
+        { text: { ar: "تقرير المعاين SV-04 وصل في ⁦2026-07-12⁩: التقدير 96,000 د.ل، والتحمل 1,000 د.ل", en: "Surveyor SV-04 report received 2026-07-12: assessed LYD 96,000, deductible LYD 1,000" }, sources: [{ label: "SV-04", href: "/m/m09?s=s4" }] },
         { text: { ar: "المبلغ فوق حد الاحتفاظ: حصة إعادة التكافل قابلة للاسترداد", en: "Amount above retention: retakaful share is recoverable" }, sources: [{ label: "إعادة التكافل / Retakaful", href: "/m/m10?s=s1" }] },
       ],
       action: { ar: "إحالة المطالبة إلى صاحب الصلاحية التالي في مصفوفة الاعتماد", en: "Route the claim to the next approver in the matrix" },
