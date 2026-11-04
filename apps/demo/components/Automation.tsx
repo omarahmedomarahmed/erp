@@ -40,7 +40,8 @@ export function AutomationPanel({ moduleId }: { moduleId: string }) {
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
   if (!on || !prompts) return null;
-  const L = (x: { ar: string; en: string }) => x[lang];
+  // Dates stay left-to-right inside Arabic text.
+  const L = (x: { ar: string; en: string }) => (lang === "ar" ? x.ar.replace(/\d{4}-\d{2}(-\d{2})?/g, "\u2066$&\u2069") : x.en);
   const choose = (i: number) => { setOpt(i); setBusy(true); setDone(false); setTimeout(() => setBusy(false), 900); };
   const reset = () => { setP(null); setOpt(null); setDone(false); };
   return (
@@ -98,6 +99,15 @@ export function AutomationPanel({ moduleId }: { moduleId: string }) {
                     </ul>
                   </div>
                   <div className="flex flex-col gap-3 rounded-lg border border-[#f55315]/50 p-4">
+                    {p.decision && (
+                      <div className="grid gap-1.5 border-b border-white/10 pb-3">
+                        <div className="text-[12px] font-bold text-[#f55315]">{t("auto.decision")}</div>
+                        <p className="text-[15px] font-extrabold leading-snug">{L(p.decision.pick)}</p>
+                        <p className="text-[12.5px] text-white/75"><span className="font-bold text-white/90">{t("auto.why")}: </span>{L(p.decision.why)}</p>
+                        {p.decision.alts.map((a, i) => <p key={i} className="text-[12px] text-white/60"><span className="font-bold">{t("auto.alts")}: </span>{L(a)}</p>)}
+                        <p className="text-[12px] text-white/60"><span className="font-bold">{t("auto.owner")}: </span>{L(p.decision.owner)}</p>
+                      </div>
+                    )}
                     <div className="text-[12px] font-bold text-[#f55315]">{t("auto.suggested")}</div>
                     <p className="text-[14px] font-bold">{L(p.action)}</p>
                     {p.sensitive && <p className="flex items-center gap-1.5 text-[12px] text-white/70"><ShieldCheck size={14} className="text-[#f55315]" aria-hidden />{t("auto.needsHuman")}</p>}

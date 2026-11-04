@@ -63,7 +63,7 @@ function Tile({ m, size = 76 }: { m: ModuleMeta; size?: number }) {
   );
 }
 
-const AUTO_SLIDES = new Set(["m02", "m06", "m09"]);
+const AUTO_SLIDES = new Set(MODULES.map((m) => m.id));
 
 function ModuleSlide({ m, n, total }: { m: ModuleMeta; n: number; total: number }) {
   const { t, lang } = useT();
