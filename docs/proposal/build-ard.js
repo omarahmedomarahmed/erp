@@ -17,10 +17,10 @@ const bullet = (t) => new Paragraph({ bidirectional: true, numbering: { referenc
 const W = 9026;
 const cell = (t, w, o = {}) => new TableCell({ width: { size: w, type: WidthType.DXA }, margins: { top: 80, bottom: 80, left: 120, right: 120 },
   shading: o.fill ? { type: ShadingType.CLEAR, color: "auto", fill: o.fill } : undefined,
-  children: [P([R(t, { size: 21, bold: !!o.bold, color: o.color })], { spacing: { after: 0, line: 280 } })] });
+  children: [P([R(t, { size: 21, bold: !!o.bold, color: o.color })], { spacing: { after: 0, line: 280 }, keepNext: !o.last, keepLines: true })] });
 const table = (cols, head, rows) => new Table({ visuallyRightToLeft: true, width: { size: W, type: WidthType.DXA }, columnWidths: cols,
   rows: [new TableRow({ tableHeader: true, children: head.map((h, i) => cell(h, cols[i], { fill: NAVY, bold: true, color: "FFFFFF" })) }),
-    ...rows.map((r, k) => new TableRow({ cantSplit: true, children: r.map((v, i) => cell(v, cols[i], { fill: k % 2 ? SOFT : undefined, bold: i === 0 })) }))] });
+    ...rows.map((r, k) => new TableRow({ cantSplit: true, children: r.map((v, i) => cell(v, cols[i], { fill: k % 2 ? SOFT : undefined, bold: i === 0, last: k === rows.length - 1 })) }))] });
 
 const DESC = {
   m02: "سجل موحد لكل عميل، فرداً أو شركة: الوثائق والشهادات والمطالبات وسجل التغييرات. يكشف النظام التكرار ويتحقق من الهوية وقوائم العقوبات (KYC وPEP) عند التسجيل.",
@@ -71,25 +71,22 @@ body.push(
     ["الضمان", "6 أشهر", "إصلاح أي خلل بعد التسليم دون تكلفة"],
   ]),
 
-  P("", { spacing: { after: 200 } }),
   H1("ثالثاً: وحدات المنظومة"),
   P("لكل وحدة وصف مختصر وقائمة بما لا يسمح به النظام. الوحدات المعلمة «وحدة حساسة» لها حماية إضافية داخل قاعدة البيانات."),
 );
 mods.forEach((m, i) => {
+  // Each module stays in one piece (keepNext on every line except the last).
   body.push(H2(`${i + 1}. ${m.name}${m.brief ? ` (البند ${m.brief})` : ""}`, m.sensitive ? [R("   ● وحدة حساسة", { bold: true, size: 20, color: RED })] : []));
-  body.push(P(DESC[m.id], { spacing: { after: 80, line: 300 } }));
-  body.push(P([R("ما لا يسمح به النظام:", { bold: true, size: 22, color: NAVY })], { spacing: { after: 40 }, keepNext: true }));
-  m.rules.forEach(([what]) => body.push(bullet(what)));
-  body.push(new Paragraph({ spacing: { after: 120 }, children: [] }));
+  body.push(P(DESC[m.id], { spacing: { after: 60, line: 290 }, keepNext: true, keepLines: true }));
+  body.push(P([R("ما لا يسمح به النظام:", { bold: true, size: 22, color: NAVY })], { spacing: { after: 30 }, keepNext: true }));
+  m.rules.forEach(([what], j) => body.push(new Paragraph({ bidirectional: true, numbering: { reference: "dots", level: 0 }, spacing: { after: j === m.rules.length - 1 ? 160 : 30 }, keepNext: j < m.rules.length - 1, children: [R(what, { size: 21 })] })));
 });
 body.push(
   H1("رابعاً: الوحدات الحساسة وطريقة الحماية"),
-  P("ثماني وحدات تتعامل مع المال أو الهوية أو الحكم الشرعي مباشرة. الحماية في قاعدة البيانات لا في الشاشة فقط، مع سجل تدقيق لكل محاولة."),
+  P("ثماني وحدات تتعامل مع المال أو الهوية أو الحكم الشرعي مباشرة. الحماية في قاعدة البيانات لا في الشاشة فقط، مع سجل تدقيق لكل محاولة.", { keepNext: true }),
   table([2100, 3463, 3463], ["الوحدة", "الخطر", "طريقة الحماية"], mods.filter((m) => m.sensitive).map((m) => [m.name, m.risk.replace(/\.$/, ""), m.controls[0]])),
-  P("", { spacing: { after: 120 } }),
   P("المساعد الذكي في هذه الوحدات يقترح فقط، ولا ينفذ أي إجراء دون تأكيد موظف مسؤول بالاسم."),
-  P("", { spacing: { after: 240 } }),
-  P([R("وتفضلوا بقبول فائق الاحترام والتقدير،")]),
+  P([R("وتفضلوا بقبول فائق الاحترام والتقدير،")], { keepNext: true, spacing: { before: 200, after: 60 } }),
   P([R("شركة السحابة الكبيرة لتكنولوجيا المعلومات والذكاء الاصطناعي", { bold: true, color: NAVY })]),
 );
 
@@ -99,8 +96,8 @@ const doc = new Document({
   styles: {
     default: { document: { run: { font: FONT, size: 24 } } },
     paragraphStyles: [
-      { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal", quickFormat: true, run: { font: FONT, size: 32, bold: true, color: NAVY }, paragraph: { spacing: { before: 360, after: 160 }, keepNext: true, outlineLevel: 0 } },
-      { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true, run: { font: FONT, size: 26, bold: true, color: BLUE }, paragraph: { spacing: { before: 200, after: 80 }, keepNext: true, outlineLevel: 1 } },
+      { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal", quickFormat: true, run: { font: FONT, size: 32, bold: true, color: NAVY }, paragraph: { spacing: { before: 240, after: 120 }, keepNext: true, outlineLevel: 0 } },
+      { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true, run: { font: FONT, size: 26, bold: true, color: BLUE }, paragraph: { spacing: { before: 120, after: 60 }, keepNext: true, outlineLevel: 1 } },
     ],
   },
   numbering: { config: [{ reference: "dots", levels: [{ level: 0, format: LevelFormat.BULLET, text: "•", alignment: AlignmentType.LEFT, style: { paragraph: { indent: { left: 360, hanging: 260 } } } }] }] },
