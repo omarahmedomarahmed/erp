@@ -110,10 +110,13 @@ const doc = new Document({
       const wm = () => new Paragraph({ children: [new ImageRun({ type: "png", data: fs.readFileSync(path.join(__dirname, "bigcloud-watermark.png")), transformation: { width: 420, height: 268 },
         floating: { horizontalPosition: { relative: HorizontalPositionRelativeFrom.PAGE, align: HorizontalPositionAlign.CENTER }, verticalPosition: { relative: VerticalPositionRelativeFrom.PAGE, align: VerticalPositionAlign.CENTER }, behindDocument: true, wrap: { type: TextWrappingType.NONE } } })] });
       // Header logo from page 2 on (page 1 already carries the big logo).
-      // Small logo on the left margin, level with the first text line of the page (not above it).
-      const logoLine = new Paragraph({ children: [new ImageRun({ type: "png", data: fs.readFileSync(path.join(__dirname, "bigcloud-logo.png")), transformation: { width: 56, height: 36 },
-        floating: { horizontalPosition: { relative: HorizontalPositionRelativeFrom.PAGE, offset: 330000 }, verticalPosition: { relative: VerticalPositionRelativeFrom.PAGE, offset: +(process.env.LOGO_Y || 955000) },
-          wrap: { type: TextWrappingType.NONE } } })] });
+      // Header from page 2: title on the right, Big Cloud logo once at the top left, on the same line.
+      const nb = { top: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" }, bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" }, left: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" }, right: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" } };
+      const logoLine = new Table({ visuallyRightToLeft: true, width: { size: W, type: WidthType.DXA }, columnWidths: [7026, 2000], borders: { ...nb, insideHorizontal: nb.top, insideVertical: nb.top },
+        rows: [new TableRow({ children: [
+          new TableCell({ width: { size: 7026, type: WidthType.DXA }, borders: nb, verticalAlign: "center", children: [new Paragraph({ bidirectional: true, children: [R("عرض فني منظومة التكافل الالكترونيه", { size: 18, color: "8A97AD" })] })] }),
+          new TableCell({ width: { size: 2000, type: WidthType.DXA }, borders: nb, verticalAlign: "center", children: [new Paragraph({ alignment: AlignmentType.LEFT, children: [new ImageRun({ type: "png", data: fs.readFileSync(path.join(__dirname, "bigcloud-logo.png")), transformation: { width: 56, height: 36 } })] })] }),
+        ] })] });
       return { first: new Header({ children: [wm()] }), default: new Header({ children: [wm(), logoLine] }) };
     })(),
     footers: (() => { const ft = () => new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: 18, color: "8A97AD" })] })] }); return { first: ft(), default: ft() }; })(),
