@@ -122,7 +122,7 @@ export const dict: Dict = {
   "m06.cert.sharia.ar": { ar: "الحالة الشرعية", en: "الحالة الشرعية", cat: "term" },
   "m06.cert.sharia.en": { ar: "Sharia status", en: "Sharia status", cat: "term" },
   "m06.cert.compliant": { ar: "متوافق · Compliant", en: "متوافق · Compliant", cat: "term" },
-  "m06.cert.clause": { ar: "يتبرع المشترك بحصة التبرع لصندوق المشتركين، ويوكل الشركة بإدارة الصندوق مقابل أجرة الوكالة. · The participant donates tabarru' to the participants' fund and appoints the company as Wakil for the Wakala fee.", en: "يتبرع المشترك بحصة التبرع لصندوق المشتركين، ويوكل الشركة بإدارته مقابل أجرة الوكالة. · The participant donates tabarru' to the participants' fund and appoints the company as Wakil for the Wakala fee.", cat: "term" },
+  "m06.cert.clause": { ar: "يتبرع المشترك بحصة التبرع لصندوق المشتركين، ويوكل الشركة بإدارة الصندوق مقابل أجرة الوكالة. · The participant donates tabarru' to the participants' fund and appoints the company as Wakil for the Wakala fee.", en: "يتبرع المشترك بحصة التبرع لصندوق المشتركين، ويوكل الشركة بإدارة الصندوق مقابل أجرة الوكالة. · The participant donates tabarru' to the participants' fund and appoints the company as Wakil for the Wakala fee.", cat: "term" },
   "m06.cert.qr": { ar: "QR للتحقق", en: "Verification QR", cat: "label" },
   "m06.cert.signature": { ar: "توقيع رقمي", en: "Digital signature", cat: "label" },
 
