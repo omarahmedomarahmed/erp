@@ -317,7 +317,7 @@ export function Deck() {
         {[["MousePointerClick", "deck.next.s1"], ["MessageSquareText", "deck.next.s2"], ["Languages", "deck.next.s3"], ["Rocket", "deck.next.s4"]].map(([ic, k], j) => {
           const I = icon(ic);
           return (
-            <div key={k} className="flex flex-col justify-between rounded-3xl bg-white/10 p-6">
+            <div key={k} className="flex flex-col items-center justify-between rounded-3xl bg-white/10 p-6 text-center">
               <span className="text-[72px] font-extrabold leading-none text-accent num">{j + 1}</span>
               <I size={84} strokeWidth={1.5} aria-hidden />
               <span className="text-[24px] font-extrabold leading-snug">{t(k)}</span>

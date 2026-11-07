@@ -3,7 +3,7 @@ import type { Dict } from "@/lib/types";
 // Dictionary entries for m28 (Dashboards & reports). Keys are prefixed with "m28.".
 export const dict: Dict = {
   "m28.name": { ar: "لوحات القيادة والتقارير", en: "Dashboards & reports", cat: "menu" },
-  "m28.tagline": { ar: "24 مؤشر KPI و12 لوحة تفاعلية تتحدّث كل ساعة، مع ربط Metabase أو Power BI", en: "24 KPIs and 12 interactive dashboards refreshed hourly, linked to Metabase or Power BI", cat: "help" },
+  "m28.tagline": { ar: "24 مؤشر KPI و12 لوحة تفاعلية تتحدث كل ساعة، مع ربط Metabase أو Power BI", en: "24 KPIs and 12 interactive dashboards refreshed hourly, linked to Metabase or Power BI", cat: "help" },
 
   "m28.s1.title": { ar: "اللوحة التنفيذية", en: "Executive dashboard", cat: "menu" },
   "m28.s1.caption": { ar: "أهم المؤشرات للإدارة العليا في شاشة واحدة، مع التنبيهات واختيار أي لوحة من اللوحات الـ12.", en: "Top-management KPIs on one screen, with alerts and a switch to any of the 12 dashboards.", cat: "help" },
@@ -21,7 +21,7 @@ export const dict: Dict = {
   "m28.oct": { ar: "أكتوبر 2026", en: "October 2026", cat: "label" },
   "m28.pctOf": { ar: "{p}% من المكتتب", en: "{p}% of written", cat: "help" },
   "m28.target5": { ar: "الهدف أقل من 5", en: "Target under 5", cat: "help" },
-  "m28.sampleHint": { ar: "من عيّنة المطالبات المصروفة", en: "From the paid-claims sample", cat: "help" },
+  "m28.sampleHint": { ar: "من عينة المطالبات المصروفة", en: "From the paid-claims sample", cat: "help" },
   "m28.openCount": { ar: "{n} مطالبة مفتوحة", en: "{n} open claims", cat: "help" },
   "m28.unit.m": { ar: "{v} مليون د.ل", en: "LYD {v}m", cat: "label" },
   "m28.unit.k": { ar: "{v} ألف د.ل", en: "LYD {v}k", cat: "label" },

@@ -18,7 +18,7 @@ export const meta: ModuleMeta = {
     ],
   },
   needs: [
-    { ar: "عينة مموّهة من ملف العملاء الحالي لقياس التكرار وتخطيط الترحيل", en: "Anonymised sample of the current customer file, for duplicate measurement and migration planning" },
+    { ar: "عينة مموهة من ملف العملاء الحالي لقياس التكرار وتخطيط الترحيل", en: "Anonymised sample of the current customer file, for duplicate measurement and migration planning" },
     { ar: "البيانات والوثائق الإلزامية لكل مستوى KYC ولكل منتج", en: "Mandatory data and documents for each KYC level and product" },
     { ar: "جهة اعتماد دمج السجلات المكررة، وحدود تنبيه الاحتيال لمسؤول الامتثال", en: "Approver for duplicate merges, and fraud-alert thresholds for compliance" },
     { ar: "حالة الاتفاق أو API مع السجل المدني للتحقق من الرقم الوطني", en: "Status of any agreement or API with the Civil Registry for national-number checks" },

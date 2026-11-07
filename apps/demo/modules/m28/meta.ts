@@ -12,7 +12,7 @@ export const meta: ModuleMeta = {
   needs: [
     { ar: "ترتيب أولوية المؤشرات الـ24 واللوحات الـ12 للإدارة العليا", en: "Priority order of the 24 KPIs and 12 dashboards for top management" },
     { ar: "تعريف معتمد لـ «نسبة الخسارة» و«السيولة المتوفرة»", en: "An approved definition of “loss ratio” and “available liquidity”" },
-    { ar: "من يرى أي لوحة، ومن يصدّر البيانات", en: "Who sees which dashboard, and who may export data" },
+    { ar: "من يرى أي لوحة، ومن يصدر البيانات", en: "Who sees which dashboard, and who may export data" },
     { ar: "أداة التحليل المفضلة (Metabase أو Power BI) ومن يديرها", en: "Preferred BI tool (Metabase or Power BI) and who runs it" },
     { ar: "أرقام النظام القديم للسنوات السابقة للمقارنة", en: "Legacy-system figures for past years, for comparison" },
   ],

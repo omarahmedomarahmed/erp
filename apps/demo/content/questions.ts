@@ -137,7 +137,7 @@ export const QUESTIONS: Question[] = [
     id: "q12-payroll",
     ar: "تأكيد نسب الضمان الاجتماعي والضريبة والدمغة والتضامن، وأداة الرواتب الحالية",
     en: "Confirmation of social security, tax, stamp and solidarity rates, and current HR/payroll tool",
-    hintAr: "النظام يعدّ جدول النسب مسبقا، ومحاسب الرواتب يراجعه للتأكيد.",
+    hintAr: "النظام يعد جدول النسب مسبقا، ومحاسب الرواتب يراجعه للتأكيد.",
     hintEn: "The system prepares the rate table; the payroll accountant reviews it for confirmation.",
     type: "choice",
     options: [

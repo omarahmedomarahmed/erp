@@ -23,7 +23,7 @@ export const meta: ModuleMeta = {
     { ar: "حدود صلاحيات اعتماد التعويض لكل وظيفة (مصفوفة الاعتماد)", en: "Claim approval limits per role (approval matrix)" },
     { ar: "تقويم العطل الرسمية وقواعد التصعيد في اليوم 3 و4", en: "Public-holiday calendar and day-3/day-4 escalation rules" },
     { ar: "قائمة المعاينين المعتمدين وأتعابهم", en: "Approved surveyors and their fees" },
-    { ar: "نماذج المطالبات الحالية وعيّنة من ملفات مصروفة", en: "Current claim forms and a sample of paid files" },
+    { ar: "نماذج المطالبات الحالية وعينة من ملفات مصروفة", en: "Current claim forms and a sample of paid files" },
   ],
   screens: [
     { id: "s1", titleKey: "m09.s1.title", captionKey: "m09.s1.caption" },

@@ -14,7 +14,7 @@ export const meta: ModuleMeta = {
     { ar: "جدول العمولات الحالي لكل منتج وشريحة، والنسبة المنظمة للإجباري", en: "Current commission table per product and tier, and the regulated compulsory rate" },
     { ar: "مؤشرات KPI المرتبطة بالعمولة وقيمة كل مضاعف", en: "KPIs linked to commission and each multiplier value" },
     { ar: "أهداف كل وكيل للفترة القادمة ومن يعتمدها", en: "Each agent's targets for the next period and who approves them" },
-    { ar: "عيّنة كشوف عمولة مصروفة وسياسة الاسترداد عند الإلغاء", en: "Sample paid commission statements and the clawback policy on cancellation" },
+    { ar: "عينة كشوف عمولة مصروفة وسياسة الاسترداد عند الإلغاء", en: "Sample paid commission statements and the clawback policy on cancellation" },
   ],
   rules: [
     { id: "m04-ptf", tryKey: "m04.guard.ptf.try", blockedKey: "m04.guard.ptf.blocked" },

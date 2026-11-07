@@ -22,7 +22,7 @@ export const dict: Dict = {
   "m04.list.new": { ar: "وكيل جديد", en: "New agent", cat: "button" },
   "m04.list.border": { ar: "المنافذ الحدودية", en: "Border points", cat: "label" },
   "m04.list.licence": { ar: "تنبيهات الترخيص", en: "Licence alerts", cat: "label" },
-  "m04.list.note": { ar: "النظام يوقف الوكيل تلقائياً عند انتهاء ترخيصه، وينبّه قبل 60 يوماً. نسبة التحقيق = المحصّل منذ يناير ÷ هدف 10 أشهر.", en: "The system suspends an agent automatically when the licence expires and alerts 60 days before. Achievement = collected since January ÷ 10-month target.", cat: "help" },
+  "m04.list.note": { ar: "النظام يوقف الوكيل تلقائياً عند انتهاء ترخيصه، وينبه قبل 60 يوماً. نسبة التحقيق = المحصّل منذ يناير ÷ هدف 10 أشهر.", en: "The system suspends an agent automatically when the licence expires and alerts 60 days before. Achievement = collected since January ÷ 10-month target.", cat: "help" },
 
   "m04.col.agent": { ar: "الوكيل", en: "Agent", cat: "label" },
   "m04.col.kind": { ar: "الفئة", en: "Kind", cat: "label" },
@@ -97,7 +97,7 @@ export const dict: Dict = {
   "m04.st.collected": { ar: "المحصّل", en: "Collected", cat: "label" },
   "m04.st.commission": { ar: "العمولة", en: "Commission", cat: "label" },
   "m04.st.approveRun": { ar: "اعتماد تشغيل أكتوبر", en: "Approve October run", cat: "button" },
-  "m04.st.prepared": { ar: "أعدّه", en: "Prepared by", cat: "field" },
+  "m04.st.prepared": { ar: "أعده", en: "Prepared by", cat: "field" },
   "m04.st.approved": { ar: "اعتمده", en: "Approved by", cat: "field" },
   "m04.st.awaiting": { ar: "بانتظار اعتماد المدير المالي", en: "Awaiting CFO approval", cat: "status" },
   "m04.cstatus.paid": { ar: "مصروفة", en: "Paid", cat: "status" },
@@ -114,7 +114,7 @@ export const dict: Dict = {
   "m04.st.clawbackNote": { ar: "ألغى المشترك الشهادة، فاسترد النظام العمولة بقيد سالب على صندوق المساهمين.", en: "The participant cancelled the certificate, so the system clawed back the commission with a negative line in the shareholders' fund.", cat: "message" },
 
   "m04.guard.ptf.try": { ar: "صرف عمولة الوكيل من صندوق المشتركين", en: "Paying agent commission from the participants' fund", cat: "button" },
-  "m04.guard.ptf.blocked": { ar: "العمولة مصروف على المشغّل. قاعدة البيانات ترفض صرفها من غير صندوق المساهمين.", en: "Commission is an operator expense. The database refuses to pay it from any fund but the shareholders' fund.", cat: "message" },
+  "m04.guard.ptf.blocked": { ar: "العمولة مصروف على المشغل. قاعدة البيانات ترفض صرفها من غير صندوق المساهمين.", en: "Commission is an operator expense. The database refuses to pay it from any fund but the shareholders' fund.", cat: "message" },
   "m04.guard.uncollected.try": { ar: "عمولة على شهادة غير محصّلة المساهمة", en: "Commission on a certificate not yet paid", cat: "button" },
   "m04.guard.uncollected.blocked": { ar: "لا عمولة قبل التحصيل. النظام يحسبها عند تسجيل الإيصال فقط.", en: "No commission before collection. The system calculates it only when the receipt posts.", cat: "message" },
 };

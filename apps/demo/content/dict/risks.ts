@@ -10,7 +10,7 @@ export const dict: Dict = {
   "rk.layer.mc.title": { ar: "Maker-checker وفصل المهام", en: "Maker-checker and segregation of duties", cat: "label" },
   "rk.layer.mc.text": { ar: "من يُدخل العملية لا يعتمدها. المبالغ الكبيرة تحتاج معتمدا ثانيا حسب الصلاحيات.", en: "Whoever enters a transaction cannot approve it. Large amounts need a second approver by authority limits.", cat: "help" },
   "rk.layer.audit.title": { ar: "سجل التدقيق", en: "Audit trail", cat: "label" },
-  "rk.layer.audit.text": { ar: "يسجّل النظام كل تغيير ومحاولة ممنوعة: من وماذا ومتى. لا أحد يحذف السجل أو يعدّله.", en: "The system logs every change and blocked attempt: who, what, when. Nobody can delete or edit the log.", cat: "help" },
+  "rk.layer.audit.text": { ar: "يسجل النظام كل تغيير ومحاولة ممنوعة: من وماذا ومتى. لا أحد يحذف السجل أو يعدله.", en: "The system logs every change and blocked attempt: who, what, when. Nobody can delete or edit the log.", cat: "help" },
   "rk.layer.ssb.title": { ar: "اعتماد الهيئة الشرعية", en: "Sharia board approval", cat: "label" },
   "rk.layer.ssb.text": { ar: "المنتجات والعقود ونسب الوكالة والفائض تنتظر اعتماد الهيئة الشرعية قبل أن تعمل.", en: "Products, contracts, Wakala and surplus ratios wait for Sharia board approval before they go live.", cat: "help" },
   "rk.modules.title": { ar: "الوحدات الحساسة", en: "Sensitive modules", cat: "label" },

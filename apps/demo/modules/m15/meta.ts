@@ -18,7 +18,7 @@ export const meta: ModuleMeta = {
     ],
   },
   needs: [
-    { ar: "حساب آخر فائض موزّع ومكوناته وطريقة توزيعه فعلياً", en: "Last distributed surplus, its components and the actual distribution method" },
+    { ar: "حساب آخر فائض موزع ومكوناته وطريقة توزيعه فعلياً", en: "Last distributed surplus, its components and the actual distribution method" },
     { ar: "رصيد القرض الحسن القائم وتاريخ كل سحب وقرار الهيئة عليه", en: "Outstanding Qard Hasan balance, each draw date and the SSB resolution on it" },
     { ar: "قواعد الاستحقاق: استبعاد من تجاوزت تعويضاته مساهمته، والحد الأدنى للحصة", en: "Eligibility rules: exclusion of participants whose claims exceed their contribution, and the minimum share" },
     { ar: "طريقة التسوية المفضلة (قسيمة صرف أو خصم عند التجديد) ومهلة صرف القسائم", en: "Preferred settlement (voucher or renewal discount) and the voucher payment window" },

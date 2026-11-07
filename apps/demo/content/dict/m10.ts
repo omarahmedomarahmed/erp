@@ -53,7 +53,7 @@ export const dict: Dict = {
   "m10.status.expired": { ar: "منتهية", en: "Expired", cat: "status" },
   "m10.kind.retakaful": { ar: "إعادة تكافل", en: "Retakaful", cat: "status" },
   "m10.kind.conventional": { ar: "إعادة تأمين تقليدي", en: "Conventional", cat: "status" },
-  "m10.isa.registered": { ar: "مسجّل", en: "Registered", cat: "status" },
+  "m10.isa.registered": { ar: "مسجل", en: "Registered", cat: "status" },
   "m10.isa.pending": { ar: "قيد التسجيل", en: "Pending", cat: "status" },
 
   "m10.tr.title": { ar: "ملف الاتفاقية", en: "Treaty record", cat: "label" },
@@ -125,7 +125,7 @@ export const dict: Dict = {
   "m10.st.summary": { ar: "ملخص شهر {m}", en: "Summary {m}", cat: "label" },
   "m10.st.cpCeded": { ar: "حصة المعيد", en: "Counterparty share", cat: "label" },
   "m10.st.cpComm": { ar: "عمولته", en: "Its commission", cat: "label" },
-  "m10.st.noLines": { ar: "لا شهادات جديدة من العيّنة هذا الشهر.", en: "No new sample certificates this month.", cat: "message" },
+  "m10.st.noLines": { ar: "لا شهادات جديدة من العينة هذا الشهر.", en: "No new sample certificates this month.", cat: "message" },
   "m10.st.xolDeposit": { ar: "قسط XoL الربعي (حصة المعيد)", en: "Quarterly XoL deposit (counterparty share)", cat: "label" },
   "m10.st.book": { ar: "باقي المحفظة (ملخص شهري)", en: "Rest of the book (monthly summary)", cat: "label" },
   "m10.st.weOwe": { ar: "الرصيد الموجب: الشركة مدينة للمعيد.", en: "Positive balance: the company owes the counterparty.", cat: "help" },

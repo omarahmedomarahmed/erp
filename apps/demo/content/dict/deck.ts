@@ -19,8 +19,8 @@ export const dict: Dict = {
   "deck.journey.s6": { ar: "استرداد حصة\nإعادة التكافل\nآلياً", en: "Automatic\nretakaful\nrecovery", cat: "label" },
   "deck.journey.s7": { ar: "توزيع\nالفائض\nعلى المشتركين", en: "Surplus\nshared with\nparticipants", cat: "label" },
 
-  "deck.before": { ar: "قبل: الأتمتة متوقفة", en: "Before: automation off", cat: "label" },
-  "deck.after": { ar: "بعد: الأتمتة مفعّلة", en: "After: automation on", cat: "label" },
+  "deck.before": { ar: "قبل الأتمتة", en: "Before automation", cat: "label" },
+  "deck.after": { ar: "بعد الأتمتة", en: "After automation", cat: "label" },
   "deck.module.screens": { ar: "الشاشات الرئيسية", en: "Main screens", cat: "label" },
   "deck.module.sensitive": { ar: "وحدة حساسة", en: "Sensitive module", cat: "label" },
 

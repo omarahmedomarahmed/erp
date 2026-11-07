@@ -273,7 +273,7 @@ export const uwRules: UwRule[] = [
     conditionAr: "قيمة الشحنة > 1,000,000 د.ل (إعادة تكافل اختيارية)", conditionEn: "Cargo value > LYD 1,000,000 (facultative retakaful)", outcome: "refer", referTo: "uw_manager" },
   { id: "UW-TRV-01", productIds: ["TRV"], nameAr: "مسافر كبير السن", nameEn: "Senior traveller",
     conditionAr: "العمر > 75 سنة", conditionEn: "Age > 75", outcome: "refer", referTo: "senior_underwriter" },
-  { id: "UW-GEN-01", productIds: ["CMP", "MTR", "ORC", "TRV", "FIR", "MAR", "HAJ"], nameAr: "شخص مُعرّض سياسياً", nameEn: "Politically exposed person",
+  { id: "UW-GEN-01", productIds: ["CMP", "MTR", "ORC", "TRV", "FIR", "MAR", "HAJ"], nameAr: "شخص مُعرض سياسياً", nameEn: "Politically exposed person",
     conditionAr: "العميل مصنف PEP (عناية واجبة معززة)", conditionEn: "Customer flagged PEP (enhanced due diligence)", outcome: "refer", referTo: "uw_manager" },
 ];
 
@@ -1380,7 +1380,7 @@ at("2026-03-15", () => {
 });
 // Purification of non-compliant income (Sharia exception SX-003)
 const PURIFIED = 1284.65;
-at("2026-06-30", () => post("2026-06-30", "purification", "SX-003", "فائدة مقيدة من مصرف مراسل تقليدي – تُجنَّب للتطهير", "Interest credited by a conventional correspondent bank – set aside for purification",
+at("2026-06-30", () => post("2026-06-30", "purification", "SX-003", "فائدة مقيدة من مصرف مراسل تقليدي – تُجنَب للتطهير", "Interest credited by a conventional correspondent bank – set aside for purification",
   [["PTF-1110", PURIFIED, 0], ["PTF-2160", 0, PURIFIED]], { sharia: "purified" }));
 at("2026-07-20", () => post("2026-07-20", "purification", "SX-003", "صرف مبلغ التطهير لجهة خيرية", "Purification amount paid to charity", [["PTF-2160", PURIFIED, 0], ["PTF-1110", 0, PURIFIED]], { sharia: "purified" }));
 // Staff advances (SHF)
@@ -1506,7 +1506,7 @@ export const shariaExceptions: ShariaException[] = [
     descriptionAr: "قيد يدوي يجمع مصرف صندوق المشتركين مع مصروف رواتب صندوق المساهمين دون تحويل معتمد – رُفض",
     descriptionEn: "Manual journal mixing PTF bank with SHF salary expense without an approved transfer – blocked" },
   { id: "SX-003", at: "2026-06-30T09:10", kind: "non_compliant_income", byPersonaId: "cfo", amount: PURIFIED, outcome: "purified", resolutionId: "SSB-2026-06",
-    descriptionAr: "فائدة قيدها مصرف مراسل تقليدي على حساب صندوق المشتركين – جُنّبت وصرفت لجهة خيرية",
+    descriptionAr: "فائدة قيدها مصرف مراسل تقليدي على حساب صندوق المشتركين – جُنبت وصرفت لجهة خيرية",
     descriptionEn: "Interest credited by a conventional correspondent bank to a PTF account – set aside and paid to charity",
     journalId: journals.find((j) => j.source === "purification")!.id },
 ];
@@ -1535,7 +1535,7 @@ export const inbox: InboxItem[] = [
   IB("claims", "m09", "task", "إقفال مطالبة بعد تحصيل استرداد إعادة التكافل", "Close claim after retakaful recovery is collected", "claim", "CLM-2026-00081", "2026-11-10", "low"),
   IB("cfo", "m09", "approval", "اعتماد تعويض مستودع فزان (37,900 د.ل)", "Approve Fezzan warehouse claim (LYD 37,900)", "claim", "CLM-2026-00087", "2026-11-03", "high"),
   IB("cfo", "m09", "approval", "اعتماد تعويض مركبة عميل PEP (41,000 د.ل)", "Approve PEP customer motor claim (LYD 41,000)", "claim", "CLM-2026-00088", "2026-11-03", "high"),
-  IB("cfo", "m34", "approval", "اعتماد مسير رواتب أكتوبر 2026", "Approve October 2026 payroll run", "payroll_run", "PR-2026-10", "2026-11-05"),
+  IB("cfo", "m34", "approval", "اعتماد كشف رواتب أكتوبر 2026", "Approve October 2026 payroll run", "payroll_run", "PR-2026-10", "2026-11-05"),
   IB("cfo", "m12", "task", "إقفال فترة أكتوبر 2026", "Close period October 2026", "period", "2026-10", "2026-11-12"),
   IB("accountant", "m12", "task", "قائمة إقفال أكتوبر: تسوية البنوك", "October close checklist: bank reconciliation", "period", "2026-10", "2026-11-08"),
   IB("accountant", "m07", "alert", "3 أقساط متأخرة السداد", "3 instalments overdue", "report", "overdue-instalments", "2026-11-04"),
