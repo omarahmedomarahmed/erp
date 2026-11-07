@@ -6,9 +6,9 @@ const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthT
 const path = require("path");
 const [dataPath, out, logo] = process.argv.slice(2);
 const mods = JSON.parse(fs.readFileSync(dataPath, "utf8"));
-const NAVY = "152B56", BLUE = "0F75DB", ORANGE = "FF5722", SOFT = "F3F5FB", RED = "C62828", FONT = "Arial";
+const NAVY = "152B56", BLUE = "0F75DB", ORANGE = "FF5722", SOFT = "F3F5FB", RED = "C62828", FONT = "IBM Plex Sans Arabic";
 const strip = (s) => s.replace(/محصّل/g, "\u0001").replace(/ّ/g, "").replace(/\u0001/g, "محصّل");
-const R = (text, o = {}) => new TextRun({ text: strip(text), font: FONT, rightToLeft: true, size: 24, ...o });
+const R = (text, o = {}) => new TextRun({ text: strip(text), font: FONT, rightToLeft: true, size: 22, ...o });
 const P = (runs, o = {}) => new Paragraph({ bidirectional: true, spacing: { after: 120, line: 320 }, ...o, children: Array.isArray(runs) ? runs : [R(runs)] });
 const H1 = (t) => new Paragraph({ heading: HeadingLevel.HEADING_1, bidirectional: true, keepNext: true,
   border: { bottom: { style: BorderStyle.SINGLE, size: 12, color: ORANGE, space: 4 } }, children: [R(t, { bold: true, size: 32, color: NAVY })] });
@@ -94,6 +94,7 @@ body.push(
 );
 
 const doc = new Document({
+  fonts: [{ name: "IBM Plex Sans Arabic", data: fs.readFileSync(path.join(__dirname, "fonts", "IBMPlexSansArabic-Regular.ttf")), characterSet: require("docx").CharacterSet.ARABIC }],
   title: "عرض فني منظومة التكافل الالكترونيه", creator: "شركة السحابة الكبيرة لتكنولوجيا المعلومات والذكاء الاصطناعي",
   styles: {
     default: { document: { run: { font: FONT, size: 24 } } },
