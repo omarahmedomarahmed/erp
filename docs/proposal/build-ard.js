@@ -8,11 +8,11 @@ const mods = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 const NAVY = "152B56", BLUE = "0F75DB", ORANGE = "FF5722", SOFT = "F3F5FB", RED = "C62828", FONT = "Arial";
 const strip = (s) => s.replace(/محصّل/g, "\u0001").replace(/ّ/g, "").replace(/\u0001/g, "محصّل");
 const R = (text, o = {}) => new TextRun({ text: strip(text), font: FONT, rightToLeft: true, size: 24, ...o });
-const P = (runs, o = {}) => new Paragraph({ bidirectional: true, alignment: AlignmentType.RIGHT, spacing: { after: 120, line: 320 }, ...o, children: Array.isArray(runs) ? runs : [R(runs)] });
-const H1 = (t) => new Paragraph({ heading: HeadingLevel.HEADING_1, bidirectional: true, alignment: AlignmentType.RIGHT, keepNext: true,
+const P = (runs, o = {}) => new Paragraph({ bidirectional: true, spacing: { after: 120, line: 320 }, ...o, children: Array.isArray(runs) ? runs : [R(runs)] });
+const H1 = (t) => new Paragraph({ heading: HeadingLevel.HEADING_1, bidirectional: true, keepNext: true,
   border: { bottom: { style: BorderStyle.SINGLE, size: 12, color: ORANGE, space: 4 } }, children: [R(t, { bold: true, size: 32, color: NAVY })] });
-const H2 = (t, extra = []) => new Paragraph({ heading: HeadingLevel.HEADING_2, bidirectional: true, alignment: AlignmentType.RIGHT, keepNext: true, children: [R(t, { bold: true, size: 26, color: BLUE }), ...extra] });
-const bullet = (t) => new Paragraph({ bidirectional: true, alignment: AlignmentType.RIGHT, numbering: { reference: "dots", level: 0 }, spacing: { after: 60 }, children: [R(t, { size: 22 })] });
+const H2 = (t, extra = []) => new Paragraph({ heading: HeadingLevel.HEADING_2, bidirectional: true, keepNext: true, children: [R(t, { bold: true, size: 26, color: BLUE }), ...extra] });
+const bullet = (t) => new Paragraph({ bidirectional: true, numbering: { reference: "dots", level: 0 }, spacing: { after: 60 }, children: [R(t, { size: 22 })] });
 const W = 9026;
 const cell = (t, w, o = {}) => new TableCell({ width: { size: w, type: WidthType.DXA }, margins: { top: 80, bottom: 80, left: 120, right: 120 },
   shading: o.fill ? { type: ShadingType.CLEAR, color: "auto", fill: o.fill } : undefined,
@@ -99,10 +99,10 @@ const doc = new Document({
       { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true, run: { font: FONT, size: 26, bold: true, color: BLUE }, paragraph: { spacing: { before: 200, after: 80 }, keepNext: true, outlineLevel: 1 } },
     ],
   },
-  numbering: { config: [{ reference: "dots", levels: [{ level: 0, format: LevelFormat.BULLET, text: "•", alignment: AlignmentType.RIGHT, style: { paragraph: { indent: { right: 360, hanging: 260 } } } }] }] },
+  numbering: { config: [{ reference: "dots", levels: [{ level: 0, format: LevelFormat.BULLET, text: "•", alignment: AlignmentType.LEFT, style: { paragraph: { indent: { left: 360, hanging: 260 } } } }] }] },
   sections: [{
     properties: { page: { size: { width: 11906, height: 16838 }, margin: { top: 1300, bottom: 1200, left: 1440, right: 1440 } } },
-    headers: { default: new Header({ children: [new Paragraph({ bidirectional: true, alignment: AlignmentType.LEFT, children: [R("عرض فني · شركة السحابة الكبيرة إلى شركة التكافل للتأمين", { size: 16, color: "8A97AD" })] })] }) },
+    headers: { default: new Header({ children: [new Paragraph({ bidirectional: true, children: [R("عرض فني · شركة السحابة الكبيرة إلى شركة التكافل للتأمين", { size: 16, color: "8A97AD" })] })] }) },
     footers: { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: 18, color: "8A97AD" })] })] }) },
     children: body,
   }],
