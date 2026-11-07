@@ -260,7 +260,7 @@ export const splitRules: SplitRule[] = products.flatMap((p) => [
 
 export const uwRules: UwRule[] = [
   { id: "UW-MTR-01", productIds: ["MTR"], nameAr: "قبول تلقائي – شامل مركبات", nameEn: "Auto-accept – comprehensive motor",
-    conditionAr: "عمر المركبة ≤ 10 سنوات وقيمتها ≤ 150,000 د.ل وسائق مرخص", conditionEn: "Vehicle age ≤ 10 years, value ≤ LYD 150,000, licensed driver", outcome: "auto_accept" },
+    conditionAr: "عمر المركبة ≤ 10 سنوات، القيمة ≤ 150,000 د.ل، سائق مرخص", conditionEn: "Vehicle age ≤ 10 years, value ≤ LYD 150,000, licensed driver", outcome: "auto_accept" },
   { id: "UW-MTR-02", productIds: ["MTR"], nameAr: "مركبة عالية القيمة", nameEn: "High-value vehicle",
     conditionAr: "قيمة المركبة > 150,000 د.ل", conditionEn: "Vehicle value > LYD 150,000", outcome: "refer", referTo: "senior_underwriter" },
   { id: "UW-MTR-03", productIds: ["MTR"], nameAr: "مركبة قديمة", nameEn: "Old vehicle",
@@ -856,7 +856,7 @@ export const surplusAllocations: SurplusAllocation[] = [];
 export const surplusRun: SurplusRun = {
   id: "SR-2025", year: 2025, status: "completed", components: SURPLUS_COMPONENTS, netSurplus: NET_SURPLUS, qardOutstanding: QARD, qardRepaid: QARD,
   retentionPct: 0, distributable: DISTRIBUTABLE, distributionPct: 100, eligibleContributions: ELIGIBLE, ratio: SURPLUS_RATIO,
-  eligibilityRuleAr: "جميع المشتركين الذين سددوا مساهماتهم في 2025؛ التوزيع بنسبة المساهمة (100% للمشتركين ولا شيء للمساهمين)",
+  eligibilityRuleAr: "جميع المشتركين المسددين لمساهمات 2025؛ التوزيع بنسبة المساهمة (100% للمشتركين ولا شيء للمساهمين)",
   eligibilityRuleEn: "All participants who paid contributions in 2025; pro rata to contribution (100% to participants, nothing to shareholders)",
   solvencyBefore: 168.4, solvencyAfter: 152.9,
   approvals: [
@@ -1047,7 +1047,7 @@ for (const a of staffAdvances) {
 export const payrollRates: PayrollRates = {
   illustrative: true, ssEmployeePct: 3.75, ssEmployerPct: 11.25, solidarityPct: 1, stampPct: 0.5, taxMonthlyExemption: 150,
   taxBands: [{ upTo: 1000, pct: 5 }, { upTo: null, pct: 10 }], familyAllowancePerChild: 50,
-  noteAr: "نسب توضيحية فقط: يجب أن يؤكدها محاسب الرواتب لدى الشركة (الضمان الاجتماعي وضريبة الدخل والدمغة وصندوق التضامن)",
+  noteAr: "نسب توضيحية فقط بانتظار تأكيد محاسب الرواتب لدى الشركة (الضمان الاجتماعي وضريبة الدخل والدمغة وصندوق التضامن)",
   noteEn: "Illustrative rates only: to be confirmed by the company's payroll accountant (social security, income tax, stamp, solidarity fund)",
 };
 export const payrollRuns: PayrollRun[] = [];
@@ -1470,7 +1470,7 @@ export const ssbMembers: SsbMember[] = [
 const ALL_SSB = ["SSB-M1", "SSB-M2", "SSB-M3"];
 export const ssbResolutions: SsbResolution[] = [
   { id: "SSB-2025-04", date: "2025-01-20", subject: "product", decision: "approved", signedBy: ALL_SSB,
-    titleAr: "اعتماد وثائق المنتجات السبعة وشروطها", titleEn: "Approval of the seven product wordings and terms" },
+    titleAr: "اعتماد وثائق وشروط المنتجات السبعة", titleEn: "Approval of the seven product wordings and terms" },
   { id: "SSB-2025-09", date: "2025-01-20", subject: "split_rule", decision: "approved", signedBy: ALL_SSB,
     titleAr: "اعتماد قواعد تقسيم المساهمة (الإصدار 1) وقنوات الاستثمار المسموحة", titleEn: "Approval of contribution split rules (v1) and permitted investment channels" },
   { id: "SSB-2026-01", date: "2025-12-18", subject: "split_rule", decision: "approved", signedBy: ALL_SSB,
@@ -1488,7 +1488,7 @@ export const ssbResolutions: SsbResolution[] = [
   { id: "SSB-2026-08", date: "2026-04-22", subject: "policy", decision: "approved", signedBy: ALL_SSB,
     titleAr: "رسوم التأخير – إن وجدت – تُصرف لحساب الخيرات ولا تدخل الإيرادات", titleEn: "Late fees, if any, go to the charity account, never to income" },
   { id: "SSB-2026-06", date: "2026-07-14", subject: "purification", decision: "approved", signedBy: ALL_SSB,
-    titleAr: "تطهير فائدة مقيدة بمبلغ 1,284.650 د.ل وصرفها لجهة خيرية", titleEn: "Purification of LYD 1,284.650 interest credited and payment to charity" },
+    titleAr: "تطهير فائدة مقيدة بمبلغ 1,284.650 د.ل بالصرف لجهة خيرية", titleEn: "Purification of LYD 1,284.650 interest credited and payment to charity" },
 ];
 export const ssbApprovals: SsbApproval[] = [
   ...products.map((p, i): SsbApproval => ({ id: `SSA-${pad(i + 1, 3)}`, subjectKind: "product", subjectId: p.id, resolutionId: "SSB-2025-04", date: "2025-01-20", status: "approved" })),
@@ -1506,7 +1506,7 @@ export const shariaExceptions: ShariaException[] = [
     descriptionAr: "قيد يدوي يجمع مصرف صندوق المشتركين مع مصروف رواتب صندوق المساهمين دون تحويل معتمد – رُفض",
     descriptionEn: "Manual journal mixing PTF bank with SHF salary expense without an approved transfer – blocked" },
   { id: "SX-003", at: "2026-06-30T09:10", kind: "non_compliant_income", byPersonaId: "cfo", amount: PURIFIED, outcome: "purified", resolutionId: "SSB-2026-06",
-    descriptionAr: "فائدة قيدها مصرف مراسل تقليدي على حساب صندوق المشتركين – جُنبت وصرفت لجهة خيرية",
+    descriptionAr: "فائدة من مصرف مراسل تقليدي على حساب صندوق المشتركين – تجنيب وصرف لجهة خيرية",
     descriptionEn: "Interest credited by a conventional correspondent bank to a PTF account – set aside and paid to charity",
     journalId: journals.find((j) => j.source === "purification")!.id },
 ];
@@ -1526,7 +1526,7 @@ const expiringSoon = policies.filter((p) => p.status === "active" && p.end >= TO
 export const inbox: InboxItem[] = [
   IB("uw", "m05", "referral", "إحالة: مركبة عالية القيمة (310,000 د.ل)", "Referral: high-value vehicle (LYD 310,000)", "quote", "Q-2026-02121", "2026-11-03", "high"),
   IB("uw", "m05", "referral", "إحالة: محطة وقود – نشاط خطر", "Referral: fuel station – hazardous occupancy", "quote", "Q-2026-02129", "2026-11-04"),
-  IB("uw", "m05", "referral", "إحالة: مسافر عمره 79 سنة", "Referral: traveller aged 79", "quote", "Q-2026-02136", "2026-11-03"),
+  IB("uw", "m05", "referral", "إحالة: مسافر بعمر 79 سنة", "Referral: traveller aged 79", "quote", "Q-2026-02136", "2026-11-03"),
   IB("uw", "m06", "alert", `${expiringSoon.length} شهادات تنتهي خلال 30 يوماً`, `${expiringSoon.length} certificates expire within 30 days`, "report", "renewals-30d", "2026-11-05"),
   IB("claims", "m09", "sla_breach", "تجاوز مهلة 5 أيام عمل: مطالبة أسطول برقة", "5-working-day SLA breached: Barqa fleet claim", "claim", "CLM-2026-00089", "2026-11-02", "high"),
   IB("claims", "m09", "approval", "اعتماد تعويض بطاقة برتقالية (6,880 د.ل)", "Approve Orange Card claim (LYD 6,880)", "claim", "CLM-2026-00086", "2026-11-03"),
