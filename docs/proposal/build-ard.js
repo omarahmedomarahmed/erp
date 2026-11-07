@@ -1,5 +1,5 @@
-// Builds the Arabic technical proposal (العرض الفني).
-// Usage: LOGO_RATIO=0.638 node build-ard.js modules.json "العرض-الفني-منظومة-التكافل.docx" bigcloud-logo.png
+// Builds the Arabic technical proposal (عرض فني).
+// Usage: LOGO_RATIO=0.638 node build-ard.js modules.json "عرض-فني-السحابة-الكبيرة-إلى-التكافل.docx" bigcloud-logo.png
 const fs = require("fs");
 const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthType, ShadingType, AlignmentType, BorderStyle,
   LevelFormat, Footer, Header, PageNumber, ImageRun, PageBreak, HeadingLevel } = require("docx");
@@ -41,9 +41,10 @@ const DESC = {
 const body = [];
 if (logo && fs.existsSync(logo)) body.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 200 }, children: [new ImageRun({ type: logo.endsWith(".png") ? "png" : "jpg", data: fs.readFileSync(logo), transformation: { width: 180, height: 180 * (+process.env.LOGO_RATIO || 0.4) } })] }));
 body.push(
-  new Paragraph({ bidirectional: true, alignment: AlignmentType.CENTER, spacing: { after: 60 }, children: [R("العرض الفني", { bold: true, size: 56, color: NAVY })] }),
-  new Paragraph({ bidirectional: true, alignment: AlignmentType.CENTER, spacing: { after: 40 }, children: [R("منظومة التكافل لإدارة أعمال التأمين التكافلي", { size: 28, color: BLUE, bold: true })] }),
-  new Paragraph({ bidirectional: true, alignment: AlignmentType.CENTER, spacing: { after: 360 }, border: { bottom: { style: BorderStyle.SINGLE, size: 12, color: ORANGE, space: 8 } }, children: [R("مقدم إلى شركة التكافل للتأمين · نوفمبر 2026", { size: 22, color: "5B6B86" })] }),
+  new Paragraph({ bidirectional: true, alignment: AlignmentType.CENTER, spacing: { after: 60 }, children: [R("عرض فني", { bold: true, size: 56, color: NAVY })] }),
+  new Paragraph({ bidirectional: true, alignment: AlignmentType.CENTER, spacing: { after: 60 }, children: [R("من شركة السحابة الكبيرة لتكنولوجيا المعلومات والذكاء الاصطناعي", { size: 26, color: BLUE, bold: true })] }),
+  new Paragraph({ bidirectional: true, alignment: AlignmentType.CENTER, spacing: { after: 60 }, children: [R("إلى شركة التكافل للتأمين", { size: 26, color: NAVY, bold: true })] }),
+  new Paragraph({ bidirectional: true, alignment: AlignmentType.CENTER, spacing: { after: 360 }, border: { bottom: { style: BorderStyle.SINGLE, size: 12, color: ORANGE, space: 8 } }, children: [R("منظومة التكافل لإدارة أعمال التأمين التكافلي · نوفمبر 2026", { size: 22, color: "5B6B86" })] }),
   P([R("السادة/ شركة التكافل للتأمين المحترمين", { bold: true })]),
   P([R("تحية طيبة وبعد،")]),
   P([R("يسرنا في شركة السحابة الكبيرة لتكنولوجيا المعلومات والذكاء الاصطناعي أن نضع بين أيديكم تصوراً مبدئياً لمنظومة ERP المخصصة لشركتكم، راجين الاطلاع واتخاذ ما ترونه مناسباً، ويأتي عرضنا الفني على النحو الآتي:")], { spacing: { after: 240, line: 340 } }),
@@ -101,7 +102,7 @@ const doc = new Document({
   numbering: { config: [{ reference: "dots", levels: [{ level: 0, format: LevelFormat.BULLET, text: "•", alignment: AlignmentType.RIGHT, style: { paragraph: { indent: { right: 360, hanging: 260 } } } }] }] },
   sections: [{
     properties: { page: { size: { width: 11906, height: 16838 }, margin: { top: 1300, bottom: 1200, left: 1440, right: 1440 } } },
-    headers: { default: new Header({ children: [new Paragraph({ bidirectional: true, alignment: AlignmentType.LEFT, children: [R("العرض الفني · منظومة التكافل", { size: 16, color: "8A97AD" })] })] }) },
+    headers: { default: new Header({ children: [new Paragraph({ bidirectional: true, alignment: AlignmentType.LEFT, children: [R("عرض فني · شركة السحابة الكبيرة إلى شركة التكافل للتأمين", { size: 16, color: "8A97AD" })] })] }) },
     footers: { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: 18, color: "8A97AD" })] })] }) },
     children: body,
   }],
