@@ -143,10 +143,12 @@ export function Deck() {
     { icon: "Share2", key: "deck.journey.s6", mod: "m10" },
     { icon: "HandCoins", key: "deck.journey.s7", mod: "m15" },
   ];
-  const months: { n: number; key: string; mods?: string[]; steps?: [string, string][]; extra?: string; run?: boolean }[] = [
-    { n: 1, key: "deck.m1.title", mods: ["m02", "m05", "m06", "m07", "m12"], extra: "deck.m1.extra" },
-    { n: 2, key: "deck.m2.title", mods: ["m09", "m10", "m04", "m16", "m11", "m15", "m28", "m33", "m34"], extra: "deck.m2.extra" },
-    { n: 3, key: "deck.m3.title", run: true, steps: [["DatabaseZap", "deck.m3.migrate"], ["ClipboardCheck", "deck.m3.uat"], ["GraduationCap", "deck.m3.train"], ["Rocket", "deck.m3.golive"]] },
+  const months: { n: string; key: string; mods?: string[]; steps?: [string, string][]; extra?: string; tone: "build" | "test" | "live" }[] = [
+    { n: "1", key: "deck.m1.title", mods: ["m02", "m05", "m06", "m07"], extra: "deck.m1.extra", tone: "build" },
+    { n: "2", key: "deck.m2.title", mods: ["m12", "m09", "m10", "m04"], extra: "deck.m2.extra", tone: "build" },
+    { n: "3", key: "deck.m3.title", mods: ["m16", "m11", "m15", "m28", "m33", "m34"], extra: "deck.m3.extra", tone: "build" },
+    { n: "4", key: "deck.m4.title", tone: "test", steps: [["DatabaseZap", "deck.m4.migrate"], ["Plug", "deck.m4.integrate"], ["GitCompare", "deck.m4.parallel"], ["GraduationCap", "deck.m4.train"]] },
+    { n: "5–6", key: "deck.m5.title", tone: "live", steps: [["Power", "deck.m5.cutover"], ["Activity", "deck.m5.watch"], ["Wrench", "deck.m5.fix"], ["CalendarCheck", "deck.m5.close"]] },
   ];
   const qIcons = ["Database", "Server", "ArrowRightLeft", "Percent", "BookOpen", "Package", "MapPin", "Landmark", "Share2", "Scale", "Users", "Banknote"];
 
@@ -254,44 +256,40 @@ export function Deck() {
 
     <Slide key="timeline" n={next()} total={total}>
       <Title sub={t("deck.timeline.sub")}>{t("deck.timeline.title")}</Title>
-      <div className="grid grid-cols-3 gap-5 px-14">
-        <div className="col-span-2 flex items-center gap-3 rounded-full bg-brand px-5 py-2 text-[17px] font-extrabold text-white"><Icons.Hammer size={20} aria-hidden />{t("deck.phase.build")}</div>
-        <div className="flex items-center gap-3 rounded-full bg-accent px-5 py-2 text-[17px] font-extrabold text-white"><Icons.Rocket size={20} aria-hidden />{t("deck.phase.run")}</div>
+      <div className="grid grid-cols-5 gap-3 px-12">
+        <div className="col-span-3 flex items-center gap-2 rounded-full bg-brand px-4 py-1.5 text-[15px] font-extrabold text-white"><Icons.Hammer size={18} aria-hidden />{t("deck.phase.build")}</div>
+        <div className="flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 text-[14px] font-extrabold text-white"><Icons.GitCompare size={18} aria-hidden />{t("deck.phase.test")}</div>
+        <div className="flex items-center gap-2 rounded-full bg-ok px-4 py-1.5 text-[14px] font-extrabold text-white"><Icons.ShieldCheck size={18} aria-hidden />{t("deck.phase.live")}</div>
       </div>
-      <div className="grid flex-1 grid-cols-3 gap-5 px-14 pt-4">
-        {months.map((mo) => (
-          <div key={mo.n} className={`flex flex-col gap-3 rounded-2xl p-5 ${mo.run ? "bg-accent/10" : "bg-canvas"}`}>
-            <div className="flex items-baseline gap-2">
-              <span className="text-[16px] font-bold text-muted">{t("deck.month")}</span>
-              <span className={`text-[48px] font-extrabold leading-none num ${mo.run ? "text-accent" : "text-brand"}`}>{mo.n}</span>
-            </div>
-            <div className="text-[21px] font-extrabold leading-tight text-navy">{t(mo.key)}</div>
-            {mo.mods && (
-              <div className="flex flex-wrap gap-2">
-                {mo.mods.map((id) => <span key={id} className="inline-flex items-center gap-1.5 rounded-full bg-surface py-0.5 ps-0.5 pe-2.5 text-[13.5px] font-bold text-navy"><Tile m={mod(id)} size={26} />{t(mod(id).nameKey)}</span>)}
-              </div>
-            )}
-            {mo.steps && (
-              <div className="grid gap-3">
-                {mo.steps.map(([ic, k]) => { const I = icon(ic); return (
-                  <div key={k} className="flex items-center gap-3 rounded-xl bg-surface px-4 py-2.5 text-[18px] font-extrabold text-navy"><span className="grid size-10 shrink-0 place-items-center rounded-lg bg-accent text-white"><I size={22} aria-hidden /></span>{t(k)}</div>
-                ); })}
-              </div>
-            )}
-            {mo.extra && <div className="mt-auto text-[16px] font-bold text-muted">{t(mo.extra)}</div>}
-          </div>
-        ))}
-      </div>
-      <div className="flex items-center justify-center gap-4 px-14 pt-4 pb-14">
-        {[["Headset", "deck.after.followup"], ["ShieldCheck", "deck.after.warranty"]].map(([ic, k], j) => {
-          const I = icon(ic);
+      <div className="grid flex-1 grid-cols-5 gap-3 px-12 pt-3">
+        {months.map((mo) => {
+          const c = { build: ["bg-canvas", "text-brand", "bg-brand"], test: ["bg-accent/10", "text-accent", "bg-accent"], live: ["bg-ok/10", "text-ok", "bg-ok"] }[mo.tone];
           return (
-            <div key={k} className="flex items-center gap-4">
-              {j > 0 && <Icons.ChevronLeft size={28} className="text-line ltr:rotate-180" aria-hidden />}
-              <span className="inline-flex items-center gap-3 rounded-2xl bg-navy px-5 py-2.5 text-[18px] font-extrabold text-white"><I size={26} aria-hidden />{t(k)}</span>
+            <div key={mo.n} className={`flex flex-col gap-2.5 rounded-2xl p-4 ${c[0]}`}>
+              <div className="flex items-baseline gap-2">
+                <span className="text-[14px] font-bold text-muted">{t(mo.n.length > 1 ? "deck.months" : "deck.month")}</span>
+                <span className={`text-[40px] font-extrabold leading-none num ${c[1]}`}>{mo.n}</span>
+              </div>
+              <div className="text-[17px] font-extrabold leading-tight text-navy">{t(mo.key)}</div>
+              {mo.mods && (
+                <div className="grid gap-1.5">
+                  {mo.mods.map((id) => <span key={id} className="flex items-center gap-1.5 rounded-full bg-surface py-0.5 ps-0.5 pe-2 text-[12.5px] font-bold leading-tight text-navy"><Tile m={mod(id)} size={24} />{t(mod(id).nameKey)}</span>)}
+                </div>
+              )}
+              {mo.steps && (
+                <div className="grid gap-2">
+                  {mo.steps.map(([ic, k]) => { const I = icon(ic); return (
+                    <div key={k} className="flex items-center gap-2 rounded-xl bg-surface px-2.5 py-2 text-[14px] font-extrabold leading-snug text-navy"><span className={`grid size-8 shrink-0 place-items-center rounded-lg text-white ${c[2]}`}><I size={18} aria-hidden /></span>{t(k)}</div>
+                  ); })}
+                </div>
+              )}
+              {mo.extra && <div className="mt-auto text-[13px] font-bold text-muted">{t(mo.extra)}</div>}
             </div>
           );
         })}
+      </div>
+      <div className="flex items-center justify-center px-14 pt-3 pb-14">
+        <span className="inline-flex items-center gap-3 rounded-2xl bg-navy px-5 py-2 text-[17px] font-extrabold text-white"><Icons.ShieldCheck size={24} aria-hidden />{t("deck.after.warranty")}</span>
       </div>
     </Slide>,
 
