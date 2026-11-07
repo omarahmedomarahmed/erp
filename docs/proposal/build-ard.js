@@ -1,8 +1,9 @@
 // Builds the Arabic technical proposal (عرض فني).
-// Usage: LOGO_RATIO=0.638 node build-ard.js modules.json "عرض-فني-السحابة-الكبيرة-إلى-التكافل.docx" bigcloud-logo.png
+// Usage: LOGO_RATIO=0.638 node build-ard.js modules.json "عرض فني منظومة التكافل الالكترونيه.docx" bigcloud-logo.png
 const fs = require("fs");
 const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthType, ShadingType, AlignmentType, BorderStyle,
-  LevelFormat, Footer, Header, PageNumber, ImageRun, PageBreak, HeadingLevel } = require("docx");
+  LevelFormat, Footer, Header, PageNumber, ImageRun, PageBreak, HeadingLevel, HorizontalPositionRelativeFrom, VerticalPositionRelativeFrom, HorizontalPositionAlign, VerticalPositionAlign, TextWrappingType } = require("docx");
+const path = require("path");
 const [dataPath, out, logo] = process.argv.slice(2);
 const mods = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 const NAVY = "152B56", BLUE = "0F75DB", ORANGE = "FF5722", SOFT = "F3F5FB", RED = "C62828", FONT = "Arial";
@@ -93,6 +94,7 @@ body.push(
 );
 
 const doc = new Document({
+  title: "عرض فني منظومة التكافل الالكترونيه", creator: "شركة السحابة الكبيرة لتكنولوجيا المعلومات والذكاء الاصطناعي",
   styles: {
     default: { document: { run: { font: FONT, size: 24 } } },
     paragraphStyles: [
@@ -102,9 +104,16 @@ const doc = new Document({
   },
   numbering: { config: [{ reference: "dots", levels: [{ level: 0, format: LevelFormat.BULLET, text: "•", alignment: AlignmentType.LEFT, style: { paragraph: { indent: { left: 360, hanging: 260 } } } }] }] },
   sections: [{
-    properties: { page: { size: { width: 11906, height: 16838 }, margin: { top: 1300, bottom: 1200, left: 1440, right: 1440 } } },
-    headers: { default: new Header({ children: [new Paragraph({ bidirectional: true, children: [R("عرض فني · شركة السحابة الكبيرة إلى شركة التكافل للتأمين", { size: 16, color: "8A97AD" })] })] }) },
-    footers: { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: 18, color: "8A97AD" })] })] }) },
+    properties: { titlePage: true, page: { size: { width: 11906, height: 16838 }, margin: { top: 1500, bottom: 1200, left: 1440, right: 1440 } } },
+    headers: (() => {
+      // Watermark: faded Big Cloud logo centred behind the text on every page.
+      const wm = () => new Paragraph({ children: [new ImageRun({ type: "png", data: fs.readFileSync(path.join(__dirname, "bigcloud-watermark.png")), transformation: { width: 420, height: 268 },
+        floating: { horizontalPosition: { relative: HorizontalPositionRelativeFrom.PAGE, align: HorizontalPositionAlign.CENTER }, verticalPosition: { relative: VerticalPositionRelativeFrom.PAGE, align: VerticalPositionAlign.CENTER }, behindDocument: true, wrap: { type: TextWrappingType.NONE } } })] });
+      // Header logo from page 2 on (page 1 already carries the big logo).
+      const logoLine = new Paragraph({ bidirectional: true, children: [new ImageRun({ type: "png", data: fs.readFileSync(path.join(__dirname, "bigcloud-logo.png")), transformation: { width: 64, height: 41 } })] });
+      return { first: new Header({ children: [wm()] }), default: new Header({ children: [wm(), logoLine] }) };
+    })(),
+    footers: (() => { const ft = () => new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: 18, color: "8A97AD" })] })] }); return { first: ft(), default: ft() }; })(),
     children: body,
   }],
 });
