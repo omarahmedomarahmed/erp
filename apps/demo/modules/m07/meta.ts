@@ -22,7 +22,7 @@ export const meta: ModuleMeta = {
     { ar: "المنتجات التي تقبل التقسيط، وعدد الأقساط، ومهلة السماح لكل منتج", en: "Which products allow instalments, how many, and the grace period per product" },
     { ar: "نماذج كشوف حساب من كل بنك (الصيغة والتكرار) للمطابقة الآلية", en: "Sample statements from each bank (format and frequency) for auto-matching" },
     { ar: "قواعد النقد والعملات في المنافذ الحدودية، ومتى يورد أمين الصندوق", en: "Cash and currency rules at border points, and when cashiers deposit" },
-    { ar: "رأي الهيئة الشرعية في غرامة التأخير ومصيرها", en: "The SSB's position on late fees and where they go" },
+    { ar: "رأي الهيئة الشرعية في غرامة التأخير ومصير المبلغ", en: "The SSB's position on late fees and where they go" },
   ],
   screens: [
     { id: "s1", titleKey: "m07.s1.title", captionKey: "m07.s1.caption" },

@@ -79,7 +79,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: "q06-products",
-    ar: "المنتجات والمنتجات الفرعية الحالية، وجدول أسعار كل منها",
+    ar: "المنتجات والمنتجات الفرعية الحالية، وجدول أسعار كل منتج",
     en: "Current products and sub-products, with the tariff for each",
     hintAr: "قرار الشركة إطلاق كل المنتجات الفرعية يتطلب القائمة كاملة.",
     hintEn: "The company's decision to launch every sub-product requires the full list.",
@@ -137,7 +137,7 @@ export const QUESTIONS: Question[] = [
     id: "q12-payroll",
     ar: "تأكيد نسب الضمان الاجتماعي والضريبة والدمغة والتضامن، وأداة الرواتب الحالية",
     en: "Confirmation of social security, tax, stamp and solidarity rates, and current HR/payroll tool",
-    hintAr: "النظام يعد جدول النسب مسبقا، ومحاسب الرواتب يراجعه للتأكيد.",
+    hintAr: "النظام يعد جدول النسب مسبقا، والمراجعة والتأكيد على محاسب الرواتب.",
     hintEn: "The system prepares the rate table; the payroll accountant reviews it for confirmation.",
     type: "choice",
     options: [
@@ -149,6 +149,6 @@ export const QUESTIONS: Question[] = [
 ];
 
 export const MODULE_RANKING_INTRO = {
-  ar: "ترتيب الوحدات حسب أهميتها للشركة. البناء يبدأ بالأعلى.",
+  ar: "ترتيب الوحدات حسب الأهمية للشركة. البناء يبدأ بالأعلى.",
   en: "Module ranking by importance to the company. Build starts at the top.",
 };

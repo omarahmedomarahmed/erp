@@ -11,10 +11,10 @@ export const dict: Dict = {
   "deck.map.sub": { ar: "الوحدات الاثنتا عشرة الواردة في العرض الفني، مع الموارد البشرية والرواتب.", en: "The twelve modules of the technical proposal, plus HR and payroll.", cat: "label" },
 
   "deck.journey.title": { ar: "رحلة المشترك عبر المنصة", en: "The participant's journey through the platform", cat: "label" },
-  "deck.journey.s1": { ar: "تسجيل العميل\nوالتحقق\nمن هويته", en: "Customer sign-up\nand identity\ncheck", cat: "label" },
+  "deck.journey.s1": { ar: "تسجيل العميل\nوالتحقق\nمن الهوية", en: "Customer sign-up\nand identity\ncheck", cat: "label" },
   "deck.journey.s2": { ar: "اكتتاب\nوتسعير فوري\nبالقواعد", en: "Instant\nrule-based\nunderwriting", cat: "label" },
   "deck.journey.s3": { ar: "إصدار وثيقة\nPDF موقعة\nمع رمز QR", en: "Signed PDF\npolicy with\nQR code", cat: "label" },
-  "deck.journey.s4": { ar: "تحصيل الاشتراك\nوتقسيمه\nبين الصندوقين", en: "Contribution\ncollected and\nsplit by fund", cat: "label" },
+  "deck.journey.s4": { ar: "تحصيل الاشتراك\nوالتقسيم\nبين الصندوقين", en: "Contribution\ncollected and\nsplit by fund", cat: "label" },
   "deck.journey.s5": { ar: "تسوية\nالمطالبة\nعبر 6 مراحل", en: "Claim\nsettled in\n6 stages", cat: "label" },
   "deck.journey.s6": { ar: "استرداد حصة\nإعادة التكافل\nآلياً", en: "Automatic\nretakaful\nrecovery", cat: "label" },
   "deck.journey.s7": { ar: "توزيع\nالفائض\nعلى المشتركين", en: "Surplus\nshared with\nparticipants", cat: "label" },
@@ -25,7 +25,7 @@ export const dict: Dict = {
   "deck.module.sensitive": { ar: "وحدة حساسة", en: "Sensitive module", cat: "label" },
 
   "deck.sensitive.title": { ar: "حماية الوحدات الحساسة", en: "Protecting the sensitive modules", cat: "label" },
-  "deck.sensitive.sub": { ar: "قاعدة البيانات نفسها ترفض الخطأ، لا الشاشة فقط.", en: "The database itself refuses the mistake, not only the screen.", cat: "label" },
+  "deck.sensitive.sub": { ar: "الرفض من قاعدة البيانات، لا من الشاشة فقط.", en: "The database itself refuses the mistake, not only the screen.", cat: "label" },
 
   "deck.hosting.title": { ar: "الاستضافة على خوادم الشركة أو في السحابة", en: "Hosting on company servers or in the cloud", cat: "label" },
 

@@ -20,9 +20,9 @@ export const meta: ModuleMeta = {
   },
   needs: [
     { ar: "دليل الحسابات الحالي وأرصدة الافتتاح لكل صندوق (المشتركين والمساهمين) في تاريخ الانتقال", en: "Current chart of accounts and opening balances per fund (participants and shareholders) at go-live" },
-    { ar: "نسب الوكالة الفعلية لكل منتج وأساس احتسابها (مكتتبة أو محصّلة أو مكتسبة)", en: "Actual Wakala % per product and its basis (written, collected or earned)" },
-    { ar: "حسابات المصارف لكل صندوق وكشوفها لآخر 3 أشهر للتسوية", en: "Bank accounts per fund and their last 3 months of statements for reconciliation" },
-    { ar: "آخر قوائم مالية مدققة وشكل العرض الذي يطلبه المراجع والهيئة", en: "Latest audited statements and the presentation the auditor and the regulator expect" },
+    { ar: "نسب الوكالة الفعلية لكل منتج وأساس الاحتساب (مكتتبة أو محصّلة أو مكتسبة)", en: "Actual Wakala % per product and its basis (written, collected or earned)" },
+    { ar: "حسابات المصارف لكل صندوق وكشوف آخر 3 أشهر للتسوية", en: "Bank accounts per fund and their last 3 months of statements for reconciliation" },
+    { ar: "آخر قوائم مالية مدققة وشكل العرض المطلوب من المراجع والهيئة", en: "Latest audited statements and the presentation the auditor and the regulator expect" },
     { ar: "تقويم الإقفال الشهري والسنوي ومن يعتمد كل إقفال", en: "Monthly and year-end close calendar and who approves each close" },
   ],
   screens: [

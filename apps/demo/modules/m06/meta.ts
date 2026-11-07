@@ -11,7 +11,7 @@ export const meta: ModuleMeta = {
   briefRef: "3.2",
   needs: [
     { ar: "جدول نسب الوكالة لكل منتج موقعاً، وقرارات الهيئة الشرعية للمنتجات", en: "The signed Wakala % sheet per product and the SSB resolutions for each product" },
-    { ar: "نماذج الشهادات الحالية بالعربية والإنجليزية لكل منتج، بنصوص تعتمدها الهيئة", en: "Current certificate templates in Arabic and English per product, with SSB-approved wording" },
+    { ar: "نماذج الشهادات الحالية بالعربية والإنجليزية لكل منتج، بنصوص معتمدة من الهيئة", en: "Current certificate templates in Arabic and English per product, with SSB-approved wording" },
     { ar: "مصدر التعرفة الإجبارية المعتمد، وطريقة ترقيم البطاقة البرتقالية مع المكتب الموحد", en: "The approved compulsory tariff source and Orange Card numbering with the unified bureau" },
     { ar: "مزود شهادة التوقيع الرقمي، وصورة الختم، واسم الموقع على الشهادة", en: "The digital-signature certificate provider, stamp image and signatory name" },
     { ar: "عقد مزود SMS واسم المرسل، وطريقة التجديد لكل منتج", en: "The SMS provider contract and sender name, and the renewal mode per product" },

@@ -23,7 +23,7 @@ export const dict: Dict = {
   // ---- Login / persona picker ----
   "pg.login.title": { ar: "اختيار دور للتجربة", en: "Role selection", cat: "label" },
   "pg.login.intro": {
-    ar: "كل دور يرى الوحدات والصلاحيات الخاصة به فقط.",
+    ar: "كل دور يرى فقط الوحدات والصلاحيات المحددة لذلك الدور.",
     en: "Each role sees only its own modules and permissions.",
     cat: "help",
   },
@@ -49,7 +49,7 @@ export const dict: Dict = {
   // ---- Questions page ----
   "pg.questions.title": { ar: "أسئلة أساسية قبل البناء", en: "Key questions before build", cat: "label" },
   "pg.questions.intro": {
-    ar: "هذه الأسئلة وحدها تحتاج إجابة. بقية القرارات لها قيمة افتراضية قابلة للتغيير لاحقا.",
+    ar: "الإجابة مطلوبة لهذه الأسئلة فقط. بقية القرارات بقيمة افتراضية قابلة للتغيير لاحقا.",
     en: "Only these questions need an answer. Every other decision has a default that can change later.",
     cat: "help",
   },
@@ -125,7 +125,7 @@ export const dict: Dict = {
   "pg.admin.saved": { ar: "اكتمل حفظ السجل", en: "Record saved", cat: "message" },
   "pg.admin.deleted": { ar: "اكتمل حذف السجل", en: "Record deleted", cat: "message" },
   "pg.admin.lockedPosted": {
-    ar: "قيد مرحل: لا تعديل عليه، والتصحيح بقيد عكسي",
+    ar: "قيد مرحل: التعديل ممنوع، والتصحيح بقيد عكسي",
     en: "Posted entry: no edits; correction by reversing entry",
     cat: "message",
   },
@@ -136,15 +136,15 @@ export const dict: Dict = {
   "pg.admin.log.before": { ar: "قبل", en: "Before", cat: "label" },
   "pg.admin.log.after": { ar: "بعد", en: "After", cat: "label" },
   "pg.admin.log.empty": { ar: "لا تغييرات بعد", en: "No changes yet", cat: "message" },
-  "pg.admin.settings.changed": { ar: "إعدادات غيرتها الشركة", en: "Settings changed by the company", cat: "label" },
-  "pg.admin.settings.decided": { ar: "قرارات اتخذتها الشركة", en: "Decisions made by the company", cat: "label" },
-  "pg.admin.settings.defaults": { ar: "على القيمة الموصى بها", en: "On the recommended default", cat: "label" },
+  "pg.admin.settings.changed": { ar: "إعدادات معدلة من الشركة", en: "Settings changed by the company", cat: "label" },
+  "pg.admin.settings.decided": { ar: "قرارات الشركة", en: "Decisions made by the company", cat: "label" },
+  "pg.admin.settings.defaults": { ar: "على القيمة المقترحة", en: "On the recommended default", cat: "label" },
   "pg.admin.resetDemo": { ar: "إرجاع البيانات التجريبية", en: "Reset sample data", cat: "button" },
 
   // ---- Risks page ----
-  "pg.risks.title": { ar: "الوحدات الحساسة وطرق حمايتها", en: "Sensitive modules and their protection", cat: "label" },
+  "pg.risks.title": { ar: "الوحدات الحساسة وطرق الحماية", en: "Sensitive modules and their protection", cat: "label" },
   "pg.risks.intro": {
-    ar: "هذه الوحدات تمس الأموال والالتزام الشرعي. أي محاولة خطأ هنا يمنعها النظام.",
+    ar: "هذه الوحدات تمس الأموال والالتزام الشرعي. النظام يمنع أي محاولة خطأ هنا.",
     en: "These modules touch money and Sharia compliance. The system blocks any attempted mistake here.",
     cat: "help",
   },
@@ -158,14 +158,14 @@ export const dict: Dict = {
   // ---- Settings tab (inside each module) ----
   "pg.settings.title": { ar: "الإعدادات", en: "Settings", cat: "label" },
   "pg.settings.intro": {
-    ar: "كل إعداد يبدأ بالقيمة الموصى بها، وتغييره متاح في أي وقت.",
+    ar: "كل إعداد يبدأ بالقيمة المقترحة، والتغيير متاح في أي وقت.",
     en: "Every setting starts with the recommended value and can change any time.",
     cat: "help",
   },
-  "pg.settings.ourDefault": { ar: "القيمة الموصى بها", en: "Recommended default", cat: "label" },
+  "pg.settings.ourDefault": { ar: "القيمة المقترحة", en: "Recommended default", cat: "label" },
   "pg.settings.current": { ar: "الاختيار الحالي", en: "Current choice", cat: "label" },
-  "pg.settings.changedBy": { ar: "غيره", en: "Changed by", cat: "label" },
-  "pg.settings.reset": { ar: "رجوع إلى القيمة الموصى بها", en: "Reset to recommended", cat: "button" },
+  "pg.settings.changedBy": { ar: "تغيير", en: "Changed by", cat: "label" },
+  "pg.settings.reset": { ar: "رجوع إلى القيمة المقترحة", en: "Reset to recommended", cat: "button" },
   "pg.settings.decided": { ar: "قررت الشركة هذا مسبقا", en: "The company already decided", cat: "status" },
   "pg.settings.priority": { ar: "الأولوية", en: "Priority", cat: "label" },
   "pg.settings.consequence": { ar: "الأثر", en: "Consequence", cat: "label" },

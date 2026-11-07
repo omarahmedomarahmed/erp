@@ -22,7 +22,7 @@ export const meta: ModuleMeta = {
     { ar: "البيانات والوثائق الإلزامية لكل مستوى KYC ولكل منتج", en: "Mandatory data and documents for each KYC level and product" },
     { ar: "جهة اعتماد دمج السجلات المكررة، وحدود تنبيه الاحتيال لمسؤول الامتثال", en: "Approver for duplicate merges, and fraud-alert thresholds for compliance" },
     { ar: "حالة الاتفاق أو API مع السجل المدني للتحقق من الرقم الوطني", en: "Status of any agreement or API with the Civil Registry for national-number checks" },
-    { ar: "نص موافقة العميل على معالجة بياناته وفق القانون 6/2022", en: "Customer consent wording for data processing under Law 6/2022" },
+    { ar: "نص موافقة العميل على معالجة البيانات الشخصية وفق القانون 6/2022", en: "Customer consent wording for data processing under Law 6/2022" },
   ],
   screens: [
     { id: "s1", titleKey: "m02.s1.title", captionKey: "m02.s1.caption" },

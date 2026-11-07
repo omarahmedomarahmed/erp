@@ -92,7 +92,7 @@ export const dict: Dict = {
   "m28.k.9": { ar: "أعمار الذمم المدينة", en: "Receivables ageing", cat: "label" },
   "m28.k.10": { ar: "نسبة التحصيل", en: "Collection rate", cat: "label" },
   "m28.k.11": { ar: "نسبة الخسارة", en: "Loss ratio", cat: "label" },
-  "m28.k.12": { ar: "عدد المطالبات وتكرارها", en: "Claims count and frequency", cat: "label" },
+  "m28.k.12": { ar: "عدد المطالبات ومعدل التكرار", en: "Claims count and frequency", cat: "label" },
   "m28.k.13": { ar: "متوسط أيام تسوية المطالبة", en: "Average settlement days", cat: "label" },
   "m28.k.14": { ar: "مطالبات مصروفة خلال 5 أيام عمل", en: "Claims paid within 5 working days", cat: "label" },
   "m28.k.15": { ar: "المطالبات القائمة", en: "Outstanding claims", cat: "label" },

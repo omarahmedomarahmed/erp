@@ -4,13 +4,13 @@ import type { Dict } from "@/lib/types";
 export const dict: Dict = {
   // ---- Risks page: the 4 protection layers ----
   "rk.layers.title": { ar: "أربع طبقات حماية", en: "Four layers of protection", cat: "label" },
-  "rk.layers.intro": { ar: "النظام لا يعتمد على حذر المستخدم. كل خطأ خطير يمر على أربع طبقات تمنعه أو تكشفه.", en: "The system does not rely on user care. Every serious mistake meets four layers that stop or expose it.", cat: "help" },
+  "rk.layers.intro": { ar: "النظام لا يعتمد على حذر المستخدم. كل خطأ خطير يمر على أربع طبقات للمنع أو الكشف.", en: "The system does not rely on user care. Every serious mistake meets four layers that stop or expose it.", cat: "help" },
   "rk.layer.db.title": { ar: "قيود قاعدة البيانات", en: "Database constraints", cat: "label" },
-  "rk.layer.db.text": { ar: "قاعدة البيانات نفسها ترفض خلط الصناديق والقيد غير المتوازن، حتى لو أخطأ البرنامج.", en: "The database itself rejects mixed funds and unbalanced entries, even if the software errs.", cat: "help" },
+  "rk.layer.db.text": { ar: "طبقة قاعدة البيانات ترفض خلط الصناديق والقيد غير المتوازن، حتى لو أخطأ البرنامج.", en: "The database itself rejects mixed funds and unbalanced entries, even if the software errs.", cat: "help" },
   "rk.layer.mc.title": { ar: "Maker-checker وفصل المهام", en: "Maker-checker and segregation of duties", cat: "label" },
-  "rk.layer.mc.text": { ar: "من يُدخل العملية لا يعتمدها. المبالغ الكبيرة تحتاج معتمدا ثانيا حسب الصلاحيات.", en: "Whoever enters a transaction cannot approve it. Large amounts need a second approver by authority limits.", cat: "help" },
+  "rk.layer.mc.text": { ar: "الإدخال والاعتماد لشخصين مختلفين. المبالغ الكبيرة تحتاج معتمدا ثانيا حسب الصلاحيات.", en: "Whoever enters a transaction cannot approve it. Large amounts need a second approver by authority limits.", cat: "help" },
   "rk.layer.audit.title": { ar: "سجل التدقيق", en: "Audit trail", cat: "label" },
-  "rk.layer.audit.text": { ar: "يسجل النظام كل تغيير ومحاولة ممنوعة: من وماذا ومتى. لا أحد يحذف السجل أو يعدله.", en: "The system logs every change and blocked attempt: who, what, when. Nobody can delete or edit the log.", cat: "help" },
+  "rk.layer.audit.text": { ar: "يسجل النظام كل تغيير ومحاولة ممنوعة: من وماذا ومتى. حذف أو تعديل السجل ممنوع على الجميع.", en: "The system logs every change and blocked attempt: who, what, when. Nobody can delete or edit the log.", cat: "help" },
   "rk.layer.ssb.title": { ar: "اعتماد الهيئة الشرعية", en: "Sharia board approval", cat: "label" },
   "rk.layer.ssb.text": { ar: "المنتجات والعقود ونسب الوكالة والفائض تنتظر اعتماد الهيئة الشرعية قبل أن تعمل.", en: "Products, contracts, Wakala and surplus ratios wait for Sharia board approval before they go live.", cat: "help" },
   "rk.modules.title": { ar: "الوحدات الحساسة", en: "Sensitive modules", cat: "label" },

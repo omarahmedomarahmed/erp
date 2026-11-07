@@ -11,8 +11,8 @@ export const meta: ModuleMeta = {
   briefRef: "",
   needs: [
     { ar: "الهيكل التنظيمي الحالي: الإدارات والوظائف والدرجات ومراكز التكلفة", en: "Current org structure: departments, positions, grades and cost centres" },
-    { ar: "لائحة شؤون الموظفين: أنواع الإجازات وأرصدتها وقواعد الترحيل", en: "Staff regulations: leave types, entitlements and carry-over rules" },
-    { ar: "نماذج العقود وقائمة الوثائق المطلوبة لكل موظف مع مدة صلاحيتها", en: "Contract templates and the required documents per employee with validity" },
+    { ar: "لائحة شؤون الموظفين: أنواع الإجازات والأرصدة وقواعد الترحيل", en: "Staff regulations: leave types, entitlements and carry-over rules" },
+    { ar: "نماذج العقود وقائمة الوثائق المطلوبة لكل موظف مع مدة الصلاحية", en: "Contract templates and the required documents per employee with validity" },
     { ar: "بيانات الموظفين الحالية في Excel، مع أرقام الحسابات المصرفية", en: "Current staff data in Excel, including bank account numbers" },
     { ar: "من يعتمد الإجازات والتعيينات في كل إدارة", en: "Who approves leave and hiring in each department" },
   ],
