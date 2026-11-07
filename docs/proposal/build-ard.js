@@ -2,7 +2,7 @@
 // Usage: LOGO_RATIO=0.638 node build-ard.js modules.json "عرض فني منظومة التكافل الالكترونيه.docx" bigcloud-logo.png
 const fs = require("fs");
 const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthType, ShadingType, AlignmentType, BorderStyle,
-  LevelFormat, Footer, Header, PageNumber, ImageRun, PageBreak, HeadingLevel, HorizontalPositionRelativeFrom, VerticalPositionRelativeFrom, HorizontalPositionAlign, VerticalPositionAlign, TextWrappingType } = require("docx");
+  LevelFormat, Footer, Header, PageNumber, ImageRun, PageBreak, HeadingLevel, HorizontalPositionRelativeFrom, VerticalPositionRelativeFrom, HorizontalPositionAlign, VerticalPositionAlign, TextWrappingType, TextWrappingSide } = require("docx");
 const path = require("path");
 const [dataPath, out, logo] = process.argv.slice(2);
 const mods = JSON.parse(fs.readFileSync(dataPath, "utf8"));
@@ -110,7 +110,10 @@ const doc = new Document({
       const wm = () => new Paragraph({ children: [new ImageRun({ type: "png", data: fs.readFileSync(path.join(__dirname, "bigcloud-watermark.png")), transformation: { width: 420, height: 268 },
         floating: { horizontalPosition: { relative: HorizontalPositionRelativeFrom.PAGE, align: HorizontalPositionAlign.CENTER }, verticalPosition: { relative: VerticalPositionRelativeFrom.PAGE, align: VerticalPositionAlign.CENTER }, behindDocument: true, wrap: { type: TextWrappingType.NONE } } })] });
       // Header logo from page 2 on (page 1 already carries the big logo).
-      const logoLine = new Paragraph({ bidirectional: true, children: [new ImageRun({ type: "png", data: fs.readFileSync(path.join(__dirname, "bigcloud-logo.png")), transformation: { width: 64, height: 41 } })] });
+      // Small logo on the left margin, level with the first text line of the page (not above it).
+      const logoLine = new Paragraph({ children: [new ImageRun({ type: "png", data: fs.readFileSync(path.join(__dirname, "bigcloud-logo.png")), transformation: { width: 56, height: 36 },
+        floating: { horizontalPosition: { relative: HorizontalPositionRelativeFrom.PAGE, offset: 330000 }, verticalPosition: { relative: VerticalPositionRelativeFrom.PAGE, offset: +(process.env.LOGO_Y || 955000) },
+          wrap: { type: TextWrappingType.NONE } } })] });
       return { first: new Header({ children: [wm()] }), default: new Header({ children: [wm(), logoLine] }) };
     })(),
     footers: (() => { const ft = () => new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ children: [PageNumber.CURRENT], font: FONT, size: 18, color: "8A97AD" })] })] }); return { first: ft(), default: ft() }; })(),
