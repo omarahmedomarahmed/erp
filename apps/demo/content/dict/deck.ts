@@ -3,7 +3,7 @@ import type { Dict } from "@/lib/types";
 // Text for the presentation deck (/deck). Short by design: one idea per slide.
 // Voice: the system or a feature is the subject, or a noun phrase. Never "we", never addressing the reader.
 export const dict: Dict = {
-  "deck.cover.title": { ar: "منصة التكافل", en: "The Takaful Platform", cat: "label" },
+  "deck.cover.title": { ar: "منظومة ERP لشركة التكافل", en: "ERP System for Takaful", cat: "label" },
   "deck.cover.sub": { ar: "نظام تأمين تكافلي متكامل لشركة التكافل للتأمين", en: "An integrated takaful system for Takaful Insurance Company", cat: "label" },
   "deck.cover.date": { ar: "عرض مبدئي · نوفمبر 2026", en: "Preview · November 2026", cat: "label" },
 
