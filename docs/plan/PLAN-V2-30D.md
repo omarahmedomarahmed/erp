@@ -1,4 +1,6 @@
-# TakafulTech — Plan V2: Lean 30-Day Build (active plan)
+# TakafulTech — Plan V2: Lean 30-Day Build (superseded)
+
+> **Superseded on 2026-11-07 by [PLAN-V3-6M.md](PLAN-V3-6M.md)** (3 months build, 1 month parallel run, 2 months supervised operation). Kept for the build-unit wave definitions in §4.
 
 | Item | Decision (product owner, 2026-10-28) |
 |---|---|
